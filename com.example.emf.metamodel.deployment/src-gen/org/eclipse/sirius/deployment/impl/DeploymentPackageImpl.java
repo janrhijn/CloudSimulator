@@ -4,22 +4,32 @@ package org.eclipse.sirius.deployment.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.sirius.deployment.BillingType;
+import org.eclipse.sirius.deployment.Colour;
+import org.eclipse.sirius.deployment.Component;
 import org.eclipse.sirius.deployment.Compute;
 import org.eclipse.sirius.deployment.Connector;
-import org.eclipse.sirius.deployment.DataFlow;
+import org.eclipse.sirius.deployment.ConsumptionMetric;
+import org.eclipse.sirius.deployment.ConsumptionMetrics2;
+import org.eclipse.sirius.deployment.DataType;
 import org.eclipse.sirius.deployment.Deployment;
 import org.eclipse.sirius.deployment.DeploymentFactory;
 import org.eclipse.sirius.deployment.DeploymentPackage;
 import org.eclipse.sirius.deployment.Feature;
-import org.eclipse.sirius.deployment.Instance;
+import org.eclipse.sirius.deployment.InformationFlow;
 import org.eclipse.sirius.deployment.PricingFunction;
+import org.eclipse.sirius.deployment.RequestType;
 import org.eclipse.sirius.deployment.Scenario;
+import org.eclipse.sirius.deployment.ServiceLevel;
 import org.eclipse.sirius.deployment.Storage;
+import org.eclipse.sirius.deployment.WeekDay;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +50,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass instanceEClass = null;
+	private EClass componentEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,7 +106,70 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass dataFlowEClass = null;
+	private EClass informationFlowEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass consumptionMetrics2EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum serviceLevelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum consumptionMetricEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum dataTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum billingTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum requestTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum weekDayEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum colourEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType newDataType7EDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -218,8 +291,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EClass getInstance() {
-		return instanceEClass;
+	public EAttribute getDeployment_OperationalCost() {
+		return (EAttribute) deploymentEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -228,8 +301,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EReference getInstance_Contains() {
-		return (EReference) instanceEClass.getEStructuralFeatures().get(0);
+	public EClass getComponent() {
+		return componentEClass;
 	}
 
 	/**
@@ -238,8 +311,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EReference getInstance_Pricingscheme() {
-		return (EReference) instanceEClass.getEStructuralFeatures().get(1);
+	public EReference getComponent_Contains() {
+		return (EReference) componentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -248,8 +321,108 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getInstance_Name() {
-		return (EAttribute) instanceEClass.getEStructuralFeatures().get(2);
+	public EReference getComponent_Pricingscheme() {
+		return (EReference) componentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_Name() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_ServiceLevel() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_ServerDuration() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_ServerUnitTime() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_DataIn() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_DataOut() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_StorageCapacity() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_Request() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_OperationalComponentCost() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getComponent_DeployedUnits() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -268,7 +441,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPricingFunction_Metric() {
+	public EAttribute getPricingFunction_Price() {
 		return (EAttribute) pricingFunctionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -278,8 +451,48 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPricingFunction_Price() {
+	public EAttribute getPricingFunction_Name() {
 		return (EAttribute) pricingFunctionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPricingFunction_Metric() {
+		return (EAttribute) pricingFunctionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPricingFunction_BillingType() {
+		return (EAttribute) pricingFunctionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPricingFunction_DataType() {
+		return (EAttribute) pricingFunctionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPricingFunction_RequestType() {
+		return (EAttribute) pricingFunctionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -358,8 +571,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EReference getVPC_Deployed() {
-		return (EReference) vpcEClass.getEStructuralFeatures().get(0);
+	public EAttribute getVPC_Name() {
+		return (EAttribute) vpcEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -368,8 +581,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getVPC_Name() {
-		return (EAttribute) vpcEClass.getEStructuralFeatures().get(1);
+	public EReference getVPC_Deployed() {
+		return (EReference) vpcEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -408,7 +621,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EReference getScenario_Dataflow() {
+	public EReference getScenario_Informationflow() {
 		return (EReference) scenarioEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -418,8 +631,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EClass getDataFlow() {
-		return dataFlowEClass;
+	public EAttribute getScenario_MeanSojournTime() {
+		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -428,8 +641,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDataFlow_Data() {
-		return (EAttribute) dataFlowEClass.getEStructuralFeatures().get(0);
+	public EAttribute getScenario_MaxSojournTime() {
+		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -438,8 +651,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EReference getDataFlow_Sender() {
-		return (EReference) dataFlowEClass.getEStructuralFeatures().get(1);
+	public EAttribute getScenario_Colour() {
+		return (EAttribute) scenarioEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -448,8 +661,218 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EReference getDataFlow_Receiver() {
-		return (EReference) dataFlowEClass.getEStructuralFeatures().get(2);
+	public EClass getInformationFlow() {
+		return informationFlowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInformationFlow_Data() {
+		return (EAttribute) informationFlowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInformationFlow_Sender() {
+		return (EReference) informationFlowEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getInformationFlow_Receiver() {
+		return (EReference) informationFlowEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInformationFlow_DataReverse() {
+		return (EAttribute) informationFlowEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInformationFlow_Probability() {
+		return (EAttribute) informationFlowEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInformationFlow_BiDirectional() {
+		return (EAttribute) informationFlowEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getConsumptionMetrics2() {
+		return consumptionMetrics2EClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConsumptionMetrics2_ServerTime() {
+		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConsumptionMetrics2_ServerUnitTime() {
+		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConsumptionMetrics2_DataIn() {
+		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConsumptionMetrics2_DataOut() {
+		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConsumptionMetrics2_StorageCapacity() {
+		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getConsumptionMetrics2_Request() {
+		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getServiceLevel() {
+		return serviceLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getConsumptionMetric() {
+		return consumptionMetricEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getDataType() {
+		return dataTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getBillingType() {
+		return billingTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getRequestType() {
+		return requestTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getWeekDay() {
+		return weekDayEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getColour() {
+		return colourEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EDataType getNewDataType7() {
+		return newDataType7EDataType;
 	}
 
 	/**
@@ -487,15 +910,29 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		createEReference(deploymentEClass, DEPLOYMENT__CONTAIN);
 		createEReference(deploymentEClass, DEPLOYMENT__VPC);
 		createEReference(deploymentEClass, DEPLOYMENT__SCENARIOS);
+		createEAttribute(deploymentEClass, DEPLOYMENT__OPERATIONAL_COST);
 
-		instanceEClass = createEClass(INSTANCE);
-		createEReference(instanceEClass, INSTANCE__CONTAINS);
-		createEReference(instanceEClass, INSTANCE__PRICINGSCHEME);
-		createEAttribute(instanceEClass, INSTANCE__NAME);
+		componentEClass = createEClass(COMPONENT);
+		createEReference(componentEClass, COMPONENT__CONTAINS);
+		createEReference(componentEClass, COMPONENT__PRICINGSCHEME);
+		createEAttribute(componentEClass, COMPONENT__NAME);
+		createEAttribute(componentEClass, COMPONENT__SERVICE_LEVEL);
+		createEAttribute(componentEClass, COMPONENT__SERVER_DURATION);
+		createEAttribute(componentEClass, COMPONENT__SERVER_UNIT_TIME);
+		createEAttribute(componentEClass, COMPONENT__DATA_IN);
+		createEAttribute(componentEClass, COMPONENT__DATA_OUT);
+		createEAttribute(componentEClass, COMPONENT__STORAGE_CAPACITY);
+		createEAttribute(componentEClass, COMPONENT__REQUEST);
+		createEAttribute(componentEClass, COMPONENT__OPERATIONAL_COMPONENT_COST);
+		createEAttribute(componentEClass, COMPONENT__DEPLOYED_UNITS);
 
 		pricingFunctionEClass = createEClass(PRICING_FUNCTION);
-		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__METRIC);
 		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__PRICE);
+		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__NAME);
+		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__METRIC);
+		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__BILLING_TYPE);
+		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__DATA_TYPE);
+		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__REQUEST_TYPE);
 
 		featureEClass = createEClass(FEATURE);
 		createEAttribute(featureEClass, FEATURE__NAME);
@@ -508,18 +945,44 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		storageEClass = createEClass(STORAGE);
 
 		vpcEClass = createEClass(VPC);
-		createEReference(vpcEClass, VPC__DEPLOYED);
 		createEAttribute(vpcEClass, VPC__NAME);
+		createEReference(vpcEClass, VPC__DEPLOYED);
 
 		scenarioEClass = createEClass(SCENARIO);
 		createEAttribute(scenarioEClass, SCENARIO__NAME);
 		createEAttribute(scenarioEClass, SCENARIO__ARRIVALRATE);
-		createEReference(scenarioEClass, SCENARIO__DATAFLOW);
+		createEReference(scenarioEClass, SCENARIO__INFORMATIONFLOW);
+		createEAttribute(scenarioEClass, SCENARIO__MEAN_SOJOURN_TIME);
+		createEAttribute(scenarioEClass, SCENARIO__MAX_SOJOURN_TIME);
+		createEAttribute(scenarioEClass, SCENARIO__COLOUR);
 
-		dataFlowEClass = createEClass(DATA_FLOW);
-		createEAttribute(dataFlowEClass, DATA_FLOW__DATA);
-		createEReference(dataFlowEClass, DATA_FLOW__SENDER);
-		createEReference(dataFlowEClass, DATA_FLOW__RECEIVER);
+		informationFlowEClass = createEClass(INFORMATION_FLOW);
+		createEAttribute(informationFlowEClass, INFORMATION_FLOW__DATA);
+		createEReference(informationFlowEClass, INFORMATION_FLOW__SENDER);
+		createEReference(informationFlowEClass, INFORMATION_FLOW__RECEIVER);
+		createEAttribute(informationFlowEClass, INFORMATION_FLOW__DATA_REVERSE);
+		createEAttribute(informationFlowEClass, INFORMATION_FLOW__PROBABILITY);
+		createEAttribute(informationFlowEClass, INFORMATION_FLOW__BI_DIRECTIONAL);
+
+		consumptionMetrics2EClass = createEClass(CONSUMPTION_METRICS2);
+		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__SERVER_TIME);
+		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__SERVER_UNIT_TIME);
+		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__DATA_IN);
+		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__DATA_OUT);
+		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__STORAGE_CAPACITY);
+		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__REQUEST);
+
+		// Create enums
+		serviceLevelEEnum = createEEnum(SERVICE_LEVEL);
+		consumptionMetricEEnum = createEEnum(CONSUMPTION_METRIC);
+		dataTypeEEnum = createEEnum(DATA_TYPE);
+		billingTypeEEnum = createEEnum(BILLING_TYPE);
+		requestTypeEEnum = createEEnum(REQUEST_TYPE);
+		weekDayEEnum = createEEnum(WEEK_DAY);
+		colourEEnum = createEEnum(COLOUR);
+
+		// Create data types
+		newDataType7EDataType = createEDataType(NEW_DATA_TYPE7);
 	}
 
 	/**
@@ -560,7 +1023,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDeployment_Name(), ecorePackage.getEString(), "name", null, 0, 1, Deployment.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDeployment_Contain(), this.getInstance(), null, "contain", null, 0, -1, Deployment.class,
+		initEReference(getDeployment_Contain(), this.getComponent(), null, "contain", null, 0, -1, Deployment.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDeployment_Vpc(), this.getVPC(), null, "vpc", null, 1, 1, Deployment.class, !IS_TRANSIENT,
@@ -569,23 +1032,60 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		initEReference(getDeployment_Scenarios(), this.getScenario(), null, "scenarios", null, 1, -1, Deployment.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDeployment_OperationalCost(), ecorePackage.getEDouble(), "operationalCost", null, 0, 1,
+				Deployment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(instanceEClass, Instance.class, "Instance", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInstance_Contains(), this.getFeature(), null, "contains", null, 1, -1, Instance.class,
+		initEReference(getComponent_Contains(), this.getFeature(), null, "contains", null, 1, -1, Component.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInstance_Pricingscheme(), this.getPricingFunction(), null, "pricingscheme", null, 1, -1,
-				Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getComponent_Pricingscheme(), this.getPricingFunction(), null, "pricingscheme", null, 0, -1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInstance_Name(), ecorePackage.getEString(), "name", null, 0, 1, Instance.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Component.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_ServiceLevel(), this.getServiceLevel(), "serviceLevel", null, 0, 1, Component.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_ServerDuration(), ecorePackage.getEInt(), "serverDuration", null, 0, 1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_ServerUnitTime(), ecorePackage.getELong(), "serverUnitTime", null, 0, 1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_DataIn(), ecorePackage.getELong(), "dataIn", null, 0, 1, Component.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_DataOut(), ecorePackage.getELong(), "dataOut", null, 0, 1, Component.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_StorageCapacity(), ecorePackage.getELong(), "storageCapacity", null, 0, 1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_Request(), ecorePackage.getELong(), "request", null, 0, 1, Component.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_OperationalComponentCost(), ecorePackage.getEDouble(), "operationalComponentCost",
+				null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_DeployedUnits(), ecorePackage.getEInt(), "deployedUnits", null, 0, 1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(pricingFunctionEClass, PricingFunction.class, "PricingFunction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPricingFunction_Metric(), ecorePackage.getEInt(), "metric", null, 0, 1, PricingFunction.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPricingFunction_Price(), ecorePackage.getEDouble(), "price", null, 0, 1,
+				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricingFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, PricingFunction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricingFunction_Metric(), this.getConsumptionMetric(), "metric", null, 0, 1,
+				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricingFunction_BillingType(), this.getBillingType(), "billingType", null, 0, 1,
+				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricingFunction_DataType(), this.getDataType(), "dataType", null, 0, 1, PricingFunction.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricingFunction_RequestType(), this.getRequestType(), "requestType", null, 0, 1,
 				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
@@ -604,12 +1104,12 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 
 		initEClass(vpcEClass, org.eclipse.sirius.deployment.VPC.class, "VPC", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVPC_Deployed(), this.getInstance(), null, "deployed", null, 0, -1,
-				org.eclipse.sirius.deployment.VPC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVPC_Name(), ecorePackage.getEString(), "name", null, 0, 1,
 				org.eclipse.sirius.deployment.VPC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVPC_Deployed(), this.getComponent(), null, "deployed", null, 0, -1,
+				org.eclipse.sirius.deployment.VPC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -617,20 +1117,108 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScenario_Arrivalrate(), ecorePackage.getEInt(), "arrivalrate", null, 0, 1, Scenario.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScenario_Dataflow(), this.getDataFlow(), null, "dataflow", null, 1, -1, Scenario.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+		initEReference(getScenario_Informationflow(), this.getInformationFlow(), null, "informationflow", null, 1, -1,
+				Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_MeanSojournTime(), ecorePackage.getEDouble(), "meanSojournTime", null, 0, 1,
+				Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_MaxSojournTime(), ecorePackage.getEDouble(), "maxSojournTime", null, 0, 1,
+				Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_Colour(), this.getColour(), "colour", null, 0, 1, Scenario.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(informationFlowEClass, InformationFlow.class, "InformationFlow", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInformationFlow_Data(), ecorePackage.getEInt(), "data", null, 0, 1, InformationFlow.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInformationFlow_Sender(), this.getFeature(), null, "sender", null, 1, 1,
+				InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInformationFlow_Receiver(), this.getFeature(), null, "receiver", null, 1, 1,
+				InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationFlow_DataReverse(), ecorePackage.getEInt(), "dataReverse", null, 0, 1,
+				InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationFlow_Probability(), ecorePackage.getEDouble(), "probability", "1.0", 0, 1,
+				InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationFlow_BiDirectional(), ecorePackage.getEBoolean(), "biDirectional", "false", 0, 1,
+				InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(consumptionMetrics2EClass, ConsumptionMetrics2.class, "ConsumptionMetrics2", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConsumptionMetrics2_ServerTime(), ecorePackage.getEInt(), "ServerTime", null, 0, 1,
+				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConsumptionMetrics2_ServerUnitTime(), ecorePackage.getELong(), "ServerUnitTime", null, 0, 1,
+				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConsumptionMetrics2_DataIn(), ecorePackage.getELong(), "DataIn", null, 0, 1,
+				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConsumptionMetrics2_DataOut(), ecorePackage.getELong(), "DataOut", null, 0, 1,
+				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConsumptionMetrics2_StorageCapacity(), ecorePackage.getELong(), "StorageCapacity", null, 0, 1,
+				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConsumptionMetrics2_Request(), ecorePackage.getELong(), "Request", null, 0, 1,
+				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataFlowEClass, DataFlow.class, "DataFlow", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataFlow_Data(), ecorePackage.getEInt(), "data", null, 0, 1, DataFlow.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataFlow_Sender(), this.getFeature(), null, "sender", null, 1, 1, DataFlow.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDataFlow_Receiver(), this.getFeature(), null, "receiver", null, 1, 1, DataFlow.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		// Initialize enums and add enum literals
+		initEEnum(serviceLevelEEnum, ServiceLevel.class, "ServiceLevel");
+		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.IAAS);
+		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.PAAS);
+		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.SAAS);
+		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.OTHER);
+
+		initEEnum(consumptionMetricEEnum, ConsumptionMetric.class, "ConsumptionMetric");
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.SERVER_DURATION);
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.SERVER_UNIT_TIME);
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.DATA_IN);
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.DATA_OUT);
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.STORAGE_CAPACITY);
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.REQUEST);
+		addEEnumLiteral(consumptionMetricEEnum, ConsumptionMetric.DATA_PROCESSED);
+
+		initEEnum(dataTypeEEnum, DataType.class, "DataType");
+		addEEnumLiteral(dataTypeEEnum, DataType.KILOBYTE);
+		addEEnumLiteral(dataTypeEEnum, DataType.MEGABYTE);
+		addEEnumLiteral(dataTypeEEnum, DataType.GIGABYTE);
+
+		initEEnum(billingTypeEEnum, BillingType.class, "BillingType");
+		addEEnumLiteral(billingTypeEEnum, BillingType.HOUR);
+		addEEnumLiteral(billingTypeEEnum, BillingType.SECOND);
+
+		initEEnum(requestTypeEEnum, RequestType.class, "RequestType");
+		addEEnumLiteral(requestTypeEEnum, RequestType.MILLION);
+		addEEnumLiteral(requestTypeEEnum, RequestType.THOUSAND);
+		addEEnumLiteral(requestTypeEEnum, RequestType.UNIT);
+
+		initEEnum(weekDayEEnum, WeekDay.class, "WeekDay");
+		addEEnumLiteral(weekDayEEnum, WeekDay.SUNDAY);
+		addEEnumLiteral(weekDayEEnum, WeekDay.MONDAY);
+		addEEnumLiteral(weekDayEEnum, WeekDay.TUESDAY);
+		addEEnumLiteral(weekDayEEnum, WeekDay.WEDNESDAY);
+		addEEnumLiteral(weekDayEEnum, WeekDay.THURSDAY);
+		addEEnumLiteral(weekDayEEnum, WeekDay.FRIDAY);
+		addEEnumLiteral(weekDayEEnum, WeekDay.SATURDAY);
+
+		initEEnum(colourEEnum, Colour.class, "Colour");
+		addEEnumLiteral(colourEEnum, Colour.RED);
+		addEEnumLiteral(colourEEnum, Colour.BLUE);
+		addEEnumLiteral(colourEEnum, Colour.YELLOW);
+		addEEnumLiteral(colourEEnum, Colour.PURPLE);
+		addEEnumLiteral(colourEEnum, Colour.GREEN);
+
+		// Initialize data types
+		initEDataType(newDataType7EDataType, Object.class, "NewDataType7", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

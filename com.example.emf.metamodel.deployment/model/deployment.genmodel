@@ -15,23 +15,81 @@
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/IAAS"/>
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/PAAS"/>
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/SAAS"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/FAAS"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/Other"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//ConsumptionMetric">
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/serverDuration"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/serverUnitTime"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/dataIn"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/dataOut"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/storageCapacity"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/request"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/dataProcessed"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//DataType">
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//DataType/KILOBYTE"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//DataType/MEGABYTE"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//DataType/GIGABYTE"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//DataType/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//BillingType">
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//BillingType/HOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//BillingType/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//BillingType/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//RequestType">
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//RequestType/MILLION"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//RequestType/THOUSAND"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//RequestType/UNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//RequestType/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//WeekDay">
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/SUNDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/MONDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/TUESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/WEDNESDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/THURSDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/FRIDAY"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//WeekDay/SATURDAY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//Colour">
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//Colour/RED"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//Colour/BLUE"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//Colour/YELLOW"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//Colour/PURPLE"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//Colour/GREEN"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="deployment.ecore#//NewDataType7"/>
     <genClasses ecoreClass="deployment.ecore#//Deployment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Deployment/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Deployment/contain"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Deployment/vpc"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Deployment/scenarios"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Deployment/operationalCost"/>
     </genClasses>
     <genClasses ecoreClass="deployment.ecore#//Component">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Component/contains"/>
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//Component/pricingscheme"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/serviceLevel"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//Component/consumptionmetrics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/serverDuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/serverUnitTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/dataIn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/dataOut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/storageCapacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/request"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/operationalComponentCost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/deployedUnits"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Component/maxWaitingTime"/>
     </genClasses>
     <genClasses ecoreClass="deployment.ecore#//PricingFunction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//PricingFunction/price"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//PricingFunction/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//PricingFunction/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//PricingFunction/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//PricingFunction/billingType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//PricingFunction/dataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//PricingFunction/requestType"/>
     </genClasses>
     <genClasses ecoreClass="deployment.ecore#//Feature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Feature/name"/>
@@ -42,26 +100,36 @@
     <genClasses ecoreClass="deployment.ecore#//Connector"/>
     <genClasses ecoreClass="deployment.ecore#//Storage"/>
     <genClasses ecoreClass="deployment.ecore#//VPC">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//VPC/deployed"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//VPC/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//VPC/deployed"/>
     </genClasses>
     <genClasses ecoreClass="deployment.ecore#//Scenario">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Scenario/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Scenario/arrivalrate"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Scenario/dataflow"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Scenario/informationflow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Scenario/meanSojournTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Scenario/maxSojournTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//Scenario/colour"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference deployment.ecore#//Scenario/arrivalrateweekdistribution"/>
     </genClasses>
-    <genClasses ecoreClass="deployment.ecore#//DataFlow">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//DataFlow/data"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//DataFlow/sender"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//DataFlow/receiver"/>
+    <genClasses ecoreClass="deployment.ecore#//InformationFlow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//InformationFlow/data"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//InformationFlow/sender"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference deployment.ecore#//InformationFlow/receiver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//InformationFlow/dataReverse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//InformationFlow/probability"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//InformationFlow/biDirectional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//InformationFlow/computedArrivalRate"/>
     </genClasses>
-    <genClasses ecoreClass="deployment.ecore#//ConsumptionMetrics">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ConsumptionMetrics/ServerTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ConsumptionMetrics/ServerUnitsTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ConsumptionMetrics/DataIn"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ConsumptionMetrics/DataOut"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ConsumptionMetrics/Storage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ConsumptionMetrics/Request"/>
+    <genClasses ecoreClass="deployment.ecore#//ArrivalRateWeekDistribution">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Monday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Tuesday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Wednesday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Thursday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Friday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Saturday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/Sunday"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute deployment.ecore#//ArrivalRateWeekDistribution/TotalPerWeek"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

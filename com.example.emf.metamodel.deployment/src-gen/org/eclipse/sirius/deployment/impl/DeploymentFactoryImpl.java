@@ -3,6 +3,7 @@
 package org.eclipse.sirius.deployment.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -58,8 +59,8 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 		switch (eClass.getClassifierID()) {
 		case DeploymentPackage.DEPLOYMENT:
 			return createDeployment();
-		case DeploymentPackage.INSTANCE:
-			return createInstance();
+		case DeploymentPackage.COMPONENT:
+			return createComponent();
 		case DeploymentPackage.PRICING_FUNCTION:
 			return createPricingFunction();
 		case DeploymentPackage.COMPUTE:
@@ -72,10 +73,70 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 			return createVPC();
 		case DeploymentPackage.SCENARIO:
 			return createScenario();
-		case DeploymentPackage.DATA_FLOW:
-			return createDataFlow();
+		case DeploymentPackage.INFORMATION_FLOW:
+			return createInformationFlow();
+		case DeploymentPackage.CONSUMPTION_METRICS2:
+			return createConsumptionMetrics2();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+		case DeploymentPackage.SERVICE_LEVEL:
+			return createServiceLevelFromString(eDataType, initialValue);
+		case DeploymentPackage.CONSUMPTION_METRIC:
+			return createConsumptionMetricFromString(eDataType, initialValue);
+		case DeploymentPackage.DATA_TYPE:
+			return createDataTypeFromString(eDataType, initialValue);
+		case DeploymentPackage.BILLING_TYPE:
+			return createBillingTypeFromString(eDataType, initialValue);
+		case DeploymentPackage.REQUEST_TYPE:
+			return createRequestTypeFromString(eDataType, initialValue);
+		case DeploymentPackage.WEEK_DAY:
+			return createWeekDayFromString(eDataType, initialValue);
+		case DeploymentPackage.COLOUR:
+			return createColourFromString(eDataType, initialValue);
+		case DeploymentPackage.NEW_DATA_TYPE7:
+			return createNewDataType7FromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+		case DeploymentPackage.SERVICE_LEVEL:
+			return convertServiceLevelToString(eDataType, instanceValue);
+		case DeploymentPackage.CONSUMPTION_METRIC:
+			return convertConsumptionMetricToString(eDataType, instanceValue);
+		case DeploymentPackage.DATA_TYPE:
+			return convertDataTypeToString(eDataType, instanceValue);
+		case DeploymentPackage.BILLING_TYPE:
+			return convertBillingTypeToString(eDataType, instanceValue);
+		case DeploymentPackage.REQUEST_TYPE:
+			return convertRequestTypeToString(eDataType, instanceValue);
+		case DeploymentPackage.WEEK_DAY:
+			return convertWeekDayToString(eDataType, instanceValue);
+		case DeploymentPackage.COLOUR:
+			return convertColourToString(eDataType, instanceValue);
+		case DeploymentPackage.NEW_DATA_TYPE7:
+			return convertNewDataType7ToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -96,9 +157,9 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	 * @generated
 	 */
 	@Override
-	public Instance createInstance() {
-		InstanceImpl instance = new InstanceImpl();
-		return instance;
+	public Component createComponent() {
+		ComponentImpl component = new ComponentImpl();
+		return component;
 	}
 
 	/**
@@ -173,9 +234,192 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	 * @generated
 	 */
 	@Override
-	public DataFlow createDataFlow() {
-		DataFlowImpl dataFlow = new DataFlowImpl();
-		return dataFlow;
+	public InformationFlow createInformationFlow() {
+		InformationFlowImpl informationFlow = new InformationFlowImpl();
+		return informationFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConsumptionMetrics2 createConsumptionMetrics2() {
+		ConsumptionMetrics2Impl consumptionMetrics2 = new ConsumptionMetrics2Impl();
+		return consumptionMetrics2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ServiceLevel createServiceLevelFromString(EDataType eDataType, String initialValue) {
+		ServiceLevel result = ServiceLevel.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertServiceLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConsumptionMetric createConsumptionMetricFromString(EDataType eDataType, String initialValue) {
+		ConsumptionMetric result = ConsumptionMetric.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertConsumptionMetricToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataType createDataTypeFromString(EDataType eDataType, String initialValue) {
+		DataType result = DataType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BillingType createBillingTypeFromString(EDataType eDataType, String initialValue) {
+		BillingType result = BillingType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBillingTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RequestType createRequestTypeFromString(EDataType eDataType, String initialValue) {
+		RequestType result = RequestType.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRequestTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WeekDay createWeekDayFromString(EDataType eDataType, String initialValue) {
+		WeekDay result = WeekDay.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertWeekDayToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Colour createColourFromString(EDataType eDataType, String initialValue) {
+		Colour result = Colour.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertColourToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object createNewDataType7FromString(EDataType eDataType, String initialValue) {
+		return super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertNewDataType7ToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

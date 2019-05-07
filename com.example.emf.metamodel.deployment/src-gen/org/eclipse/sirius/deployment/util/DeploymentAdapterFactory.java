@@ -72,8 +72,8 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseInstance(Instance object) {
-			return createInstanceAdapter();
+		public Adapter caseComponent(Component object) {
+			return createComponentAdapter();
 		}
 
 		@Override
@@ -112,8 +112,13 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseDataFlow(DataFlow object) {
-			return createDataFlowAdapter();
+		public Adapter caseInformationFlow(InformationFlow object) {
+			return createInformationFlowAdapter();
+		}
+
+		@Override
+		public Adapter caseConsumptionMetrics2(ConsumptionMetrics2 object) {
+			return createConsumptionMetrics2Adapter();
 		}
 
 		@Override
@@ -150,16 +155,16 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.Instance <em>Instance</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.Component <em>Component</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.sirius.deployment.Instance
+	 * @see org.eclipse.sirius.deployment.Component
 	 * @generated
 	 */
-	public Adapter createInstanceAdapter() {
+	public Adapter createComponentAdapter() {
 		return null;
 	}
 
@@ -262,16 +267,30 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.DataFlow <em>Data Flow</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.InformationFlow <em>Information Flow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.sirius.deployment.DataFlow
+	 * @see org.eclipse.sirius.deployment.InformationFlow
 	 * @generated
 	 */
-	public Adapter createDataFlowAdapter() {
+	public Adapter createInformationFlowAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2 <em>Consumption Metrics2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2
+	 * @generated
+	 */
+	public Adapter createConsumptionMetrics2Adapter() {
 		return null;
 	}
 

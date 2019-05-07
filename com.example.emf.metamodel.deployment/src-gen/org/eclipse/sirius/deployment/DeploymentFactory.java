@@ -31,13 +31,13 @@ public interface DeploymentFactory extends EFactory {
 	Deployment createDeployment();
 
 	/**
-	 * Returns a new object of class '<em>Instance</em>'.
+	 * Returns a new object of class '<em>Component</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instance</em>'.
+	 * @return a new object of class '<em>Component</em>'.
 	 * @generated
 	 */
-	Instance createInstance();
+	Component createComponent();
 
 	/**
 	 * Returns a new object of class '<em>Pricing Function</em>'.
@@ -94,13 +94,22 @@ public interface DeploymentFactory extends EFactory {
 	Scenario createScenario();
 
 	/**
-	 * Returns a new object of class '<em>Data Flow</em>'.
+	 * Returns a new object of class '<em>Information Flow</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Flow</em>'.
+	 * @return a new object of class '<em>Information Flow</em>'.
 	 * @generated
 	 */
-	DataFlow createDataFlow();
+	InformationFlow createInformationFlow();
+
+	/**
+	 * Returns a new object of class '<em>Consumption Metrics2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Consumption Metrics2</em>'.
+	 * @generated
+	 */
+	ConsumptionMetrics2 createConsumptionMetrics2();
 
 	/**
 	 * Returns the package supported by this factory.

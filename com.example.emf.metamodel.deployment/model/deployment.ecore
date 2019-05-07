@@ -10,6 +10,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" lowerBound="1"
         upperBound="-1" eType="#//Scenario" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationalCost" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" lowerBound="1"
@@ -18,12 +19,28 @@
         eType="#//PricingFunction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceLevel" eType="#//ServiceLevel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="consumptionmetrics" lowerBound="1"
-        eType="#//ConsumptionMetrics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverDuration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serverUnitTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="storageCapacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="request" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationalComponentCost"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deployedUnits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxWaitingTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="150"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PricingFunction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metric" eType="#//ConsumptionMetrics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="#//ConsumptionMetric"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="billingType" eType="#//BillingType"
+        defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataType" eType="#//DataType"
+        defaultValueLiteral="NONE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requestType" eType="#//RequestType"
+        defaultValueLiteral="NONE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -34,34 +51,92 @@
   <eClassifiers xsi:type="ecore:EClass" name="Connector" eSuperTypes="#//Feature"/>
   <eClassifiers xsi:type="ecore:EClass" name="Storage" eSuperTypes="#//Feature"/>
   <eClassifiers xsi:type="ecore:EClass" name="VPC">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deployed" upperBound="-1"
         eType="#//Component" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrivalrate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dataflow" lowerBound="1"
-        upperBound="-1" eType="#//DataFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="informationflow" lowerBound="1"
+        upperBound="-1" eType="#//InformationFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="meanSojournTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxSojournTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colour" eType="#//Colour"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arrivalrateweekdistribution"
+        eType="#//ArrivalRateWeekDistribution" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DataFlow">
+  <eClassifiers xsi:type="ecore:EClass" name="InformationFlow">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sender" lowerBound="1"
         eType="#//Feature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
         eType="#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataReverse" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="biDirectional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="computedArrivalRate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ServiceLevel">
     <eLiterals name="IAAS"/>
     <eLiterals name="PAAS" value="1"/>
     <eLiterals name="SAAS" value="2"/>
+    <eLiterals name="FAAS" value="3"/>
+    <eLiterals name="Other" value="4"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConsumptionMetrics">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ServerTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ServerUnitsTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DataIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="DataOut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Storage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Request" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConsumptionMetric">
+    <eLiterals name="serverDuration"/>
+    <eLiterals name="serverUnitTime" value="1"/>
+    <eLiterals name="dataIn" value="2"/>
+    <eLiterals name="dataOut" value="3"/>
+    <eLiterals name="storageCapacity" value="4"/>
+    <eLiterals name="request" value="5"/>
+    <eLiterals name="dataProcessed" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataType">
+    <eLiterals name="KILOBYTE"/>
+    <eLiterals name="MEGABYTE" value="1"/>
+    <eLiterals name="GIGABYTE" value="2"/>
+    <eLiterals name="NONE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BillingType">
+    <eLiterals name="HOUR"/>
+    <eLiterals name="SECOND" value="1"/>
+    <eLiterals name="NONE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RequestType">
+    <eLiterals name="MILLION"/>
+    <eLiterals name="THOUSAND" value="1"/>
+    <eLiterals name="UNIT" value="2"/>
+    <eLiterals name="NONE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WeekDay">
+    <eLiterals name="SUNDAY"/>
+    <eLiterals name="MONDAY" value="1"/>
+    <eLiterals name="TUESDAY" value="2"/>
+    <eLiterals name="WEDNESDAY" value="3"/>
+    <eLiterals name="THURSDAY" value="4"/>
+    <eLiterals name="FRIDAY" value="5"/>
+    <eLiterals name="SATURDAY" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NewDataType7" instanceTypeName="newDataType7"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Colour">
+    <eLiterals name="RED"/>
+    <eLiterals name="BLUE" value="1"/>
+    <eLiterals name="YELLOW" value="2"/>
+    <eLiterals name="PURPLE" value="3"/>
+    <eLiterals name="GREEN" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrivalRateWeekDistribution">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Monday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Tuesday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Wednesday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Thursday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Friday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Saturday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Sunday" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TotalPerWeek" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

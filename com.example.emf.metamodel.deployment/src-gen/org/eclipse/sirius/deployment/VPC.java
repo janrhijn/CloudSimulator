@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.sirius.deployment.VPC#getDeployed <em>Deployed</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.VPC#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.VPC#getDeployed <em>Deployed</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.deployment.DeploymentPackage#getVPC()
@@ -24,22 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface VPC extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Deployed</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.sirius.deployment.Instance}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Deployed</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deployed</em>' containment reference list.
-	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getVPC_Deployed()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Instance> getDeployed();
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -65,5 +49,21 @@ public interface VPC extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Deployed</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.sirius.deployment.Component}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Deployed</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Deployed</em>' containment reference list.
+	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getVPC_Deployed()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Component> getDeployed();
 
 } // VPC

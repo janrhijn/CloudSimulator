@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.sirius.deployment.Component;
 import org.eclipse.sirius.deployment.DeploymentPackage;
-import org.eclipse.sirius.deployment.Instance;
 import org.eclipse.sirius.deployment.VPC;
 
 /**
@@ -30,23 +30,13 @@ import org.eclipse.sirius.deployment.VPC;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.sirius.deployment.impl.VPCImpl#getDeployed <em>Deployed</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.VPCImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.VPCImpl#getDeployed <em>Deployed</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
-	/**
-	 * The cached value of the '{@link #getDeployed() <em>Deployed</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDeployed()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Instance> deployed;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -68,6 +58,16 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getDeployed() <em>Deployed</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDeployed()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Component> deployed;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,19 +84,6 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	@Override
 	protected EClass eStaticClass() {
 		return DeploymentPackage.Literals.VPC;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<Instance> getDeployed() {
-		if (deployed == null) {
-			deployed = new EObjectContainmentEList<Instance>(Instance.class, this, DeploymentPackage.VPC__DEPLOYED);
-		}
-		return deployed;
 	}
 
 	/**
@@ -128,6 +115,19 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	 * @generated
 	 */
 	@Override
+	public EList<Component> getDeployed() {
+		if (deployed == null) {
+			deployed = new EObjectContainmentEList<Component>(Component.class, this, DeploymentPackage.VPC__DEPLOYED);
+		}
+		return deployed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DeploymentPackage.VPC__DEPLOYED:
@@ -144,10 +144,10 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case DeploymentPackage.VPC__DEPLOYED:
-			return getDeployed();
 		case DeploymentPackage.VPC__NAME:
 			return getName();
+		case DeploymentPackage.VPC__DEPLOYED:
+			return getDeployed();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,12 +161,12 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case DeploymentPackage.VPC__DEPLOYED:
-			getDeployed().clear();
-			getDeployed().addAll((Collection<? extends Instance>) newValue);
-			return;
 		case DeploymentPackage.VPC__NAME:
 			setName((String) newValue);
+			return;
+		case DeploymentPackage.VPC__DEPLOYED:
+			getDeployed().clear();
+			getDeployed().addAll((Collection<? extends Component>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,11 +180,11 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case DeploymentPackage.VPC__DEPLOYED:
-			getDeployed().clear();
-			return;
 		case DeploymentPackage.VPC__NAME:
 			setName(NAME_EDEFAULT);
+			return;
+		case DeploymentPackage.VPC__DEPLOYED:
+			getDeployed().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -198,10 +198,10 @@ public class VPCImpl extends MinimalEObjectImpl.Container implements VPC {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case DeploymentPackage.VPC__DEPLOYED:
-			return deployed != null && !deployed.isEmpty();
 		case DeploymentPackage.VPC__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case DeploymentPackage.VPC__DEPLOYED:
+			return deployed != null && !deployed.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

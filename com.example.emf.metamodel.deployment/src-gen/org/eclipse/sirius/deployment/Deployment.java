@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.sirius.deployment.Deployment#getContain <em>Contain</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.Deployment#getVpc <em>Vpc</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.Deployment#getScenarios <em>Scenarios</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.Deployment#getOperationalCost <em>Operational Cost</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.deployment.DeploymentPackage#getDeployment()
@@ -54,7 +55,7 @@ public interface Deployment extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Contain</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.sirius.deployment.Instance}.
+	 * The list contents are of type {@link org.eclipse.sirius.deployment.Component}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contain</em>' containment reference list isn't clear,
@@ -66,13 +67,13 @@ public interface Deployment extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Instance> getContain();
+	EList<Component> getContain();
 
 	/**
 	 * Returns the value of the '<em><b>Vpc</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Vpc</em>' reference isn't clear,
+	 * If the meaning of the '<em>Vpc</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -109,5 +110,31 @@ public interface Deployment extends EObject {
 	 * @generated
 	 */
 	EList<Scenario> getScenarios();
+
+	/**
+	 * Returns the value of the '<em><b>Operational Cost</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Operational Cost</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Operational Cost</em>' attribute.
+	 * @see #setOperationalCost(double)
+	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getDeployment_OperationalCost()
+	 * @model
+	 * @generated
+	 */
+	double getOperationalCost();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.sirius.deployment.Deployment#getOperationalCost <em>Operational Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Operational Cost</em>' attribute.
+	 * @see #getOperationalCost()
+	 * @generated
+	 */
+	void setOperationalCost(double value);
 
 } // Deployment

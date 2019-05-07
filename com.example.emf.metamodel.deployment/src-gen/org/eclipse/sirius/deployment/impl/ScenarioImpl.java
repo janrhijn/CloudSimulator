@@ -18,8 +18,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.sirius.deployment.DataFlow;
+import org.eclipse.sirius.deployment.Colour;
 import org.eclipse.sirius.deployment.DeploymentPackage;
+import org.eclipse.sirius.deployment.InformationFlow;
 import org.eclipse.sirius.deployment.Scenario;
 
 /**
@@ -32,7 +33,10 @@ import org.eclipse.sirius.deployment.Scenario;
  * <ul>
  *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getArrivalrate <em>Arrivalrate</em>}</li>
- *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getDataflow <em>Dataflow</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getInformationflow <em>Informationflow</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getMeanSojournTime <em>Mean Sojourn Time</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getMaxSojournTime <em>Max Sojourn Time</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getColour <em>Colour</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,14 +83,74 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	protected int arrivalrate = ARRIVALRATE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDataflow() <em>Dataflow</em>}' containment reference list.
+	 * The cached value of the '{@link #getInformationflow() <em>Informationflow</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDataflow()
+	 * @see #getInformationflow()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DataFlow> dataflow;
+	protected EList<InformationFlow> informationflow;
+
+	/**
+	 * The default value of the '{@link #getMeanSojournTime() <em>Mean Sojourn Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMeanSojournTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MEAN_SOJOURN_TIME_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getMeanSojournTime() <em>Mean Sojourn Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMeanSojournTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double meanSojournTime = MEAN_SOJOURN_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaxSojournTime() <em>Max Sojourn Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxSojournTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MAX_SOJOURN_TIME_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getMaxSojournTime() <em>Max Sojourn Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxSojournTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double maxSojournTime = MAX_SOJOURN_TIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getColour() <em>Colour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColour()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Colour COLOUR_EDEFAULT = Colour.RED;
+
+	/**
+	 * The cached value of the '{@link #getColour() <em>Colour</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColour()
+	 * @generated
+	 * @ordered
+	 */
+	protected Colour colour = COLOUR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,12 +224,84 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * @generated
 	 */
 	@Override
-	public EList<DataFlow> getDataflow() {
-		if (dataflow == null) {
-			dataflow = new EObjectContainmentEList<DataFlow>(DataFlow.class, this,
-					DeploymentPackage.SCENARIO__DATAFLOW);
+	public EList<InformationFlow> getInformationflow() {
+		if (informationflow == null) {
+			informationflow = new EObjectContainmentEList<InformationFlow>(InformationFlow.class, this,
+					DeploymentPackage.SCENARIO__INFORMATIONFLOW);
 		}
-		return dataflow;
+		return informationflow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getMeanSojournTime() {
+		return meanSojournTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMeanSojournTime(double newMeanSojournTime) {
+		double oldMeanSojournTime = meanSojournTime;
+		meanSojournTime = newMeanSojournTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.SCENARIO__MEAN_SOJOURN_TIME,
+					oldMeanSojournTime, meanSojournTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getMaxSojournTime() {
+		return maxSojournTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMaxSojournTime(double newMaxSojournTime) {
+		double oldMaxSojournTime = maxSojournTime;
+		maxSojournTime = newMaxSojournTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.SCENARIO__MAX_SOJOURN_TIME,
+					oldMaxSojournTime, maxSojournTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Colour getColour() {
+		return colour;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setColour(Colour newColour) {
+		Colour oldColour = colour;
+		colour = newColour == null ? COLOUR_EDEFAULT : newColour;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.SCENARIO__COLOUR, oldColour,
+					colour));
 	}
 
 	/**
@@ -176,8 +312,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case DeploymentPackage.SCENARIO__DATAFLOW:
-			return ((InternalEList<?>) getDataflow()).basicRemove(otherEnd, msgs);
+		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
+			return ((InternalEList<?>) getInformationflow()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -194,8 +330,14 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return getName();
 		case DeploymentPackage.SCENARIO__ARRIVALRATE:
 			return getArrivalrate();
-		case DeploymentPackage.SCENARIO__DATAFLOW:
-			return getDataflow();
+		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
+			return getInformationflow();
+		case DeploymentPackage.SCENARIO__MEAN_SOJOURN_TIME:
+			return getMeanSojournTime();
+		case DeploymentPackage.SCENARIO__MAX_SOJOURN_TIME:
+			return getMaxSojournTime();
+		case DeploymentPackage.SCENARIO__COLOUR:
+			return getColour();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -215,9 +357,18 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		case DeploymentPackage.SCENARIO__ARRIVALRATE:
 			setArrivalrate((Integer) newValue);
 			return;
-		case DeploymentPackage.SCENARIO__DATAFLOW:
-			getDataflow().clear();
-			getDataflow().addAll((Collection<? extends DataFlow>) newValue);
+		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
+			getInformationflow().clear();
+			getInformationflow().addAll((Collection<? extends InformationFlow>) newValue);
+			return;
+		case DeploymentPackage.SCENARIO__MEAN_SOJOURN_TIME:
+			setMeanSojournTime((Double) newValue);
+			return;
+		case DeploymentPackage.SCENARIO__MAX_SOJOURN_TIME:
+			setMaxSojournTime((Double) newValue);
+			return;
+		case DeploymentPackage.SCENARIO__COLOUR:
+			setColour((Colour) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -237,8 +388,17 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		case DeploymentPackage.SCENARIO__ARRIVALRATE:
 			setArrivalrate(ARRIVALRATE_EDEFAULT);
 			return;
-		case DeploymentPackage.SCENARIO__DATAFLOW:
-			getDataflow().clear();
+		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
+			getInformationflow().clear();
+			return;
+		case DeploymentPackage.SCENARIO__MEAN_SOJOURN_TIME:
+			setMeanSojournTime(MEAN_SOJOURN_TIME_EDEFAULT);
+			return;
+		case DeploymentPackage.SCENARIO__MAX_SOJOURN_TIME:
+			setMaxSojournTime(MAX_SOJOURN_TIME_EDEFAULT);
+			return;
+		case DeploymentPackage.SCENARIO__COLOUR:
+			setColour(COLOUR_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -256,8 +416,14 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case DeploymentPackage.SCENARIO__ARRIVALRATE:
 			return arrivalrate != ARRIVALRATE_EDEFAULT;
-		case DeploymentPackage.SCENARIO__DATAFLOW:
-			return dataflow != null && !dataflow.isEmpty();
+		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
+			return informationflow != null && !informationflow.isEmpty();
+		case DeploymentPackage.SCENARIO__MEAN_SOJOURN_TIME:
+			return meanSojournTime != MEAN_SOJOURN_TIME_EDEFAULT;
+		case DeploymentPackage.SCENARIO__MAX_SOJOURN_TIME:
+			return maxSojournTime != MAX_SOJOURN_TIME_EDEFAULT;
+		case DeploymentPackage.SCENARIO__COLOUR:
+			return colour != COLOUR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -277,6 +443,12 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		result.append(name);
 		result.append(", arrivalrate: ");
 		result.append(arrivalrate);
+		result.append(", meanSojournTime: ");
+		result.append(meanSojournTime);
+		result.append(", maxSojournTime: ");
+		result.append(maxSojournTime);
+		result.append(", colour: ");
+		result.append(colour);
 		result.append(')');
 		return result.toString();
 	}

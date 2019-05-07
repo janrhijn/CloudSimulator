@@ -73,9 +73,9 @@ public class DeploymentSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case DeploymentPackage.INSTANCE: {
-			Instance instance = (Instance) theEObject;
-			T result = caseInstance(instance);
+		case DeploymentPackage.COMPONENT: {
+			Component component = (Component) theEObject;
+			T result = caseComponent(component);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -135,9 +135,16 @@ public class DeploymentSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case DeploymentPackage.DATA_FLOW: {
-			DataFlow dataFlow = (DataFlow) theEObject;
-			T result = caseDataFlow(dataFlow);
+		case DeploymentPackage.INFORMATION_FLOW: {
+			InformationFlow informationFlow = (InformationFlow) theEObject;
+			T result = caseInformationFlow(informationFlow);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case DeploymentPackage.CONSUMPTION_METRICS2: {
+			ConsumptionMetrics2 consumptionMetrics2 = (ConsumptionMetrics2) theEObject;
+			T result = caseConsumptionMetrics2(consumptionMetrics2);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -163,17 +170,17 @@ public class DeploymentSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instance</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Component</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instance</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Component</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInstance(Instance object) {
+	public T caseComponent(Component object) {
 		return null;
 	}
 
@@ -283,17 +290,32 @@ public class DeploymentSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Flow</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Information Flow</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Flow</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Information Flow</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDataFlow(DataFlow object) {
+	public T caseInformationFlow(InformationFlow object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Consumption Metrics2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Consumption Metrics2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConsumptionMetrics2(ConsumptionMetrics2 object) {
 		return null;
 	}
 

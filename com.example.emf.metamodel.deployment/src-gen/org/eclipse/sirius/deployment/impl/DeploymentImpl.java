@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.sirius.deployment.Component;
 import org.eclipse.sirius.deployment.Deployment;
 import org.eclipse.sirius.deployment.DeploymentPackage;
-import org.eclipse.sirius.deployment.Instance;
 import org.eclipse.sirius.deployment.Scenario;
 import org.eclipse.sirius.deployment.VPC;
 
@@ -36,6 +36,7 @@ import org.eclipse.sirius.deployment.VPC;
  *   <li>{@link org.eclipse.sirius.deployment.impl.DeploymentImpl#getContain <em>Contain</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.DeploymentImpl#getVpc <em>Vpc</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.DeploymentImpl#getScenarios <em>Scenarios</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.DeploymentImpl#getOperationalCost <em>Operational Cost</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,7 +70,7 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Instance> contain;
+	protected EList<Component> contain;
 
 	/**
 	 * The cached value of the '{@link #getVpc() <em>Vpc</em>}' containment reference.
@@ -90,6 +91,26 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 	 * @ordered
 	 */
 	protected EList<Scenario> scenarios;
+
+	/**
+	 * The default value of the '{@link #getOperationalCost() <em>Operational Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperationalCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double OPERATIONAL_COST_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getOperationalCost() <em>Operational Cost</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOperationalCost()
+	 * @generated
+	 * @ordered
+	 */
+	protected double operationalCost = OPERATIONAL_COST_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,9 +160,9 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 	 * @generated
 	 */
 	@Override
-	public EList<Instance> getContain() {
+	public EList<Component> getContain() {
 		if (contain == null) {
-			contain = new EObjectContainmentEList<Instance>(Instance.class, this,
+			contain = new EObjectContainmentEList<Component>(Component.class, this,
 					DeploymentPackage.DEPLOYMENT__CONTAIN);
 		}
 		return contain;
@@ -218,6 +239,30 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 	 * @generated
 	 */
 	@Override
+	public double getOperationalCost() {
+		return operationalCost;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOperationalCost(double newOperationalCost) {
+		double oldOperationalCost = operationalCost;
+		operationalCost = newOperationalCost;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.DEPLOYMENT__OPERATIONAL_COST,
+					oldOperationalCost, operationalCost));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DeploymentPackage.DEPLOYMENT__CONTAIN:
@@ -246,6 +291,8 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 			return getVpc();
 		case DeploymentPackage.DEPLOYMENT__SCENARIOS:
 			return getScenarios();
+		case DeploymentPackage.DEPLOYMENT__OPERATIONAL_COST:
+			return getOperationalCost();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,7 +311,7 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 			return;
 		case DeploymentPackage.DEPLOYMENT__CONTAIN:
 			getContain().clear();
-			getContain().addAll((Collection<? extends Instance>) newValue);
+			getContain().addAll((Collection<? extends Component>) newValue);
 			return;
 		case DeploymentPackage.DEPLOYMENT__VPC:
 			setVpc((VPC) newValue);
@@ -272,6 +319,9 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 		case DeploymentPackage.DEPLOYMENT__SCENARIOS:
 			getScenarios().clear();
 			getScenarios().addAll((Collection<? extends Scenario>) newValue);
+			return;
+		case DeploymentPackage.DEPLOYMENT__OPERATIONAL_COST:
+			setOperationalCost((Double) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -297,6 +347,9 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 		case DeploymentPackage.DEPLOYMENT__SCENARIOS:
 			getScenarios().clear();
 			return;
+		case DeploymentPackage.DEPLOYMENT__OPERATIONAL_COST:
+			setOperationalCost(OPERATIONAL_COST_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -317,6 +370,8 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 			return vpc != null;
 		case DeploymentPackage.DEPLOYMENT__SCENARIOS:
 			return scenarios != null && !scenarios.isEmpty();
+		case DeploymentPackage.DEPLOYMENT__OPERATIONAL_COST:
+			return operationalCost != OPERATIONAL_COST_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -334,6 +389,8 @@ public class DeploymentImpl extends MinimalEObjectImpl.Container implements Depl
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", operationalCost: ");
+		result.append(operationalCost);
 		result.append(')');
 		return result.toString();
 	}
