@@ -30,7 +30,7 @@ public class LoadModel {
 		 
 //		 Resource res = resSet.getResource(URI.createURI("/org.eclipse.sirius.deployment.sample/My.deployment"), true);
 		 // Dit kan op een betere manier, maar voor nu werkt het
-		 Resource res = resSet.getResource(URI.createURI("file:///C:\\Users\\jrhijn004\\runtime-EclipseApplication\\org.eclipse.sirius.deployment.sample3\\My.deployment"), true);
+		 Resource res = resSet.getResource(URI.createURI("file:///C:\\Users\\jrhijn004\\runtime-EclipseApplication\\org.eclipse.sirius.deployment.sample\\My.deployment"), true);
 		 
 		 Deployment model = (Deployment) res.getContents().get(0);
 		 

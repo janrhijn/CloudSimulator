@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/uu.thesis.emf.metamodel/src-gen" creationIcons="false"
+    editDirectory="/uu.thesis.emf.metamodel.edit/src-gen" editorDirectory="/uu.thesis.emf.metamodel.editor/src-gen"
+    modelPluginID="uu.thesis.emf.metamodel" modelName="Metamodel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>metamodel.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="SoftwareSystemArchitecture" basePackage="uu.thesis.emf.metamodel.softwaresystemarchitecture"
+      disposableProviderFactory="true" ecorePackage="metamodel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Feature_Type">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Feature_Type/CONNECTOR"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Feature_Type/PROCESS"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Feature_Type/STORAGE"/>
+    </genEnums>
+    <genClasses ecoreClass="metamodel.ecore#//Software_System">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Software_System/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Software_System/viewpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Functional_Architecture_Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Functional_Architecture_Model/product_context"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Functional_Architecture_Model/scenario_overlay"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Deployment_Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Deployment_Model/contains"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Viewpoint"/>
+    <genClasses ecoreClass="metamodel.ecore#//Module">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Module/name"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Composite_Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Composite_Module/sub_module"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Atomic_Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Atomic_Module/contains"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Feature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Feature/flow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Feature/feature_type"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Flow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Flow/receiver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Flow/name"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Scenario">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Scenario/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Scenario/informationflow"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//InformationFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//InformationFlow/flow"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Component/contains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Component/pricing_scheme"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/part_of_vpc"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Pricing_Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/price"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

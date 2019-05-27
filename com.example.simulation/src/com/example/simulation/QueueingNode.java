@@ -53,7 +53,6 @@ public class QueueingNode {
 		}
 	}
 	
-	@SuppressWarnings("unused")
 	// Calculate queue length for a given arrivalrate
 	public double QueueLength(double arrivalRate, double serviceRate) {
 		int c = this.servers;

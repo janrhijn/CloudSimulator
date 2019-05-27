@@ -102,8 +102,8 @@ public class Simulation {
 				}
 				
 				if(meanServiceRate > 0.0) {
-					int servers = qn.DetermineServersOnWaitingTime(totalLambda, meanServiceRate, 200);
-					System.out.println("Sojourn time for " + component.getName() + " is: " + qn.SojournTime(totalLambda, meanServiceRate) + " ms by " + servers + " servers");
+					int servers = qn.DetermineServersOnWaitingTime(totalLambda, meanServiceRate, 100);
+					System.out.println("Sojourn time for " + component.getName() + " is: " + qn.SojournTime(totalLambda, meanServiceRate) + " (" + qn.QueueWaitingTime(totalLambda, meanServiceRate) + " sec waiting time)" +" ms by " + servers + " servers");
 					
 					component.setServerUnitTime(component.getServerUnitTime() + servers);
 					component.setDeployedUnits(servers);

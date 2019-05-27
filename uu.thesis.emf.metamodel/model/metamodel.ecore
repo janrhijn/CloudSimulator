@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SoftwareSystemArchitecture" nsURI="http://www.example.org/metamodel/softwaresystemarchitecture"
+    nsPrefix="softwaresystemarchitecture">
+  <eClassifiers xsi:type="ecore:EClass" name="Software_System">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewpoint" upperBound="-1"
+        eType="#//Viewpoint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Functional_Architecture_Model" eSuperTypes="#//Viewpoint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="product_context" lowerBound="1"
+        eType="#//Module" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scenario_overlay" upperBound="-1"
+        eType="#//Scenario" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Deployment_Model" eSuperTypes="#//Viewpoint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contains" lowerBound="1"
+        upperBound="-1" eType="#//Component" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Viewpoint" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Module" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Composite_Module" eSuperTypes="#//Module">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub_module" upperBound="-1"
+        eType="#//Module" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Atomic_Module" eSuperTypes="#//Module">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contains" upperBound="-1"
+        eType="#//Feature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flow" upperBound="-1" eType="#//Flow"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="feature_type" eType="#//Feature_Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Flow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
+        eType="#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scenario">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="informationflow" upperBound="-1"
+        eType="#//InformationFlow" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InformationFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flow" lowerBound="1" eType="#//Flow"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Feature_Type">
+    <eLiterals name="CONNECTOR"/>
+    <eLiterals name="PROCESS" value="1"/>
+    <eLiterals name="STORAGE" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contains" upperBound="-1"
+        eType="#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pricing_scheme" upperBound="-1"
+        eType="#//Pricing_Function" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="part_of_vpc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pricing_Function">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+</ecore:EPackage>
