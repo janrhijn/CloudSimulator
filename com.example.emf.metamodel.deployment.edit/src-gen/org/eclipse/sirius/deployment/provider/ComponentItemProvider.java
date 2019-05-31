@@ -67,6 +67,7 @@ public class ComponentItemProvider extends ItemProviderAdapter implements IEditi
 			addRequestPropertyDescriptor(object);
 			addOperationalComponentCostPropertyDescriptor(object);
 			addDeployedUnitsPropertyDescriptor(object);
+			addMaxWaitingTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -247,6 +248,22 @@ public class ComponentItemProvider extends ItemProviderAdapter implements IEditi
 	}
 
 	/**
+	 * This adds a property descriptor for the Max Waiting Time feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMaxWaitingTimePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Component_maxWaitingTime_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Component_maxWaitingTime_feature",
+								"_UI_Component_type"),
+						DeploymentPackage.Literals.COMPONENT__MAX_WAITING_TIME, true, false, false,
+						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -333,6 +350,7 @@ public class ComponentItemProvider extends ItemProviderAdapter implements IEditi
 		case DeploymentPackage.COMPONENT__REQUEST:
 		case DeploymentPackage.COMPONENT__OPERATIONAL_COMPONENT_COST:
 		case DeploymentPackage.COMPONENT__DEPLOYED_UNITS:
+		case DeploymentPackage.COMPONENT__MAX_WAITING_TIME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DeploymentPackage.COMPONENT__CONTAINS:

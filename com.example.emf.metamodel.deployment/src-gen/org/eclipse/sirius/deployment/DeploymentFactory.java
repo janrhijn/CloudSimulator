@@ -103,13 +103,13 @@ public interface DeploymentFactory extends EFactory {
 	InformationFlow createInformationFlow();
 
 	/**
-	 * Returns a new object of class '<em>Consumption Metrics2</em>'.
+	 * Returns a new object of class '<em>Arrival Rate Week Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Consumption Metrics2</em>'.
+	 * @return a new object of class '<em>Arrival Rate Week Distribution</em>'.
 	 * @generated
 	 */
-	ConsumptionMetrics2 createConsumptionMetrics2();
+	ArrivalRateWeekDistribution createArrivalRateWeekDistribution();
 
 	/**
 	 * Returns the package supported by this factory.

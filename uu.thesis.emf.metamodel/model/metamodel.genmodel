@@ -15,6 +15,43 @@
       <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Feature_Type/PROCESS"/>
       <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Feature_Type/STORAGE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Colour">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Colour/RED"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Colour/BLUE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Colour/YELLOW"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Colour/PURPLE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Colour/GREEN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Duration_Type">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Duration_Type/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Duration_Type/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Duration_Type/HOUR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Data_Type">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Data_Type/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Data_Type/KILOBYTE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Data_Type/MEGABYTE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Data_Type/GIGABYTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Request_Type">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Request_Type/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Request_Type/UNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Request_Type/THOUSAND"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Request_Type/MILLION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Consumption_Metric">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/SERVER_DURATION"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/SERVER_UNIT"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/DATA_IN"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/DATA_OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/DATA_PROCESSED"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/STORAGE_CAPACITY"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Consumption_Metric/REQUEST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="metamodel.ecore#//Billing_Type">
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Billing_Type/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="metamodel.ecore#//Billing_Type/HOUR"/>
+    </genEnums>
     <genClasses ecoreClass="metamodel.ecore#//Software_System">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Software_System/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Software_System/viewpoint"/>
@@ -40,6 +77,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Feature/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Feature/flow"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Feature/feature_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Feature/servicerate"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Flow">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Flow/receiver"/>
@@ -48,19 +86,36 @@
     <genClasses ecoreClass="metamodel.ecore#//Scenario">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Scenario/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Scenario/informationflow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Scenario/arrivalrate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Scenario/colour"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//InformationFlow">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//InformationFlow/flow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//InformationFlow/data"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//InformationFlow/force_receiver_as_connector"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel.ecore#//Component/contains"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Component/pricing_scheme"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/part_of_vpc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/server_duration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/server_unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/data_in"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/data_out"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/storage_capacity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/request"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/operational_component_cost"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/max_waiting_time"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Pricing_Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/consumption_metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/duration_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/data_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/request_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/billing_type"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

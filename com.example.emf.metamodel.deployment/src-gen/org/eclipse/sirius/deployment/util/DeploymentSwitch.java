@@ -142,9 +142,9 @@ public class DeploymentSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case DeploymentPackage.CONSUMPTION_METRICS2: {
-			ConsumptionMetrics2 consumptionMetrics2 = (ConsumptionMetrics2) theEObject;
-			T result = caseConsumptionMetrics2(consumptionMetrics2);
+		case DeploymentPackage.ARRIVAL_RATE_WEEK_DISTRIBUTION: {
+			ArrivalRateWeekDistribution arrivalRateWeekDistribution = (ArrivalRateWeekDistribution) theEObject;
+			T result = caseArrivalRateWeekDistribution(arrivalRateWeekDistribution);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -305,17 +305,17 @@ public class DeploymentSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Consumption Metrics2</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Arrival Rate Week Distribution</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Consumption Metrics2</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Arrival Rate Week Distribution</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConsumptionMetrics2(ConsumptionMetrics2 object) {
+	public T caseArrivalRateWeekDistribution(ArrivalRateWeekDistribution object) {
 		return null;
 	}
 

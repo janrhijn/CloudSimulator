@@ -49,14 +49,24 @@ public enum ServiceLevel implements Enumerator {
 	SAAS(2, "SAAS", "SAAS"),
 
 	/**
-	 * The '<em><b>OTHER</b></em>' literal object.
+	 * The '<em><b>FAAS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FAAS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FAAS(3, "FAAS", "FAAS"),
+
+	/**
+	 * The '<em><b>Other</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #OTHER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	OTHER(3, "OTHER", "OTHER");
+	OTHER(4, "Other", "Other");
 
 	/**
 	 * The '<em><b>IAAS</b></em>' literal value.
@@ -104,19 +114,34 @@ public enum ServiceLevel implements Enumerator {
 	public static final int SAAS_VALUE = 2;
 
 	/**
-	 * The '<em><b>OTHER</b></em>' literal value.
+	 * The '<em><b>FAAS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>OTHER</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>FAAS</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #OTHER
+	 * @see #FAAS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int OTHER_VALUE = 3;
+	public static final int FAAS_VALUE = 3;
+
+	/**
+	 * The '<em><b>Other</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Other</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OTHER
+	 * @model name="Other"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int OTHER_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Service Level</b></em>' enumerators.
@@ -124,7 +149,7 @@ public enum ServiceLevel implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ServiceLevel[] VALUES_ARRAY = new ServiceLevel[] { IAAS, PAAS, SAAS, OTHER, };
+	private static final ServiceLevel[] VALUES_ARRAY = new ServiceLevel[] { IAAS, PAAS, SAAS, FAAS, OTHER, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Service Level</b></em>' enumerators.
@@ -186,6 +211,8 @@ public enum ServiceLevel implements Enumerator {
 			return PAAS;
 		case SAAS_VALUE:
 			return SAAS;
+		case FAAS_VALUE:
+			return FAAS;
 		case OTHER_VALUE:
 			return OTHER;
 		}

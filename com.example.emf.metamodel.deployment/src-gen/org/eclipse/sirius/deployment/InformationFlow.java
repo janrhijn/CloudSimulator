@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.sirius.deployment.InformationFlow#getDataReverse <em>Data Reverse</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.InformationFlow#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.InformationFlow#isBiDirectional <em>Bi Directional</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.InformationFlow#getComputedArrivalRate <em>Computed Arrival Rate</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.deployment.DeploymentPackage#getInformationFlow()
@@ -183,5 +184,31 @@ public interface InformationFlow extends EObject {
 	 * @generated
 	 */
 	void setBiDirectional(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Computed Arrival Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Computed Arrival Rate</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Computed Arrival Rate</em>' attribute.
+	 * @see #setComputedArrivalRate(double)
+	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getInformationFlow_ComputedArrivalRate()
+	 * @model
+	 * @generated
+	 */
+	double getComputedArrivalRate();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.sirius.deployment.InformationFlow#getComputedArrivalRate <em>Computed Arrival Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Computed Arrival Rate</em>' attribute.
+	 * @see #getComputedArrivalRate()
+	 * @generated
+	 */
+	void setComputedArrivalRate(double value);
 
 } // InformationFlow

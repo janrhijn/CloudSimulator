@@ -46,7 +46,17 @@ public enum RequestType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	UNIT(2, "UNIT", "UNIT");
+	UNIT(2, "UNIT", "UNIT"),
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NONE(3, "NONE", "NONE");
 
 	/**
 	 * The '<em><b>MILLION</b></em>' literal value.
@@ -94,12 +104,27 @@ public enum RequestType implements Enumerator {
 	public static final int UNIT_VALUE = 2;
 
 	/**
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NONE_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Request Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final RequestType[] VALUES_ARRAY = new RequestType[] { MILLION, THOUSAND, UNIT, };
+	private static final RequestType[] VALUES_ARRAY = new RequestType[] { MILLION, THOUSAND, UNIT, NONE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Request Type</b></em>' enumerators.
@@ -161,6 +186,8 @@ public enum RequestType implements Enumerator {
 			return THOUSAND;
 		case UNIT_VALUE:
 			return UNIT;
+		case NONE_VALUE:
+			return NONE;
 		}
 		return null;
 	}

@@ -75,8 +75,8 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 			return createScenario();
 		case DeploymentPackage.INFORMATION_FLOW:
 			return createInformationFlow();
-		case DeploymentPackage.CONSUMPTION_METRICS2:
-			return createConsumptionMetrics2();
+		case DeploymentPackage.ARRIVAL_RATE_WEEK_DISTRIBUTION:
+			return createArrivalRateWeekDistribution();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -245,9 +245,9 @@ public class DeploymentFactoryImpl extends EFactoryImpl implements DeploymentFac
 	 * @generated
 	 */
 	@Override
-	public ConsumptionMetrics2 createConsumptionMetrics2() {
-		ConsumptionMetrics2Impl consumptionMetrics2 = new ConsumptionMetrics2Impl();
-		return consumptionMetrics2;
+	public ArrivalRateWeekDistribution createArrivalRateWeekDistribution() {
+		ArrivalRateWeekDistributionImpl arrivalRateWeekDistribution = new ArrivalRateWeekDistributionImpl();
+		return arrivalRateWeekDistribution;
 	}
 
 	/**

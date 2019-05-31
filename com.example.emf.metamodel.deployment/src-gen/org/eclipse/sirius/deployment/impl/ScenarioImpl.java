@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.sirius.deployment.ArrivalRateWeekDistribution;
 import org.eclipse.sirius.deployment.Colour;
 import org.eclipse.sirius.deployment.DeploymentPackage;
 import org.eclipse.sirius.deployment.InformationFlow;
@@ -37,6 +38,7 @@ import org.eclipse.sirius.deployment.Scenario;
  *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getMeanSojournTime <em>Mean Sojourn Time</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getMaxSojournTime <em>Max Sojourn Time</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getColour <em>Colour</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.ScenarioImpl#getArrivalrateweekdistribution <em>Arrivalrateweekdistribution</em>}</li>
  * </ul>
  *
  * @generated
@@ -151,6 +153,16 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * @ordered
 	 */
 	protected Colour colour = COLOUR_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getArrivalrateweekdistribution() <em>Arrivalrateweekdistribution</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getArrivalrateweekdistribution()
+	 * @generated
+	 * @ordered
+	 */
+	protected ArrivalRateWeekDistribution arrivalrateweekdistribution;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -310,10 +322,67 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 	 * @generated
 	 */
 	@Override
+	public ArrivalRateWeekDistribution getArrivalrateweekdistribution() {
+		return arrivalrateweekdistribution;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetArrivalrateweekdistribution(
+			ArrivalRateWeekDistribution newArrivalrateweekdistribution, NotificationChain msgs) {
+		ArrivalRateWeekDistribution oldArrivalrateweekdistribution = arrivalrateweekdistribution;
+		arrivalrateweekdistribution = newArrivalrateweekdistribution;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION, oldArrivalrateweekdistribution,
+					newArrivalrateweekdistribution);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setArrivalrateweekdistribution(ArrivalRateWeekDistribution newArrivalrateweekdistribution) {
+		if (newArrivalrateweekdistribution != arrivalrateweekdistribution) {
+			NotificationChain msgs = null;
+			if (arrivalrateweekdistribution != null)
+				msgs = ((InternalEObject) arrivalrateweekdistribution).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION, null, msgs);
+			if (newArrivalrateweekdistribution != null)
+				msgs = ((InternalEObject) newArrivalrateweekdistribution).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION, null, msgs);
+			msgs = basicSetArrivalrateweekdistribution(newArrivalrateweekdistribution, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION, newArrivalrateweekdistribution,
+					newArrivalrateweekdistribution));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
 			return ((InternalEList<?>) getInformationflow()).basicRemove(otherEnd, msgs);
+		case DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION:
+			return basicSetArrivalrateweekdistribution(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -338,6 +407,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return getMaxSojournTime();
 		case DeploymentPackage.SCENARIO__COLOUR:
 			return getColour();
+		case DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION:
+			return getArrivalrateweekdistribution();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -370,6 +441,9 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		case DeploymentPackage.SCENARIO__COLOUR:
 			setColour((Colour) newValue);
 			return;
+		case DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION:
+			setArrivalrateweekdistribution((ArrivalRateWeekDistribution) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -400,6 +474,9 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 		case DeploymentPackage.SCENARIO__COLOUR:
 			setColour(COLOUR_EDEFAULT);
 			return;
+		case DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION:
+			setArrivalrateweekdistribution((ArrivalRateWeekDistribution) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -424,6 +501,8 @@ public class ScenarioImpl extends MinimalEObjectImpl.Container implements Scenar
 			return maxSojournTime != MAX_SOJOURN_TIME_EDEFAULT;
 		case DeploymentPackage.SCENARIO__COLOUR:
 			return colour != COLOUR_EDEFAULT;
+		case DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION:
+			return arrivalrateweekdistribution != null;
 		}
 		return super.eIsSet(featureID);
 	}

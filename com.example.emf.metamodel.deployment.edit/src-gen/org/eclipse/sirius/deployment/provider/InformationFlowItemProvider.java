@@ -59,6 +59,7 @@ public class InformationFlowItemProvider extends ItemProviderAdapter implements 
 			addDataReversePropertyDescriptor(object);
 			addProbabilityPropertyDescriptor(object);
 			addBiDirectionalPropertyDescriptor(object);
+			addComputedArrivalRatePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -158,6 +159,22 @@ public class InformationFlowItemProvider extends ItemProviderAdapter implements 
 	}
 
 	/**
+	 * This adds a property descriptor for the Computed Arrival Rate feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addComputedArrivalRatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_InformationFlow_computedArrivalRate_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_InformationFlow_computedArrivalRate_feature",
+						"_UI_InformationFlow_type"),
+				DeploymentPackage.Literals.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE, true, false, false,
+				ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This returns InformationFlow.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -206,6 +223,7 @@ public class InformationFlowItemProvider extends ItemProviderAdapter implements 
 		case DeploymentPackage.INFORMATION_FLOW__DATA_REVERSE:
 		case DeploymentPackage.INFORMATION_FLOW__PROBABILITY:
 		case DeploymentPackage.INFORMATION_FLOW__BI_DIRECTIONAL:
+		case DeploymentPackage.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}

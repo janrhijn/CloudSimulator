@@ -117,8 +117,8 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseConsumptionMetrics2(ConsumptionMetrics2 object) {
-			return createConsumptionMetrics2Adapter();
+		public Adapter caseArrivalRateWeekDistribution(ArrivalRateWeekDistribution object) {
+			return createArrivalRateWeekDistributionAdapter();
 		}
 
 		@Override
@@ -281,16 +281,16 @@ public class DeploymentAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2 <em>Consumption Metrics2</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution <em>Arrival Rate Week Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution
 	 * @generated
 	 */
-	public Adapter createConsumptionMetrics2Adapter() {
+	public Adapter createArrivalRateWeekDistributionAdapter() {
 		return null;
 	}
 

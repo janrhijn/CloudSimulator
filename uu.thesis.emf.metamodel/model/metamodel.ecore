@@ -34,6 +34,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="flow" upperBound="-1" eType="#//Flow"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="feature_type" eType="#//Feature_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="servicerate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Flow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
@@ -44,9 +45,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="informationflow" upperBound="-1"
         eType="#//InformationFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrivalrate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colour" eType="#//Colour"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InformationFlow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="flow" lowerBound="1" eType="#//Flow"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="force_receiver_as_connector"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Feature_Type">
     <eLiterals name="CONNECTOR"/>
@@ -61,9 +67,66 @@
         eType="#//Pricing_Function" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="part_of_vpc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="server_duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="server_unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data_in" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data_out" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="storage_capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="request" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operational_component_cost"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_waiting_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pricing_Function">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consumption_metric" eType="#//Consumption_Metric"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration_type" eType="#//Duration_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data_type" eType="#//Data_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="request_type" eType="#//Request_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="billing_type" eType="#//Billing_Type"
+        defaultValueLiteral="SECOND">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Specifies if price is rounded of to seconds or per hour"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Colour">
+    <eLiterals name="RED"/>
+    <eLiterals name="BLUE" value="1"/>
+    <eLiterals name="YELLOW" value="2"/>
+    <eLiterals name="PURPLE" value="3"/>
+    <eLiterals name="GREEN" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Duration_Type">
+    <eLiterals name="NONE"/>
+    <eLiterals name="SECOND" value="1"/>
+    <eLiterals name="HOUR" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Data_Type">
+    <eLiterals name="NONE"/>
+    <eLiterals name="KILOBYTE" value="1"/>
+    <eLiterals name="MEGABYTE" value="2"/>
+    <eLiterals name="GIGABYTE" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Request_Type">
+    <eLiterals name="NONE"/>
+    <eLiterals name="UNIT" value="1"/>
+    <eLiterals name="THOUSAND" value="2"/>
+    <eLiterals name="MILLION" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Consumption_Metric">
+    <eLiterals name="SERVER_DURATION"/>
+    <eLiterals name="SERVER_UNIT" value="1"/>
+    <eLiterals name="DATA_IN" value="2"/>
+    <eLiterals name="DATA_OUT" value="3"/>
+    <eLiterals name="DATA_PROCESSED" value="4"/>
+    <eLiterals name="STORAGE_CAPACITY" value="5"/>
+    <eLiterals name="REQUEST" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Billing_Type">
+    <eLiterals name="SECOND"/>
+    <eLiterals name="HOUR" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

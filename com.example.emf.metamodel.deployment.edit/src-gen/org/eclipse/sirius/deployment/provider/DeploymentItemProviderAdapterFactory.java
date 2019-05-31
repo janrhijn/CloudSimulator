@@ -280,26 +280,26 @@ public class DeploymentItemProviderAdapterFactory extends DeploymentAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.sirius.deployment.ConsumptionMetrics2} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConsumptionMetrics2ItemProvider consumptionMetrics2ItemProvider;
+	protected ArrivalRateWeekDistributionItemProvider arrivalRateWeekDistributionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.sirius.deployment.ConsumptionMetrics2}.
+	 * This creates an adapter for a {@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConsumptionMetrics2Adapter() {
-		if (consumptionMetrics2ItemProvider == null) {
-			consumptionMetrics2ItemProvider = new ConsumptionMetrics2ItemProvider(this);
+	public Adapter createArrivalRateWeekDistributionAdapter() {
+		if (arrivalRateWeekDistributionItemProvider == null) {
+			arrivalRateWeekDistributionItemProvider = new ArrivalRateWeekDistributionItemProvider(this);
 		}
 
-		return consumptionMetrics2ItemProvider;
+		return arrivalRateWeekDistributionItemProvider;
 	}
 
 	/**
@@ -425,8 +425,8 @@ public class DeploymentItemProviderAdapterFactory extends DeploymentAdapterFacto
 			scenarioItemProvider.dispose();
 		if (informationFlowItemProvider != null)
 			informationFlowItemProvider.dispose();
-		if (consumptionMetrics2ItemProvider != null)
-			consumptionMetrics2ItemProvider.dispose();
+		if (arrivalRateWeekDistributionItemProvider != null)
+			arrivalRateWeekDistributionItemProvider.dispose();
 	}
 
 }

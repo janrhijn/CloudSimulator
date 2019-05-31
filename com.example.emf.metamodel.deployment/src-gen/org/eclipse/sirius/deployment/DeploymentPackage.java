@@ -250,13 +250,22 @@ public interface DeploymentPackage extends EPackage {
 	int COMPONENT__DEPLOYED_UNITS = 11;
 
 	/**
+	 * The feature id for the '<em><b>Max Waiting Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__MAX_WAITING_TIME = 12;
+
+	/**
 	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = 12;
+	int COMPONENT_FEATURE_COUNT = 13;
 
 	/**
 	 * The number of operations of the '<em>Component</em>' class.
@@ -617,13 +626,22 @@ public interface DeploymentPackage extends EPackage {
 	int SCENARIO__COLOUR = 5;
 
 	/**
+	 * The feature id for the '<em><b>Arrivalrateweekdistribution</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__ARRIVALRATEWEEKDISTRIBUTION = 6;
+
+	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = 6;
+	int SCENARIO_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Scenario</em>' class.
@@ -699,13 +717,22 @@ public interface DeploymentPackage extends EPackage {
 	int INFORMATION_FLOW__BI_DIRECTIONAL = 5;
 
 	/**
+	 * The feature id for the '<em><b>Computed Arrival Rate</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE = 6;
+
+	/**
 	 * The number of structural features of the '<em>Information Flow</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INFORMATION_FLOW_FEATURE_COUNT = 6;
+	int INFORMATION_FLOW_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Information Flow</em>' class.
@@ -717,86 +744,104 @@ public interface DeploymentPackage extends EPackage {
 	int INFORMATION_FLOW_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.sirius.deployment.impl.ConsumptionMetrics2Impl <em>Consumption Metrics2</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.sirius.deployment.impl.ArrivalRateWeekDistributionImpl <em>Arrival Rate Week Distribution</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.sirius.deployment.impl.ConsumptionMetrics2Impl
-	 * @see org.eclipse.sirius.deployment.impl.DeploymentPackageImpl#getConsumptionMetrics2()
+	 * @see org.eclipse.sirius.deployment.impl.ArrivalRateWeekDistributionImpl
+	 * @see org.eclipse.sirius.deployment.impl.DeploymentPackageImpl#getArrivalRateWeekDistribution()
 	 * @generated
 	 */
-	int CONSUMPTION_METRICS2 = 10;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION = 10;
 
 	/**
-	 * The feature id for the '<em><b>Server Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Monday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2__SERVER_TIME = 0;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__MONDAY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Server Unit Time</b></em>' attribute.
+	 * The feature id for the '<em><b>Tuesday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2__SERVER_UNIT_TIME = 1;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__TUESDAY = 1;
 
 	/**
-	 * The feature id for the '<em><b>Data In</b></em>' attribute.
+	 * The feature id for the '<em><b>Wednesday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2__DATA_IN = 2;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__WEDNESDAY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Data Out</b></em>' attribute.
+	 * The feature id for the '<em><b>Thursday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2__DATA_OUT = 3;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__THURSDAY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Storage Capacity</b></em>' attribute.
+	 * The feature id for the '<em><b>Friday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2__STORAGE_CAPACITY = 4;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__FRIDAY = 4;
 
 	/**
-	 * The feature id for the '<em><b>Request</b></em>' attribute.
+	 * The feature id for the '<em><b>Saturday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2__REQUEST = 5;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__SATURDAY = 5;
 
 	/**
-	 * The number of structural features of the '<em>Consumption Metrics2</em>' class.
+	 * The feature id for the '<em><b>Sunday</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2_FEATURE_COUNT = 6;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__SUNDAY = 6;
 
 	/**
-	 * The number of operations of the '<em>Consumption Metrics2</em>' class.
+	 * The feature id for the '<em><b>Total Per Week</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSUMPTION_METRICS2_OPERATION_COUNT = 0;
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION__TOTAL_PER_WEEK = 7;
+
+	/**
+	 * The number of structural features of the '<em>Arrival Rate Week Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION_FEATURE_COUNT = 8;
+
+	/**
+	 * The number of operations of the '<em>Arrival Rate Week Distribution</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRIVAL_RATE_WEEK_DISTRIBUTION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.sirius.deployment.ServiceLevel <em>Service Level</em>}' enum.
@@ -1086,6 +1131,17 @@ public interface DeploymentPackage extends EPackage {
 	EAttribute getComponent_DeployedUnits();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.Component#getMaxWaitingTime <em>Max Waiting Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Waiting Time</em>'.
+	 * @see org.eclipse.sirius.deployment.Component#getMaxWaitingTime()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EAttribute getComponent_MaxWaitingTime();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.sirius.deployment.PricingFunction <em>Pricing Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1332,6 +1388,17 @@ public interface DeploymentPackage extends EPackage {
 	EAttribute getScenario_Colour();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.eclipse.sirius.deployment.Scenario#getArrivalrateweekdistribution <em>Arrivalrateweekdistribution</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Arrivalrateweekdistribution</em>'.
+	 * @see org.eclipse.sirius.deployment.Scenario#getArrivalrateweekdistribution()
+	 * @see #getScenario()
+	 * @generated
+	 */
+	EReference getScenario_Arrivalrateweekdistribution();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.sirius.deployment.InformationFlow <em>Information Flow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1408,80 +1475,113 @@ public interface DeploymentPackage extends EPackage {
 	EAttribute getInformationFlow_BiDirectional();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2 <em>Consumption Metrics2</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.InformationFlow#getComputedArrivalRate <em>Computed Arrival Rate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Consumption Metrics2</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2
+	 * @return the meta object for the attribute '<em>Computed Arrival Rate</em>'.
+	 * @see org.eclipse.sirius.deployment.InformationFlow#getComputedArrivalRate()
+	 * @see #getInformationFlow()
 	 * @generated
 	 */
-	EClass getConsumptionMetrics2();
+	EAttribute getInformationFlow_ComputedArrivalRate();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2#getServerTime <em>Server Time</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution <em>Arrival Rate Week Distribution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Server Time</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2#getServerTime()
-	 * @see #getConsumptionMetrics2()
+	 * @return the meta object for class '<em>Arrival Rate Week Distribution</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution
 	 * @generated
 	 */
-	EAttribute getConsumptionMetrics2_ServerTime();
+	EClass getArrivalRateWeekDistribution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2#getServerUnitTime <em>Server Unit Time</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getMonday <em>Monday</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Server Unit Time</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2#getServerUnitTime()
-	 * @see #getConsumptionMetrics2()
+	 * @return the meta object for the attribute '<em>Monday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getMonday()
+	 * @see #getArrivalRateWeekDistribution()
 	 * @generated
 	 */
-	EAttribute getConsumptionMetrics2_ServerUnitTime();
+	EAttribute getArrivalRateWeekDistribution_Monday();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2#getDataIn <em>Data In</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getTuesday <em>Tuesday</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Data In</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2#getDataIn()
-	 * @see #getConsumptionMetrics2()
+	 * @return the meta object for the attribute '<em>Tuesday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getTuesday()
+	 * @see #getArrivalRateWeekDistribution()
 	 * @generated
 	 */
-	EAttribute getConsumptionMetrics2_DataIn();
+	EAttribute getArrivalRateWeekDistribution_Tuesday();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2#getDataOut <em>Data Out</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getWednesday <em>Wednesday</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Data Out</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2#getDataOut()
-	 * @see #getConsumptionMetrics2()
+	 * @return the meta object for the attribute '<em>Wednesday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getWednesday()
+	 * @see #getArrivalRateWeekDistribution()
 	 * @generated
 	 */
-	EAttribute getConsumptionMetrics2_DataOut();
+	EAttribute getArrivalRateWeekDistribution_Wednesday();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2#getStorageCapacity <em>Storage Capacity</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getThursday <em>Thursday</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Storage Capacity</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2#getStorageCapacity()
-	 * @see #getConsumptionMetrics2()
+	 * @return the meta object for the attribute '<em>Thursday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getThursday()
+	 * @see #getArrivalRateWeekDistribution()
 	 * @generated
 	 */
-	EAttribute getConsumptionMetrics2_StorageCapacity();
+	EAttribute getArrivalRateWeekDistribution_Thursday();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ConsumptionMetrics2#getRequest <em>Request</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getFriday <em>Friday</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Request</em>'.
-	 * @see org.eclipse.sirius.deployment.ConsumptionMetrics2#getRequest()
-	 * @see #getConsumptionMetrics2()
+	 * @return the meta object for the attribute '<em>Friday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getFriday()
+	 * @see #getArrivalRateWeekDistribution()
 	 * @generated
 	 */
-	EAttribute getConsumptionMetrics2_Request();
+	EAttribute getArrivalRateWeekDistribution_Friday();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getSaturday <em>Saturday</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Saturday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getSaturday()
+	 * @see #getArrivalRateWeekDistribution()
+	 * @generated
+	 */
+	EAttribute getArrivalRateWeekDistribution_Saturday();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getSunday <em>Sunday</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sunday</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getSunday()
+	 * @see #getArrivalRateWeekDistribution()
+	 * @generated
+	 */
+	EAttribute getArrivalRateWeekDistribution_Sunday();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getTotalPerWeek <em>Total Per Week</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Per Week</em>'.
+	 * @see org.eclipse.sirius.deployment.ArrivalRateWeekDistribution#getTotalPerWeek()
+	 * @see #getArrivalRateWeekDistribution()
+	 * @generated
+	 */
+	EAttribute getArrivalRateWeekDistribution_TotalPerWeek();
 
 	/**
 	 * Returns the meta object for enum '{@link org.eclipse.sirius.deployment.ServiceLevel <em>Service Level</em>}'.
@@ -1744,6 +1844,14 @@ public interface DeploymentPackage extends EPackage {
 		EAttribute COMPONENT__DEPLOYED_UNITS = eINSTANCE.getComponent_DeployedUnits();
 
 		/**
+		 * The meta object literal for the '<em><b>Max Waiting Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPONENT__MAX_WAITING_TIME = eINSTANCE.getComponent_MaxWaitingTime();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.sirius.deployment.impl.PricingFunctionImpl <em>Pricing Function</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1942,6 +2050,14 @@ public interface DeploymentPackage extends EPackage {
 		EAttribute SCENARIO__COLOUR = eINSTANCE.getScenario_Colour();
 
 		/**
+		 * The meta object literal for the '<em><b>Arrivalrateweekdistribution</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENARIO__ARRIVALRATEWEEKDISTRIBUTION = eINSTANCE.getScenario_Arrivalrateweekdistribution();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.sirius.deployment.impl.InformationFlowImpl <em>Information Flow</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2000,62 +2116,87 @@ public interface DeploymentPackage extends EPackage {
 		EAttribute INFORMATION_FLOW__BI_DIRECTIONAL = eINSTANCE.getInformationFlow_BiDirectional();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.sirius.deployment.impl.ConsumptionMetrics2Impl <em>Consumption Metrics2</em>}' class.
+		 * The meta object literal for the '<em><b>Computed Arrival Rate</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.sirius.deployment.impl.ConsumptionMetrics2Impl
-		 * @see org.eclipse.sirius.deployment.impl.DeploymentPackageImpl#getConsumptionMetrics2()
 		 * @generated
 		 */
-		EClass CONSUMPTION_METRICS2 = eINSTANCE.getConsumptionMetrics2();
+		EAttribute INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE = eINSTANCE.getInformationFlow_ComputedArrivalRate();
 
 		/**
-		 * The meta object literal for the '<em><b>Server Time</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.eclipse.sirius.deployment.impl.ArrivalRateWeekDistributionImpl <em>Arrival Rate Week Distribution</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.eclipse.sirius.deployment.impl.ArrivalRateWeekDistributionImpl
+		 * @see org.eclipse.sirius.deployment.impl.DeploymentPackageImpl#getArrivalRateWeekDistribution()
 		 * @generated
 		 */
-		EAttribute CONSUMPTION_METRICS2__SERVER_TIME = eINSTANCE.getConsumptionMetrics2_ServerTime();
+		EClass ARRIVAL_RATE_WEEK_DISTRIBUTION = eINSTANCE.getArrivalRateWeekDistribution();
 
 		/**
-		 * The meta object literal for the '<em><b>Server Unit Time</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Monday</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSUMPTION_METRICS2__SERVER_UNIT_TIME = eINSTANCE.getConsumptionMetrics2_ServerUnitTime();
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__MONDAY = eINSTANCE.getArrivalRateWeekDistribution_Monday();
 
 		/**
-		 * The meta object literal for the '<em><b>Data In</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Tuesday</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSUMPTION_METRICS2__DATA_IN = eINSTANCE.getConsumptionMetrics2_DataIn();
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__TUESDAY = eINSTANCE.getArrivalRateWeekDistribution_Tuesday();
 
 		/**
-		 * The meta object literal for the '<em><b>Data Out</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Wednesday</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSUMPTION_METRICS2__DATA_OUT = eINSTANCE.getConsumptionMetrics2_DataOut();
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__WEDNESDAY = eINSTANCE.getArrivalRateWeekDistribution_Wednesday();
 
 		/**
-		 * The meta object literal for the '<em><b>Storage Capacity</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Thursday</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSUMPTION_METRICS2__STORAGE_CAPACITY = eINSTANCE.getConsumptionMetrics2_StorageCapacity();
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__THURSDAY = eINSTANCE.getArrivalRateWeekDistribution_Thursday();
 
 		/**
-		 * The meta object literal for the '<em><b>Request</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Friday</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSUMPTION_METRICS2__REQUEST = eINSTANCE.getConsumptionMetrics2_Request();
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__FRIDAY = eINSTANCE.getArrivalRateWeekDistribution_Friday();
+
+		/**
+		 * The meta object literal for the '<em><b>Saturday</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__SATURDAY = eINSTANCE.getArrivalRateWeekDistribution_Saturday();
+
+		/**
+		 * The meta object literal for the '<em><b>Sunday</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__SUNDAY = eINSTANCE.getArrivalRateWeekDistribution_Sunday();
+
+		/**
+		 * The meta object literal for the '<em><b>Total Per Week</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ARRIVAL_RATE_WEEK_DISTRIBUTION__TOTAL_PER_WEEK = eINSTANCE
+				.getArrivalRateWeekDistribution_TotalPerWeek();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.sirius.deployment.ServiceLevel <em>Service Level</em>}' enum.

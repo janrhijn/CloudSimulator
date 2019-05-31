@@ -4,30 +4,29 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.sirius.deployment.Component;
-import org.eclipse.sirius.deployment.Compute;
-import org.eclipse.sirius.deployment.Deployment;
-import org.eclipse.sirius.deployment.DeploymentFactory;
-import org.eclipse.sirius.deployment.Feature;
-import org.eclipse.sirius.deployment.InformationFlow;
-import org.eclipse.sirius.deployment.Scenario;
+//Import EMF Meta-model
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.*;
 
 public class TransformToHorizontalBehavior {
-	Deployment deployment;
+	Functional_Architecture_Model fam;
+	Deployment_Model deploymentModel;
+	
+	Utulities utulities = new Utulities();
 
-	public TransformToHorizontalBehavior(Deployment deployment) {
-		this.deployment = deployment;
+	public TransformToHorizontalBehavior(Functional_Architecture_Model fam, Deployment_Model deploymentModel) {
+		this.fam = fam;
+		this.deploymentModel = deploymentModel;
 	}
 	
 	public void Transformate() {
-		// Iterate over scenarios
-		for(Iterator<Scenario> scenarioIterator = deployment.getScenarios().iterator(); scenarioIterator.hasNext();) {
+		// Iterate over Scenarios
+		for(Iterator<Scenario> scenarioIterator = fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 			Scenario scenario = scenarioIterator.next();
 		
-			// Find a set of (two) features capable for merging
+			// Find a set of (two) features suitable for merging
 			InformationFlow mergeableFeaturesSet = searchMergeableFeatures(scenario);
 					
-			// Find next mergeable feature till there is no horizontal behavior left
+			// Find next mergeable feature set till no horizontal behavior left
 			while(mergeableFeaturesSet != null) {
 				// Merge the set of found features
 				mergeMergeableFeatures(scenario, mergeableFeaturesSet);
@@ -48,14 +47,14 @@ public class TransformToHorizontalBehavior {
 			InformationFlow informationflow = dataflowIterator.next();
 //			System.out.println(informationflow.getSender() + " and " + informationflow.getReceiver());
 			
+			// Init sender and receiver Feature from the InformationFlow
+			Feature senderFeature = (Feature) informationflow.getFlow().eContainer();
+			Feature receiverFeature = (Feature) informationflow.getFlow().getReceiver();
+			
 			// Filter on Compute feature only for both sender and receiver
-			if(informationflow.getSender().eClass().getName() == "Compute" && informationflow.getReceiver().eClass().getName() == "Compute") {
-				// Init sender and receiver Feature from the InformationFlow
-				Feature senderFeature = informationflow.getSender();
-				Feature receiverFeature = informationflow.getReceiver();
-				
+			if(senderFeature.getFeature_type().equals(Feature_Type.PROCESS) && receiverFeature.getFeature_type().equals(Feature_Type.PROCESS)) {
 				// Check if both Features are in the same Component
-				if(determineComponentFromFeature(senderFeature) == determineComponentFromFeature(receiverFeature)) {
+				if(utulities.determineComponentFromFeature(deploymentModel, senderFeature) == utulities.determineComponentFromFeature(deploymentModel, receiverFeature)) {
 //					System.out.println("Mergeable Features " + senderFeature.getName() + " " + receiverFeature.getName());
 					
 					// Return InformationFlow if both Features are from Compute class and in the same Component
@@ -70,84 +69,67 @@ public class TransformToHorizontalBehavior {
 	
 	private void mergeMergeableFeatures(Scenario scenario, InformationFlow informationFlow) {
 		// Init Factory in order to create new Feature
-		DeploymentFactory factory = DeploymentFactory.eINSTANCE;
-		
+		SoftwareSystemArchitectureFactory factory = SoftwareSystemArchitectureFactory.eINSTANCE;
+
 		// Init sender and receiver Feature from the InformationFlow
-		Compute senderFeature = (Compute) informationFlow.getSender();
-		Compute receiverFeature = (Compute) informationFlow.getReceiver();			
+		Feature senderFeatureA = (Feature) informationFlow.getFlow().eContainer();
+		Feature receiverFeatureB = (Feature) informationFlow.getFlow().getReceiver();
 
 		// Merge both Features and create a new merged Feature
-		Compute mergedFeature = factory.createCompute();
-		mergedFeature.setName(senderFeature.getName() + receiverFeature.getName());
+		Feature mergedFeature = factory.createFeature();
+		mergedFeature.setFeature_type(Feature_Type.PROCESS);
+		mergedFeature.setName("(" + senderFeatureA.getName() + receiverFeatureB.getName()+ ")");
+		
 		// Calculate new service rate of merged Feature
-		double newServiceRate = Math.pow(senderFeature.getServicerate(), -1) + Math.pow(receiverFeature.getServicerate(), -1);
+		double newServiceRate = Math.pow(senderFeatureA.getServicerate(), -1) + Math.pow(receiverFeatureB.getServicerate(), -1);
 		mergedFeature.setServicerate(Math.pow(newServiceRate, -1));
 		
 		// Add merged Feature to Component
-		determineComponentFromFeature(senderFeature).getContains().add(mergedFeature);
+		utulities.determineComponentFromFeature(deploymentModel, senderFeatureA).getContains().add(mergedFeature);
 
 		// Delete current InformationFlow, because it is not needed anymore
 		scenario.getInformationflow().remove(informationFlow);
 		
-		// Set mergedfeature as new receiver in InformationFlows
-		for(InformationFlow df:scenario.getInformationflow()) {
-//			System.out.println(df.getSender().getName() + " -> " + df.getReceiver().getName() + " receiverFeature: " + receiverFeature.getName());
-			
-			// Senderfeature is incoming feature of the merged feature
-			if(senderFeature.equals(df.getReceiver())) {
+		// Set mergedfeature as new receiver in Informationflows
+		for(InformationFlow informationflow:scenario.getInformationflow()) {
+			// Senderfeature is the incoming feature of the merged feature (see details in paper)
+			if(senderFeatureA.equals(informationflow.getFlow().getReceiver())) {
 				// set mergedFeature as new receiver in informationflow
-				df.setReceiver(mergedFeature);
+				informationflow.getFlow().setReceiver(mergedFeature);
 			}
 		}
 		
 		// Set mergedfeature as new sender in InformationFlows
-		for(InformationFlow df:scenario.getInformationflow()) {
-//			System.out.println(df.getSender().getName() + " -> " + df.getReceiver().getName());
+		// Iterate through all informationflows in scenario, because a feature can have multiple outflows (see details in paper)
+		for(InformationFlow informationflow:scenario.getInformationflow()) {
+			// Init sender and receiver of associated informationflow
+			Feature sender = (Feature) informationflow.getFlow().eContainer();
+			Feature receiver = informationflow.getFlow().getReceiver();
 			
-			if(senderFeature.equals(df.getSender()) || receiverFeature.equals(df.getSender())) {
-//				System.out.println("senderFeature " + + df.getData());
-				df.setSender(mergedFeature);
+			List<Flow> addFlowToMergeableFeature = new ArrayList<Flow>();
+			// Check if both features are a sender in an informationflow
+			if(sender.equals(senderFeatureA) || sender.equals(receiverFeatureB)) {
+				// Iterate through all flows of sender, because sender can have multiple flows (see details in paper)
+				for(Flow flow:sender.getFlow()) {
+					// If receiver in flow is the same as the receiver in the flow add flow to addFlowToMergeableFeature list
+					if(flow.getReceiver().equals(receiver)) {
+						addFlowToMergeableFeature.add(flow);
+					}
+				}
 			}
-
+			
+			for(Flow flow:addFlowToMergeableFeature) {
+				mergedFeature.getFlow().add(flow);
+			}
 		}
-		
 		System.out.println("New merged feature " + mergedFeature.getName() + " service rate: " + mergedFeature.getServicerate());
 	}
 	
-	public Component determineComponentFromFeature(Feature feature) {
-		// Add all Components in one list
-		List<Component> componentList = new ArrayList<Component>();
-		componentList.addAll(deployment.getVpc().getDeployed());
-		componentList.addAll(deployment.getContain());
-		
-		// Iterate over all components from VPC
-		for(Iterator<Component> componentIterator = componentList.iterator(); componentIterator.hasNext();) {
-			Component component = componentIterator.next();
-			
-			if(component.getContains().contains(feature)) {
-//				System.out.println("Feature found in " + instance.getName());
-				
-				// return Component if Feature is found in Component
-				return component;
-			}
-		}
-		
-		// Return null if no Component is found
-		// TODO dit kan in principe niet gebeuren, misschien nog een extra check hiervoor inbouwen
-		System.out.println("Error no component found");
-		return null;
-	}
-	
 	private void CleanUp() {
-		// Init list with all components (from VPC and deployment)
-		List<Component> componentList = new ArrayList<Component>();
-		componentList.addAll(deployment.getVpc().getDeployed());
-		componentList.addAll(deployment.getContain());
-		
 		List<Feature> featureRemovalList = new ArrayList<Feature>();
 		
 		// Iterate over Components
-		for(Iterator<Component> componentIterator = componentList.iterator(); componentIterator.hasNext();) {
+		for(Iterator<Component> componentIterator = this.deploymentModel.getContains().iterator(); componentIterator.hasNext();) {
 			Component component = componentIterator.next();
 			
 			// Iterate over Features in Component
@@ -156,22 +138,27 @@ public class TransformToHorizontalBehavior {
 				boolean inModel = false;
 				
 				// Iterate over Scenarios
-				for(Iterator<Scenario> scenarioIterator = deployment.getScenarios().iterator(); scenarioIterator.hasNext();) {
+				for(Iterator<Scenario> scenarioIterator = this.fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 					Scenario scenario = scenarioIterator.next();
 						
-					// Iterate over InformationFlows in Scenario
+					// Iterate over Informationflows in Scenario
 					for(Iterator<InformationFlow> informationflowIterator = scenario.getInformationflow().iterator(); informationflowIterator.hasNext();) {
 						InformationFlow informationflow = informationflowIterator.next();
 						
-						// Check if Feature is present in an InformationFlow
-						if(informationflow.getReceiver().equals(feature) || informationflow.getSender().equals(feature)) {
+						// Init sender and receiver from informationflow
+						Feature sender = (Feature) informationflow.getFlow().eContainer();
+						Feature receiver = informationflow.getFlow().getReceiver();
+						
+						// Check if Feature is present in an Informationflow
+						if(receiver.equals(feature) || sender.equals(feature)) {
 							inModel = true;
 						}	
 					}
 				}
 				
-				// If Feature is not present in any InformationFlow, it can be removed
+				// If Feature is not present in any Informationflow, it can be removed
 				if(!inModel) {
+					System.out.println(component.getName() + " " + feature.getName());
 					featureRemovalList.add(feature);
 				}
 			}
@@ -179,13 +166,12 @@ public class TransformToHorizontalBehavior {
 		
 		// Deletion outside iteration, otherwise concurrence error
 		for(Feature feature:featureRemovalList) {
-			// Get Component of the Feature
-			Component component = determineComponentFromFeature(feature);
+			// Get associated Component of the Feature
+			Component component = utulities.determineComponentFromFeature(deploymentModel, feature);
 			// Delete Feature from Component
 			component.getContains().remove(feature);
 			
 			System.out.println("Feature: " + feature.getName() + " from " + component.getName() + " is removed");
 		}
-		
 	}
 }

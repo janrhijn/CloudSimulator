@@ -2,26 +2,28 @@ package com.example.simulation;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-// Import EMF Deployment Meta-model
-import org.eclipse.sirius.deployment.*;
+// Import EMF Meta-model
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.*;
 
 // Import Java logging services
 //import java.util.logging.Logger;
 //import java.util.logging.Level;
 
 public class Simulation {
-	Deployment deployment;
+	Functional_Architecture_Model fam;
+	Deployment_Model deploymentModel;
+	
 	Double utilizationRate = 0.7;
 	Clock clock = new Clock();
 	
 	QueueingNode qn = new QueueingNode();
+	Utulities utulities = new Utulities();
 	
-	public Simulation(Deployment deployment) {
-		this.deployment = deployment;
+	public Simulation(Functional_Architecture_Model fam, Deployment_Model deploymentModel) {
+		this.fam = fam;
+		this.deploymentModel = deploymentModel;
 	}
 	
 	public void Simulate(int simduration) {
@@ -30,22 +32,18 @@ public class Simulation {
 		Instant start = Instant.now(); // Start time of simulation
 		System.out.println("Simulation started at " + start);
 		
-		// Add all Components in one list
-		List<Component> componentList = new ArrayList<Component>();
-		componentList.addAll(deployment.getVpc().getDeployed());
-		componentList.addAll(deployment.getContain());
-		
 		// Simulate
 		for(int i = 1; i<=simduration; i++) {
 			clock.timeTick(); // Increment clock with 1 second
 //			System.out.println(clock.toString());
 			
-			for(Iterator<Component> componentIterator = componentList.iterator(); componentIterator.hasNext();) {
+			for(Iterator<Component> componentIterator = this.deploymentModel.getContains().iterator(); componentIterator.hasNext();) {
 				Component component = componentIterator.next();
-				
 //				System.out.println("Name component: " + component.getName());
-				component.setServerDuration(i); // Performance wise, this can also be afterwards
+				
+				component.setServer_duration(i); // Performance wise, this can also be afterwards
 
+				// Init component variables
 				Double meanServiceRate = 0.0;
 				Double totalLambda = 0.0;
 				
@@ -53,48 +51,62 @@ public class Simulation {
 					Feature feature = featureIterator.next();
 //					System.out.println(feature.getName());
 					
-					for(Iterator<Scenario> scenarioIterator = deployment.getScenarios().iterator(); scenarioIterator.hasNext();) {
+					for(Iterator<Scenario> scenarioIterator = this.fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 					Scenario scenario = scenarioIterator.next();
-//					double sojournTime = 0.0;
-					
 //					System.out.println("Scenario: " + scenario.getName() + " Arrival Rate: " +scenario.getArrivalrate());
 						
 						// Iterate over InformationFlow in order to determine data in/out transfers
 						for(Iterator<InformationFlow> informationflowIterator = scenario.getInformationflow().iterator(); informationflowIterator.hasNext();) {
 							InformationFlow informationflow = informationflowIterator.next();
 							
-							int arrivalRatePerInformationFlow = (int) Math.round(scenario.getArrivalrate() * informationflow.getProbability());
-															
-							// Determine the receiver features of the instance
-							if(informationflow.getReceiver() == feature) {
-//								System.out.println("Scenario: " + scenario.getName() + "InformationFlow: " + informationflow.getSender().getName() + " -> " + informationflow.getReceiver().getName() + " Arrival Rate: " + arrivalRate);
+//							int arrivalRatePerInformationFlow = (int) Math.round(scenario.getArrivalrate() * informationflow.getProbability());
+							int arrivalRatePerInformationFlow = scenario.getArrivalrate();
+//							System.out.println(arrivalRatePerInformationFlow);
+							
+							// Set sender and receiver feature based on informationflow
+							Feature senderFeature = (Feature) informationflow.getFlow().eContainer();
+							Feature receiverFeature = (Feature) informationflow.getFlow().getReceiver();
+							
+							// Determine the receiver features of the component
+							if(receiverFeature.equals(feature)) {
+//								System.out.println("Scenario: " + scenario.getName() + " InformationFlow (" + informationflow.getFlow().getName() + "): " + senderFeature.getName() + " -> " + receiverFeature.getName());
+								
 								// Only set DataIn and Request if feature is the first incoming Feature, otherwise these metrics are summed up multiple times.
-								if(!component.getContains().contains(informationflow.getSender())) {
-									component.setDataIn(component.getDataIn() + informationflow.getData() * arrivalRatePerInformationFlow);
-									component.setRequest(component.getRequest() + arrivalRatePerInformationFlow);
+								if(!component.getContains().contains(senderFeature)) {
+									Component senderComponent = utulities.determineComponentFromFeature(deploymentModel, senderFeature);
+//									System.out.println(component.getName() + " Data In " + senderFeature.getName() + " -> " + receiverFeature.getName() + " Scenario: " + scenario.getName());
+
+									// Only set Data_In if one of the Components is not part of the VPC
+ 									if((!component.isPart_of_vpc() && senderComponent.isPart_of_vpc()) || (component.isPart_of_vpc() && !senderComponent.isPart_of_vpc()) ) {
+ 										component.setData_in(component.getData_in() + informationflow.getData() * arrivalRatePerInformationFlow);
+ 									}	
 								}
 										
-								// Determine the Compute features of the instance
-								if(feature.eClass().getName() == "Compute") {
-									Compute compute = (Compute) feature;
+								// Determine the Compute features of the component
+								if(feature.getFeature_type().equals(Feature_Type.PROCESS)) {
 //									System.out.println(" " + feature.getName() + " "+ compute.getServicerate() + " arrival rate " + scenario.getArrivalrate());
 									totalLambda += arrivalRatePerInformationFlow;
-									meanServiceRate = (arrivalRatePerInformationFlow / totalLambda) * compute.getServicerate() + ((totalLambda - arrivalRatePerInformationFlow) / totalLambda) * meanServiceRate;
+									meanServiceRate = (arrivalRatePerInformationFlow / totalLambda) * feature.getServicerate() + ((totalLambda - arrivalRatePerInformationFlow) / totalLambda) * meanServiceRate;
 //									System.out.println(component.getName() + " meanServiceRate " + meanServiceRate);
 								}
 								
 								// Determine the Storage features of the instance
-								if(feature.eClass().getName() == "Storage") {
+								if(feature.getFeature_type().equals(Feature_Type.STORAGE)) {
 //									System.out.println(feature.getName());
-									
-									component.setStorageCapacity(component.getStorageCapacity() + informationflow.getData() * arrivalRatePerInformationFlow);
+									component.setStorage_capacity(component.getStorage_capacity() + informationflow.getData() * arrivalRatePerInformationFlow);
 								}
 							}
 								
 							// Determine the sender features of the component
-							if(informationflow.getSender() == feature && (!component.getContains().contains(informationflow.getReceiver()))) {
-//								System.out.println(" Scenario " + scenario.getName() + " Sender feature " + feature.getName() + " Data: " + dataflow.getData());
-								component.setDataOut(component.getDataOut() + informationflow.getData() * scenario.getArrivalrate());
+							if(senderFeature.equals(feature) && (!component.getContains().contains(receiverFeature))) {
+								Component receiverComponent = utulities.determineComponentFromFeature(deploymentModel, receiverFeature);
+//								System.out.println(component.getName() + " Data Out " + senderFeature.getName() + " -> " + receiverFeature.getName() + " Scenario: " + scenario.getName());
+								
+								// Only set Data_Out if one of the Components is not part of the VPC
+									if((!component.isPart_of_vpc() && receiverComponent.isPart_of_vpc()) || (component.isPart_of_vpc() && !receiverComponent.isPart_of_vpc()) ) {
+//										System.out.println(component.getName() + " Data Out " + senderFeature.getName() + " -> " + receiverFeature.getName() + " Scenario: " + scenario.getName());
+										component.setData_out(component.getData_out() + (informationflow.getData() * arrivalRatePerInformationFlow));
+									}	
 							}
 						}
 //						scenario.setMeanSojournTime(value);
@@ -102,11 +114,12 @@ public class Simulation {
 				}
 				
 				if(meanServiceRate > 0.0) {
-					int servers = qn.DetermineServersOnWaitingTime(totalLambda, meanServiceRate, 100);
-					System.out.println("Sojourn time for " + component.getName() + " is: " + qn.SojournTime(totalLambda, meanServiceRate) + " (" + qn.QueueWaitingTime(totalLambda, meanServiceRate) + " sec waiting time)" +" ms by " + servers + " servers");
+					int servers = qn.DetermineServersOnWaitingTime(totalLambda, meanServiceRate, component.getMax_waiting_time());
+//					System.out.println("Sojourn time for " + component.getName() + " is: " + qn.SojournTime(totalLambda, meanServiceRate) + " (" + qn.QueueWaitingTime(totalLambda, meanServiceRate) + " sec waiting time)" +" ms by " + servers + " servers");
 					
-					component.setServerUnitTime(component.getServerUnitTime() + servers);
-					component.setDeployedUnits(servers);
+					component.setServer_unit(component.getServer_unit() + servers);
+					
+//					component.setDeployedUnits(servers);
 					
 //					System.out.println(component.getName() + " totalLambda: " + totalLambda + " meanServiceRate: " + meanServiceRate + " Servers: " + servers + " Minimal Requiered Servers: " + qn.MinRequiredServers(totalLambda, meanServiceRate));
 				}

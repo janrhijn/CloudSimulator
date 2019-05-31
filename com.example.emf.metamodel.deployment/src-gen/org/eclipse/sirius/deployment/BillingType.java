@@ -36,7 +36,17 @@ public enum BillingType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SECOND(1, "SECOND", "SECOND");
+	SECOND(1, "SECOND", "SECOND"),
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NONE(2, "NONE", "NONE");
 
 	/**
 	 * The '<em><b>HOUR</b></em>' literal value.
@@ -69,12 +79,27 @@ public enum BillingType implements Enumerator {
 	public static final int SECOND_VALUE = 1;
 
 	/**
+	 * The '<em><b>NONE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int NONE_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>Billing Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final BillingType[] VALUES_ARRAY = new BillingType[] { HOUR, SECOND, };
+	private static final BillingType[] VALUES_ARRAY = new BillingType[] { HOUR, SECOND, NONE, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Billing Type</b></em>' enumerators.
@@ -134,6 +159,8 @@ public enum BillingType implements Enumerator {
 			return HOUR;
 		case SECOND_VALUE:
 			return SECOND;
+		case NONE_VALUE:
+			return NONE;
 		}
 		return null;
 	}

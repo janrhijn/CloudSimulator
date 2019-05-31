@@ -109,6 +109,7 @@ public interface PricingFunction extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Billing Type</b></em>' attribute.
+	 * The default value is <code>"NONE"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.sirius.deployment.BillingType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -120,7 +121,7 @@ public interface PricingFunction extends EObject {
 	 * @see org.eclipse.sirius.deployment.BillingType
 	 * @see #setBillingType(BillingType)
 	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getPricingFunction_BillingType()
-	 * @model
+	 * @model default="NONE"
 	 * @generated
 	 */
 	BillingType getBillingType();
@@ -138,6 +139,7 @@ public interface PricingFunction extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Data Type</b></em>' attribute.
+	 * The default value is <code>"NONE"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.sirius.deployment.DataType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -149,7 +151,7 @@ public interface PricingFunction extends EObject {
 	 * @see org.eclipse.sirius.deployment.DataType
 	 * @see #setDataType(DataType)
 	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getPricingFunction_DataType()
-	 * @model
+	 * @model default="NONE"
 	 * @generated
 	 */
 	DataType getDataType();
@@ -167,6 +169,7 @@ public interface PricingFunction extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Request Type</b></em>' attribute.
+	 * The default value is <code>"NONE"</code>.
 	 * The literals are from the enumeration {@link org.eclipse.sirius.deployment.RequestType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -178,7 +181,7 @@ public interface PricingFunction extends EObject {
 	 * @see org.eclipse.sirius.deployment.RequestType
 	 * @see #setRequestType(RequestType)
 	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getPricingFunction_RequestType()
-	 * @model
+	 * @model default="NONE"
 	 * @generated
 	 */
 	RequestType getRequestType();

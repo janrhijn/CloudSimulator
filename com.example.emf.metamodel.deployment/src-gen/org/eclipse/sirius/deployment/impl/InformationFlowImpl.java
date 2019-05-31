@@ -28,6 +28,7 @@ import org.eclipse.sirius.deployment.InformationFlow;
  *   <li>{@link org.eclipse.sirius.deployment.impl.InformationFlowImpl#getDataReverse <em>Data Reverse</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.InformationFlowImpl#getProbability <em>Probability</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.InformationFlowImpl#isBiDirectional <em>Bi Directional</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.InformationFlowImpl#getComputedArrivalRate <em>Computed Arrival Rate</em>}</li>
  * </ul>
  *
  * @generated
@@ -132,6 +133,26 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected boolean biDirectional = BI_DIRECTIONAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getComputedArrivalRate() <em>Computed Arrival Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComputedArrivalRate()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COMPUTED_ARRIVAL_RATE_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getComputedArrivalRate() <em>Computed Arrival Rate</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComputedArrivalRate()
+	 * @generated
+	 * @ordered
+	 */
+	protected double computedArrivalRate = COMPUTED_ARRIVAL_RATE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -338,6 +359,31 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
+	public double getComputedArrivalRate() {
+		return computedArrivalRate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setComputedArrivalRate(double newComputedArrivalRate) {
+		double oldComputedArrivalRate = computedArrivalRate;
+		computedArrivalRate = newComputedArrivalRate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					DeploymentPackage.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE, oldComputedArrivalRate,
+					computedArrivalRate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case DeploymentPackage.INFORMATION_FLOW__DATA:
@@ -356,6 +402,8 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 			return getProbability();
 		case DeploymentPackage.INFORMATION_FLOW__BI_DIRECTIONAL:
 			return isBiDirectional();
+		case DeploymentPackage.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE:
+			return getComputedArrivalRate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -385,6 +433,9 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 			return;
 		case DeploymentPackage.INFORMATION_FLOW__BI_DIRECTIONAL:
 			setBiDirectional((Boolean) newValue);
+			return;
+		case DeploymentPackage.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE:
+			setComputedArrivalRate((Double) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -416,6 +467,9 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 		case DeploymentPackage.INFORMATION_FLOW__BI_DIRECTIONAL:
 			setBiDirectional(BI_DIRECTIONAL_EDEFAULT);
 			return;
+		case DeploymentPackage.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE:
+			setComputedArrivalRate(COMPUTED_ARRIVAL_RATE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -440,6 +494,8 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 			return probability != PROBABILITY_EDEFAULT;
 		case DeploymentPackage.INFORMATION_FLOW__BI_DIRECTIONAL:
 			return biDirectional != BI_DIRECTIONAL_EDEFAULT;
+		case DeploymentPackage.INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE:
+			return computedArrivalRate != COMPUTED_ARRIVAL_RATE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -463,6 +519,8 @@ public class InformationFlowImpl extends MinimalEObjectImpl.Container implements
 		result.append(probability);
 		result.append(", biDirectional: ");
 		result.append(biDirectional);
+		result.append(", computedArrivalRate: ");
+		result.append(computedArrivalRate);
 		result.append(')');
 		return result.toString();
 	}

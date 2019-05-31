@@ -11,13 +11,13 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.sirius.deployment.ArrivalRateWeekDistribution;
 import org.eclipse.sirius.deployment.BillingType;
 import org.eclipse.sirius.deployment.Colour;
 import org.eclipse.sirius.deployment.Component;
 import org.eclipse.sirius.deployment.Compute;
 import org.eclipse.sirius.deployment.Connector;
 import org.eclipse.sirius.deployment.ConsumptionMetric;
-import org.eclipse.sirius.deployment.ConsumptionMetrics2;
 import org.eclipse.sirius.deployment.DataType;
 import org.eclipse.sirius.deployment.Deployment;
 import org.eclipse.sirius.deployment.DeploymentFactory;
@@ -113,7 +113,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass consumptionMetrics2EClass = null;
+	private EClass arrivalRateWeekDistributionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -431,6 +431,16 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
+	public EAttribute getComponent_MaxWaitingTime() {
+		return (EAttribute) componentEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPricingFunction() {
 		return pricingFunctionEClass;
 	}
@@ -661,6 +671,16 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
+	public EReference getScenario_Arrivalrateweekdistribution() {
+		return (EReference) scenarioEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getInformationFlow() {
 		return informationFlowEClass;
 	}
@@ -731,8 +751,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EClass getConsumptionMetrics2() {
-		return consumptionMetrics2EClass;
+	public EAttribute getInformationFlow_ComputedArrivalRate() {
+		return (EAttribute) informationFlowEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -741,8 +761,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConsumptionMetrics2_ServerTime() {
-		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(0);
+	public EClass getArrivalRateWeekDistribution() {
+		return arrivalRateWeekDistributionEClass;
 	}
 
 	/**
@@ -751,8 +771,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConsumptionMetrics2_ServerUnitTime() {
-		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(1);
+	public EAttribute getArrivalRateWeekDistribution_Monday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -761,8 +781,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConsumptionMetrics2_DataIn() {
-		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(2);
+	public EAttribute getArrivalRateWeekDistribution_Tuesday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -771,8 +791,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConsumptionMetrics2_DataOut() {
-		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(3);
+	public EAttribute getArrivalRateWeekDistribution_Wednesday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -781,8 +801,8 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConsumptionMetrics2_StorageCapacity() {
-		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(4);
+	public EAttribute getArrivalRateWeekDistribution_Thursday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -791,8 +811,38 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 	 * @generated
 	 */
 	@Override
-	public EAttribute getConsumptionMetrics2_Request() {
-		return (EAttribute) consumptionMetrics2EClass.getEStructuralFeatures().get(5);
+	public EAttribute getArrivalRateWeekDistribution_Friday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getArrivalRateWeekDistribution_Saturday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getArrivalRateWeekDistribution_Sunday() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getArrivalRateWeekDistribution_TotalPerWeek() {
+		return (EAttribute) arrivalRateWeekDistributionEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -925,6 +975,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		createEAttribute(componentEClass, COMPONENT__REQUEST);
 		createEAttribute(componentEClass, COMPONENT__OPERATIONAL_COMPONENT_COST);
 		createEAttribute(componentEClass, COMPONENT__DEPLOYED_UNITS);
+		createEAttribute(componentEClass, COMPONENT__MAX_WAITING_TIME);
 
 		pricingFunctionEClass = createEClass(PRICING_FUNCTION);
 		createEAttribute(pricingFunctionEClass, PRICING_FUNCTION__PRICE);
@@ -955,6 +1006,7 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		createEAttribute(scenarioEClass, SCENARIO__MEAN_SOJOURN_TIME);
 		createEAttribute(scenarioEClass, SCENARIO__MAX_SOJOURN_TIME);
 		createEAttribute(scenarioEClass, SCENARIO__COLOUR);
+		createEReference(scenarioEClass, SCENARIO__ARRIVALRATEWEEKDISTRIBUTION);
 
 		informationFlowEClass = createEClass(INFORMATION_FLOW);
 		createEAttribute(informationFlowEClass, INFORMATION_FLOW__DATA);
@@ -963,14 +1015,17 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		createEAttribute(informationFlowEClass, INFORMATION_FLOW__DATA_REVERSE);
 		createEAttribute(informationFlowEClass, INFORMATION_FLOW__PROBABILITY);
 		createEAttribute(informationFlowEClass, INFORMATION_FLOW__BI_DIRECTIONAL);
+		createEAttribute(informationFlowEClass, INFORMATION_FLOW__COMPUTED_ARRIVAL_RATE);
 
-		consumptionMetrics2EClass = createEClass(CONSUMPTION_METRICS2);
-		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__SERVER_TIME);
-		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__SERVER_UNIT_TIME);
-		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__DATA_IN);
-		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__DATA_OUT);
-		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__STORAGE_CAPACITY);
-		createEAttribute(consumptionMetrics2EClass, CONSUMPTION_METRICS2__REQUEST);
+		arrivalRateWeekDistributionEClass = createEClass(ARRIVAL_RATE_WEEK_DISTRIBUTION);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__MONDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__TUESDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__WEDNESDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__THURSDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__FRIDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__SATURDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__SUNDAY);
+		createEAttribute(arrivalRateWeekDistributionEClass, ARRIVAL_RATE_WEEK_DISTRIBUTION__TOTAL_PER_WEEK);
 
 		// Create enums
 		serviceLevelEEnum = createEEnum(SERVICE_LEVEL);
@@ -1069,6 +1124,9 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		initEAttribute(getComponent_DeployedUnits(), ecorePackage.getEInt(), "deployedUnits", null, 0, 1,
 				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getComponent_MaxWaitingTime(), ecorePackage.getEDouble(), "maxWaitingTime", "150", 0, 1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(pricingFunctionEClass, PricingFunction.class, "PricingFunction", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1080,12 +1138,13 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		initEAttribute(getPricingFunction_Metric(), this.getConsumptionMetric(), "metric", null, 0, 1,
 				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPricingFunction_BillingType(), this.getBillingType(), "billingType", null, 0, 1,
+		initEAttribute(getPricingFunction_BillingType(), this.getBillingType(), "billingType", "NONE", 0, 1,
 				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPricingFunction_DataType(), this.getDataType(), "dataType", null, 0, 1, PricingFunction.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPricingFunction_RequestType(), this.getRequestType(), "requestType", null, 0, 1,
+		initEAttribute(getPricingFunction_DataType(), this.getDataType(), "dataType", "NONE", 0, 1,
+				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricingFunction_RequestType(), this.getRequestType(), "requestType", "NONE", 0, 1,
 				PricingFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
@@ -1128,6 +1187,9 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScenario_Colour(), this.getColour(), "colour", null, 0, 1, Scenario.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScenario_Arrivalrateweekdistribution(), this.getArrivalRateWeekDistribution(), null,
+				"arrivalrateweekdistribution", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(informationFlowEClass, InformationFlow.class, "InformationFlow", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1148,33 +1210,43 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		initEAttribute(getInformationFlow_BiDirectional(), ecorePackage.getEBoolean(), "biDirectional", "false", 0, 1,
 				InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInformationFlow_ComputedArrivalRate(), ecorePackage.getEDouble(), "computedArrivalRate", null,
+				0, 1, InformationFlow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(consumptionMetrics2EClass, ConsumptionMetrics2.class, "ConsumptionMetrics2", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConsumptionMetrics2_ServerTime(), ecorePackage.getEInt(), "ServerTime", null, 0, 1,
-				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEClass(arrivalRateWeekDistributionEClass, ArrivalRateWeekDistribution.class, "ArrivalRateWeekDistribution",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getArrivalRateWeekDistribution_Monday(), ecorePackage.getEDouble(), "Monday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConsumptionMetrics2_ServerUnitTime(), ecorePackage.getELong(), "ServerUnitTime", null, 0, 1,
-				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getArrivalRateWeekDistribution_Tuesday(), ecorePackage.getEDouble(), "Tuesday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConsumptionMetrics2_DataIn(), ecorePackage.getELong(), "DataIn", null, 0, 1,
-				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getArrivalRateWeekDistribution_Wednesday(), ecorePackage.getEDouble(), "Wednesday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConsumptionMetrics2_DataOut(), ecorePackage.getELong(), "DataOut", null, 0, 1,
-				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getArrivalRateWeekDistribution_Thursday(), ecorePackage.getEDouble(), "Thursday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConsumptionMetrics2_StorageCapacity(), ecorePackage.getELong(), "StorageCapacity", null, 0, 1,
-				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getArrivalRateWeekDistribution_Friday(), ecorePackage.getEDouble(), "Friday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConsumptionMetrics2_Request(), ecorePackage.getELong(), "Request", null, 0, 1,
-				ConsumptionMetrics2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+		initEAttribute(getArrivalRateWeekDistribution_Saturday(), ecorePackage.getEDouble(), "Saturday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getArrivalRateWeekDistribution_Sunday(), ecorePackage.getEDouble(), "Sunday", null, 0, 1,
+				ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getArrivalRateWeekDistribution_TotalPerWeek(), ecorePackage.getEInt(), "TotalPerWeek", null, 0,
+				1, ArrivalRateWeekDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(serviceLevelEEnum, ServiceLevel.class, "ServiceLevel");
 		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.IAAS);
 		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.PAAS);
 		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.SAAS);
+		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.FAAS);
 		addEEnumLiteral(serviceLevelEEnum, ServiceLevel.OTHER);
 
 		initEEnum(consumptionMetricEEnum, ConsumptionMetric.class, "ConsumptionMetric");
@@ -1190,15 +1262,18 @@ public class DeploymentPackageImpl extends EPackageImpl implements DeploymentPac
 		addEEnumLiteral(dataTypeEEnum, DataType.KILOBYTE);
 		addEEnumLiteral(dataTypeEEnum, DataType.MEGABYTE);
 		addEEnumLiteral(dataTypeEEnum, DataType.GIGABYTE);
+		addEEnumLiteral(dataTypeEEnum, DataType.NONE);
 
 		initEEnum(billingTypeEEnum, BillingType.class, "BillingType");
 		addEEnumLiteral(billingTypeEEnum, BillingType.HOUR);
 		addEEnumLiteral(billingTypeEEnum, BillingType.SECOND);
+		addEEnumLiteral(billingTypeEEnum, BillingType.NONE);
 
 		initEEnum(requestTypeEEnum, RequestType.class, "RequestType");
 		addEEnumLiteral(requestTypeEEnum, RequestType.MILLION);
 		addEEnumLiteral(requestTypeEEnum, RequestType.THOUSAND);
 		addEEnumLiteral(requestTypeEEnum, RequestType.UNIT);
+		addEEnumLiteral(requestTypeEEnum, RequestType.NONE);
 
 		initEEnum(weekDayEEnum, WeekDay.class, "WeekDay");
 		addEEnumLiteral(weekDayEEnum, WeekDay.SUNDAY);

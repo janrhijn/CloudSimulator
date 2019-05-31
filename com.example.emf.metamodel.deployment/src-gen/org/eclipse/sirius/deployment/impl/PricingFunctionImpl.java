@@ -103,7 +103,7 @@ public class PricingFunctionImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final BillingType BILLING_TYPE_EDEFAULT = BillingType.HOUR;
+	protected static final BillingType BILLING_TYPE_EDEFAULT = BillingType.NONE;
 
 	/**
 	 * The cached value of the '{@link #getBillingType() <em>Billing Type</em>}' attribute.
@@ -123,7 +123,7 @@ public class PricingFunctionImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DataType DATA_TYPE_EDEFAULT = DataType.KILOBYTE;
+	protected static final DataType DATA_TYPE_EDEFAULT = DataType.NONE;
 
 	/**
 	 * The cached value of the '{@link #getDataType() <em>Data Type</em>}' attribute.
@@ -143,7 +143,7 @@ public class PricingFunctionImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final RequestType REQUEST_TYPE_EDEFAULT = RequestType.MILLION;
+	protected static final RequestType REQUEST_TYPE_EDEFAULT = RequestType.NONE;
 
 	/**
 	 * The cached value of the '{@link #getRequestType() <em>Request Type</em>}' attribute.

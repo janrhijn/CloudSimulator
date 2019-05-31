@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.sirius.deployment.Scenario#getMeanSojournTime <em>Mean Sojourn Time</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.Scenario#getMaxSojournTime <em>Max Sojourn Time</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.Scenario#getColour <em>Colour</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.Scenario#getArrivalrateweekdistribution <em>Arrivalrateweekdistribution</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.deployment.DeploymentPackage#getScenario()
@@ -176,5 +177,31 @@ public interface Scenario extends EObject {
 	 * @generated
 	 */
 	void setColour(Colour value);
+
+	/**
+	 * Returns the value of the '<em><b>Arrivalrateweekdistribution</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Arrivalrateweekdistribution</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Arrivalrateweekdistribution</em>' containment reference.
+	 * @see #setArrivalrateweekdistribution(ArrivalRateWeekDistribution)
+	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getScenario_Arrivalrateweekdistribution()
+	 * @model containment="true"
+	 * @generated
+	 */
+	ArrivalRateWeekDistribution getArrivalrateweekdistribution();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.sirius.deployment.Scenario#getArrivalrateweekdistribution <em>Arrivalrateweekdistribution</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Arrivalrateweekdistribution</em>' containment reference.
+	 * @see #getArrivalrateweekdistribution()
+	 * @generated
+	 */
+	void setArrivalrateweekdistribution(ArrivalRateWeekDistribution value);
 
 } // Scenario

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.eclipse.sirius.deployment.Component#getRequest <em>Request</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.Component#getOperationalComponentCost <em>Operational Component Cost</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.Component#getDeployedUnits <em>Deployed Units</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.Component#getMaxWaitingTime <em>Max Waiting Time</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.deployment.DeploymentPackage#getComponent()
@@ -328,5 +329,32 @@ public interface Component extends EObject {
 	 * @generated
 	 */
 	void setDeployedUnits(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Max Waiting Time</b></em>' attribute.
+	 * The default value is <code>"150"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Max Waiting Time</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Max Waiting Time</em>' attribute.
+	 * @see #setMaxWaitingTime(double)
+	 * @see org.eclipse.sirius.deployment.DeploymentPackage#getComponent_MaxWaitingTime()
+	 * @model default="150"
+	 * @generated
+	 */
+	double getMaxWaitingTime();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.sirius.deployment.Component#getMaxWaitingTime <em>Max Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Max Waiting Time</em>' attribute.
+	 * @see #getMaxWaitingTime()
+	 * @generated
+	 */
+	void setMaxWaitingTime(double value);
 
 } // Component

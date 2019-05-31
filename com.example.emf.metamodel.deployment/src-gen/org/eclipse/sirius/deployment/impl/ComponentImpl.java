@@ -44,6 +44,7 @@ import org.eclipse.sirius.deployment.ServiceLevel;
  *   <li>{@link org.eclipse.sirius.deployment.impl.ComponentImpl#getRequest <em>Request</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.ComponentImpl#getOperationalComponentCost <em>Operational Component Cost</em>}</li>
  *   <li>{@link org.eclipse.sirius.deployment.impl.ComponentImpl#getDeployedUnits <em>Deployed Units</em>}</li>
+ *   <li>{@link org.eclipse.sirius.deployment.impl.ComponentImpl#getMaxWaitingTime <em>Max Waiting Time</em>}</li>
  * </ul>
  *
  * @generated
@@ -268,6 +269,26 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 	 * @ordered
 	 */
 	protected int deployedUnits = DEPLOYED_UNITS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaxWaitingTime() <em>Max Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double MAX_WAITING_TIME_EDEFAULT = 150.0;
+
+	/**
+	 * The cached value of the '{@link #getMaxWaitingTime() <em>Max Waiting Time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxWaitingTime()
+	 * @generated
+	 * @ordered
+	 */
+	protected double maxWaitingTime = MAX_WAITING_TIME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -561,6 +582,30 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 	 * @generated
 	 */
 	@Override
+	public double getMaxWaitingTime() {
+		return maxWaitingTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMaxWaitingTime(double newMaxWaitingTime) {
+		double oldMaxWaitingTime = maxWaitingTime;
+		maxWaitingTime = newMaxWaitingTime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.COMPONENT__MAX_WAITING_TIME,
+					oldMaxWaitingTime, maxWaitingTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case DeploymentPackage.COMPONENT__CONTAINS:
@@ -603,6 +648,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 			return getOperationalComponentCost();
 		case DeploymentPackage.COMPONENT__DEPLOYED_UNITS:
 			return getDeployedUnits();
+		case DeploymentPackage.COMPONENT__MAX_WAITING_TIME:
+			return getMaxWaitingTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -654,6 +701,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 		case DeploymentPackage.COMPONENT__DEPLOYED_UNITS:
 			setDeployedUnits((Integer) newValue);
 			return;
+		case DeploymentPackage.COMPONENT__MAX_WAITING_TIME:
+			setMaxWaitingTime((Double) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -702,6 +752,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 		case DeploymentPackage.COMPONENT__DEPLOYED_UNITS:
 			setDeployedUnits(DEPLOYED_UNITS_EDEFAULT);
 			return;
+		case DeploymentPackage.COMPONENT__MAX_WAITING_TIME:
+			setMaxWaitingTime(MAX_WAITING_TIME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -738,6 +791,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 			return operationalComponentCost != OPERATIONAL_COMPONENT_COST_EDEFAULT;
 		case DeploymentPackage.COMPONENT__DEPLOYED_UNITS:
 			return deployedUnits != DEPLOYED_UNITS_EDEFAULT;
+		case DeploymentPackage.COMPONENT__MAX_WAITING_TIME:
+			return maxWaitingTime != MAX_WAITING_TIME_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -773,6 +828,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 		result.append(operationalComponentCost);
 		result.append(", deployedUnits: ");
 		result.append(deployedUnits);
+		result.append(", maxWaitingTime: ");
+		result.append(maxWaitingTime);
 		result.append(')');
 		return result.toString();
 	}

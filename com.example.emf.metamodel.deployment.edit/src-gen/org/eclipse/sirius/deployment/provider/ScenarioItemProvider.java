@@ -158,6 +158,7 @@ public class ScenarioItemProvider extends ItemProviderAdapter implements IEditin
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DeploymentPackage.Literals.SCENARIO__INFORMATIONFLOW);
+			childrenFeatures.add(DeploymentPackage.Literals.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION);
 		}
 		return childrenFeatures;
 	}
@@ -229,6 +230,7 @@ public class ScenarioItemProvider extends ItemProviderAdapter implements IEditin
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case DeploymentPackage.SCENARIO__INFORMATIONFLOW:
+		case DeploymentPackage.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -248,6 +250,9 @@ public class ScenarioItemProvider extends ItemProviderAdapter implements IEditin
 
 		newChildDescriptors.add(createChildParameter(DeploymentPackage.Literals.SCENARIO__INFORMATIONFLOW,
 				DeploymentFactory.eINSTANCE.createInformationFlow()));
+
+		newChildDescriptors.add(createChildParameter(DeploymentPackage.Literals.SCENARIO__ARRIVALRATEWEEKDISTRIBUTION,
+				DeploymentFactory.eINSTANCE.createArrivalRateWeekDistribution()));
 	}
 
 	/**

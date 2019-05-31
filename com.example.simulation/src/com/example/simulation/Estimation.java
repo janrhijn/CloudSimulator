@@ -1,154 +1,171 @@
 package com.example.simulation;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+//import java.util.List;
 
-import org.eclipse.sirius.deployment.Component;
-import org.eclipse.sirius.deployment.Deployment;
-import org.eclipse.sirius.deployment.PricingFunction;
+//import org.eclipse.sirius.deployment.Component;
+//import org.eclipse.sirius.deployment.Deployment;
+//import org.eclipse.sirius.deployment.PricingFunction;
+
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.*;
 
 public class Estimation {
-	Deployment deployment;
+//	Deployment deployment;
+	Deployment_Model deploymentModel;
+//	Functional_Architecture_Model fam;
 	DecimalFormat f = new DecimalFormat("###,##0.00");
-	List<Component> componentList = new ArrayList<Component>();
+//	List<Component> componentList = new ArrayList<Component>();
 	
-	public Estimation(Deployment deployment) {
-		this.deployment = deployment;
+	public Estimation(Deployment_Model deploymentModel) {
+//	public Estimation(Deployment deployment) {
+//		this.deployment = deployment;
 		
 		// Add all Components in one list
-		componentList.addAll(deployment.getVpc().getDeployed());
-		componentList.addAll(deployment.getContain());
+//		componentList.addAll(deployment.getVpc().getDeployed());
+//		componentList.addAll(deployment.getContain());
+		
+//		this.fam = fam;
+		this.deploymentModel = deploymentModel;
 	}
 	
 	public void Estimate() {
 		// Loop through all Components of the model
-		for(Iterator<Component> componentIterator = componentList.iterator(); componentIterator.hasNext();) {
+		for(Iterator<Component> componentIterator = this.deploymentModel.getContains().iterator(); componentIterator.hasNext();) {
 			Component component = componentIterator.next();
 			System.out.println(component.getName());
 			
-			// Loop thorugh all PricingFunctions of the component
-			for(Iterator<PricingFunction> pricingfunctionIterator = component.getPricingscheme().iterator(); pricingfunctionIterator.hasNext();) {
-				PricingFunction pricingfunction = pricingfunctionIterator.next();
+			// Loop thorugh all PricingFunctions of the Component
+			for(Iterator<Pricing_Function> pricingfunctionIterator = component.getPricing_scheme().iterator(); pricingfunctionIterator.hasNext();) {
+				Pricing_Function pricingfunction = pricingfunctionIterator.next();
 				
-				if(pricingfunction.getMetric().getName() == "serverDuration") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_DURATION)) {
 					double serverDurationCost = serverDurationCost(component, pricingfunction);
 					
 					componentTotalCost(component, serverDurationCost);
-					System.out.println(" Price Server Duration capability: $" + f.format(serverDurationCost) + " Server duration: " + component.getServerDuration() + " sec");
+					System.out.println(" Price Server Duration capability: $" + f.format(serverDurationCost) + " Server duration: " + component.getServer_duration() + " sec");
 				}
 				
-				if(pricingfunction.getMetric().getName() == "serverUnitTime") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_UNIT)) {
 					double serverUnitTimeCost = serverUnitTimeCost(component, pricingfunction);
 
 					componentTotalCost(component, serverUnitTimeCost);
-					System.out.println(" Price Server Units capability: $" + f.format(serverUnitTimeCost)  + " Server units: " + component.getServerUnitTime());
+					System.out.println(" Price Server Units capability: $" + f.format(serverUnitTimeCost)  + " Server units: " + component.getServer_unit());
 				}
 				
-				if(pricingfunction.getMetric().getName() == "dataIn") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_IN)) {
 					double dataInCost = dataInCost(component, pricingfunction);
 
 					componentTotalCost(component, dataInCost);
-					System.out.println(" Price Data In capability: $" + f.format(dataInCost)  + " Data in: " + component.getDataIn() + "KB");
+					System.out.println(" Price Data In capability: $" + f.format(dataInCost)  + " Data in: " + component.getData_in() + "KB");
 				}
 				
-				if(pricingfunction.getMetric().getName() == "dataOut") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_OUT)) {
 					double dataOutCost = dataOutCost(component, pricingfunction);
 					
 					componentTotalCost(component, dataOutCost);
-					System.out.println(" Price Data Out capability: $" + f.format(dataOutCost) + " Data out: " + component.getDataOut() + "KB");
+					System.out.println(" Price Data Out capability: $" + f.format(dataOutCost) + " Data out: " + component.getData_out() + "KB");
 				}
 				
-				if(pricingfunction.getMetric().getName() == "storageCapacity") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.STORAGE_CAPACITY)) {
 					double storageCapacityCost = storageCapacityCost(component, pricingfunction);
 
 					componentTotalCost(component, storageCapacityCost);
-					System.out.println(" Price Storage Capacity capability: $" + f.format(storageCapacityCost) + " Storage capacity: " + component.getStorageCapacity()  + "KB");
+					System.out.println(" Price Storage Capacity capability: $" + f.format(storageCapacityCost) + " Storage capacity: " + component.getStorage_capacity()  + "KB");
 				}
 				
-				if(pricingfunction.getMetric().getName() == "request") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.REQUEST)) {
 					double requestCost = requestCost(component, pricingfunction);
 					
 					componentTotalCost(component, requestCost);
 					System.out.println(" Price Request capability: $" + f.format(requestCost) + " Requests: " + component.getRequest());
 				}
 				
-				if(pricingfunction.getMetric().getName() == "dataProcessed") {
+				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_PROCESSED)) {
 					double dataProcessedCost = dataProcessedCost(component, pricingfunction);
 					
 					componentTotalCost(component, dataProcessedCost);
-					System.out.println(" Price Data Processed capability: $" + f.format(dataProcessedCost) + " Data processed: " + (component.getDataIn() + component.getDataOut()) + "KB");
+					System.out.println(" Price Data Processed capability: $" + f.format(dataProcessedCost) + " Data processed: " + (component.getData_in() + component.getData_in()) + "KB");
 				}
 			}
 			
-			System.out.println("Total component cost: $" + f.format(component.getOperationalComponentCost()) + "\n");
+			System.out.println("Total component cost: $" + f.format(component.getOperational_component_cost()) + "\n");
 		}
 		
 		deploymentTotalCost();
-		System.out.println("Total deployment cost: $" + f.format(deployment.getOperationalCost()));
+//		System.out.println("Total deployment cost: $" + f.format(deployment.getOperationalCost()));
 	}
 	
 	void deploymentTotalCost() {
 		double deploymentTotalCost = 0.0;
 		
 		// Get operational costs for all Components in model
-		for(Iterator<Component> componentIterator = componentList.iterator(); componentIterator.hasNext();) {
+		for(Iterator<Component> componentIterator = this.deploymentModel.getContains().iterator(); componentIterator.hasNext();) {
 			Component component = componentIterator.next();
 			
-			deploymentTotalCost += component.getOperationalComponentCost();
-			
+			deploymentTotalCost += component.getOperational_component_cost();
 		}
-		deployment.setOperationalCost(deploymentTotalCost);
-		
+//		deployment.setOperationalCost(deploymentTotalCost);
+		System.out.println("Total deployment cost: $" + f.format(deploymentTotalCost));
 //		return deploymentTotalCost;
 	}
 	
-	void componentTotalCost(Component instance, double capacityCost) {
-		instance.setOperationalComponentCost(instance.getOperationalComponentCost() + capacityCost);
+	void componentTotalCost(Component component, double capacityCost) {
+		component.setOperational_component_cost(component.getOperational_component_cost() + capacityCost);
 	}
 	
-	double serverDurationCost(Component instance, PricingFunction pricingfunction) {
-		double serverDurationHour = instance.getServerDuration();
+	double serverDurationCost(Component instance, Pricing_Function pricingfunction) {
+		double serverDuration = instance.getServer_duration();
 		
-		if(pricingfunction.getBillingType().toString() == "HOUR") {
-			// Convert to hours-billing if BillingType is HOUR
-			serverDurationHour = Math.ceil(serverDurationHour/3600);
-		} else {
-			// Convert to seconds-billing if BillingType is SECOND
-			serverDurationHour = serverDurationHour/3600;
+		if(pricingfunction.getDuration_type().equals(Duration_Type.HOUR)) {
+			serverDuration = serverDuration / 3600;
+		} else if (pricingfunction.getDuration_type().equals(Duration_Type.NONE)) {
+			System.out.println("Error: define server duration type for: " + pricingfunction.getName());
 		}
 		
-		double serverDurationCost = pricingfunction.getPrice() * serverDurationHour;
+		// Ceil serverDuration to one hour if billing type is per hour
+		if(pricingfunction.getBilling_type().equals(Billing_Type.HOUR)) {
+			// Convert to per-hours-billing if BillingType is HOUR
+			serverDuration = Math.ceil(serverDuration);
+		}
+		
+		double serverDurationCost = pricingfunction.getPrice() * serverDuration;
 		
 		return serverDurationCost;
 	}
 	
-	double serverUnitTimeCost(Component instance, PricingFunction pricingfunction) {
-		double serverUnitTimeHour = instance.getServerUnitTime();
-		
-		if(pricingfunction.getBillingType().toString() == "HOUR") {
-			// Convert to hours-billing if BillingType is HOUR
-			serverUnitTimeHour = Math.ceil(serverUnitTimeHour/3600);
-		} else {
-			// Convert to seconds-billing
-			serverUnitTimeHour = serverUnitTimeHour/3600;
+	double serverUnitTimeCost(Component instance, Pricing_Function pricingfunction) {
+		double serverUnit = instance.getServer_unit();
+
+		if(pricingfunction.getDuration_type().equals(Duration_Type.HOUR)) {
+			serverUnit = serverUnit / 3600;
+		} else if (pricingfunction.getDuration_type().equals(Duration_Type.NONE)) {
+			System.out.println("Error: define server unit type for: " + pricingfunction.getName());
 		}
 		
-		double serverUnitTimeCost = pricingfunction.getPrice() * serverUnitTimeHour;
+		if(pricingfunction.getBilling_type().equals(Billing_Type.HOUR)) {
+			// Convert to per-hours-billing if BillingType is HOUR
+			serverUnit = Math.ceil(serverUnit);
+		}
+		
+		double serverUnitTimeCost = pricingfunction.getPrice() * serverUnit;
 		
 		return serverUnitTimeCost;
 	}
 	
-	double dataInCost(Component instance, PricingFunction pricingfunction) {
-		double dataIn = instance.getDataIn();
+	double dataInCost(Component instance, Pricing_Function pricingfunction) {
+		double dataIn = instance.getData_in();
 		
-		if(pricingfunction.getDataType().toString() == "MEGABYTE") {
+		if(pricingfunction.getData_type().equals(Data_Type.MEGABYTE)) {
 			// Convert Kilobyte to Megabyte
 			dataIn = Math.ceil(dataIn/1000);
-		} else if (pricingfunction.getDataType().toString() == "GIGABYTE") {
+		} else if (pricingfunction.getData_type().equals(Data_Type.GIGABYTE)) {
 			// Convert Kilobyte to Gigabyte
 			dataIn = Math.ceil(dataIn/1000/1000);
+		} else if(pricingfunction.getData_type().equals(Data_Type.NONE)) {
+			// Error if no data type is specified
+			System.out.println("Error: define data type for: " + pricingfunction.getName());
 		}
 		
 		double dataInCost = pricingfunction.getPrice() * dataIn;
@@ -156,16 +173,18 @@ public class Estimation {
 		return dataInCost;
 	}
 	
-	double dataOutCost(Component instance, PricingFunction pricingfunction) {
-//		double dataOutCost = pricingfunction.getPrice() * instance.getDataOut();
-		double dataOut = instance.getDataOut();
+	double dataOutCost(Component component, Pricing_Function pricingfunction) {
+		double dataOut = component.getData_out();
 		
-		if(pricingfunction.getDataType().toString() == "MEGABYTE") {
+		if(pricingfunction.getData_type().equals(Data_Type.MEGABYTE)) {
 			// Convert Kilobyte to Megabyte
 			dataOut = Math.ceil(dataOut/1000);
-		} else if (pricingfunction.getDataType().toString() == "GIGABYTE") {
+		} else if (pricingfunction.getData_type().equals(Data_Type.GIGABYTE)) {
 			// Convert Kilobyte to Gigabyte
 			dataOut = Math.ceil(dataOut/1000/1000);
+		} else if(pricingfunction.getData_type().equals(Data_Type.NONE)) {
+			// Error if no data type is specified
+			System.out.println("Error: define data type for: " + pricingfunction.getName());
 		}
 		
 		double dataOutCost = pricingfunction.getPrice() * dataOut;
@@ -174,15 +193,18 @@ public class Estimation {
 		return dataOutCost;
 	}
 	
-	double storageCapacityCost(Component instance, PricingFunction pricingfunction) {
-		double storageCapacity = instance.getStorageCapacity();
+	double storageCapacityCost(Component instance, Pricing_Function pricingfunction) {
+		double storageCapacity = instance.getStorage_capacity();
 		
-		if(pricingfunction.getDataType().toString() == "MEGABYTE") {
+		if(pricingfunction.getData_type().equals(Data_Type.MEGABYTE)) {
 			// Convert Kilobyte to Megabyte
 			storageCapacity = Math.ceil(storageCapacity/1000);
-		} else if (pricingfunction.getDataType().toString() == "GIGABYTE") {
+		} else if (pricingfunction.getData_type().equals(Data_Type.GIGABYTE)) {
 			// Convert Kilobyte to Gigabyte
 			storageCapacity = Math.ceil(storageCapacity/1000/1000);
+		} else if(pricingfunction.getData_type().equals(Data_Type.NONE)) {
+			// Error if no data type is specified
+			System.out.println("Error: define data type for: " + pricingfunction.getName());
 		}
 		
 		double storageCapacityCost = pricingfunction.getPrice() * storageCapacity;
@@ -190,15 +212,18 @@ public class Estimation {
 		return storageCapacityCost;
 	}
 	
-	double requestCost(Component instance, PricingFunction pricingfunction) {
+	double requestCost(Component instance, Pricing_Function pricingfunction) {
 		double request = instance.getRequest();
 		
-		if(pricingfunction.getRequestType().getName() == "MILLION") {
+		if(pricingfunction.getRequest_type().equals(Request_Type.MILLION)) {
 			// Convert to per millions requests
 			request = request/1000000;
-		} else if (pricingfunction.getRequestType().getName() == "THOUSAND") {
+		} else if (pricingfunction.getRequest_type().equals(Request_Type.THOUSAND)) {
 			// Convert to per thousand requests
 			request = request/1000;
+		} else if (pricingfunction.getRequest_type().equals(Request_Type.NONE)) {
+			// Error if no request type is specified
+			System.out.println("Error: define request type for: " + pricingfunction.getName());
 		}
 		
 		double requestCost = pricingfunction.getPrice() * request;
@@ -206,15 +231,18 @@ public class Estimation {
 		return requestCost;
 	}
 	
-	double dataProcessedCost(Component instance, PricingFunction pricingfunction) {
-		double dataProcessed = instance.getDataIn() + instance.getDataOut();
+	double dataProcessedCost(Component instance, Pricing_Function pricingfunction) {
+		double dataProcessed = instance.getData_in() + instance.getData_out();
 		
-		if(pricingfunction.getDataType().getName() == "MEGABYTE") {
+		if(pricingfunction.getData_type().equals(Data_Type.MEGABYTE)) {
 			// Convert Kilobyte to Megabyte
 			dataProcessed = Math.ceil(dataProcessed/1000);
-		} else if (pricingfunction.getDataType().toString() == "GIGABYTE") {
+		} else if (pricingfunction.getData_type().equals(Data_Type.GIGABYTE)) {
 			// Convert Kilobyte to Gigabyte
 			dataProcessed = Math.ceil(dataProcessed/1000/1000);
+		} else if(pricingfunction.getData_type().equals(Data_Type.NONE)) {
+			// Error if no data type is specified
+			System.out.println("Error: define data type for: " + pricingfunction.getName());
 		}
 		
 		double dataProcessedCost = pricingfunction.getPrice() * dataProcessed;
