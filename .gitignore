@@ -28,3 +28,5 @@ com.example.emf.metamodel.deployment.edit/
 com.example.emf.metamodel.deployment.editor/
 uu.thesis.emf.metamodel.edit/
 uu.thesis.emf.metamodel.editor/
+
+.DS_Store
