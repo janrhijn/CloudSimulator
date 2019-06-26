@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<softwaresystemarchitecture:Software_System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:softwaresystemarchitecture="http://www.example.org/metamodel/softwaresystemarchitecture" name="E-Voter">
+  <viewpoint xsi:type="softwaresystemarchitecture:Deployment_Model">
+    <contains name="DNS server" contains="//@viewpoint.1/@product_context/@sub_module.2/@contains.1">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Requests" price="1.5" consumption_metric="REQUEST" request_type="MILLION"/>
+    </contains>
+    <contains name="Application Server" contains="//@viewpoint.1/@product_context/@sub_module.0/@contains.1 //@viewpoint.1/@product_context/@sub_module.0/@contains.4 //@viewpoint.1/@product_context/@sub_module.0/@contains.2 //@viewpoint.1/@product_context/@sub_module.0/@contains.3">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Server Unit" price="0.13" consumption_metric="SERVER_UNIT" duration_type="HOUR"/>
+    </contains>
+    <contains name="Load Balancer" contains="//@viewpoint.1/@product_context/@sub_module.2/@contains.0">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Data proccesed" price="0.008" consumption_metric="DATA_PROCESSED" data_type="GIGABYTE"/>
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Server uptine" price="0.1" duration_type="HOUR" billing_type="HOUR"/>
+    </contains>
+    <contains name="Database Server" contains="//@viewpoint.1/@product_context/@sub_module.1/@contains.0 //@viewpoint.1/@product_context/@sub_module.1/@contains.2 //@viewpoint.1/@product_context/@sub_module.1/@contains.1">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Server uptime" price="0.4" duration_type="HOUR" billing_type="HOUR"/>
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Storage-month" price="0.6" consumption_metric="STORAGE_CAPACITY" data_type="GIGABYTE"/>
+    </contains>
+    <contains name="Web Server" contains="//@viewpoint.1/@product_context/@sub_module.3/@contains.2 //@viewpoint.1/@product_context/@sub_module.3/@contains.0">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Server Units" price="0.07" consumption_metric="SERVER_UNIT" duration_type="HOUR"/>
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Data Out" price="0.01" consumption_metric="DATA_OUT" data_type="GIGABYTE"/>
+    </contains>
+    <contains name="External Mail Service" contains="//@viewpoint.1/@product_context/@sub_module.0/@contains.0" part_of_vpc="false">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Server uptime" price="0.1" duration_type="HOUR" billing_type="HOUR"/>
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Requests" price="0.1" consumption_metric="REQUEST" request_type="THOUSAND"/>
+    </contains>
+    <contains name="Object Storage" contains="//@viewpoint.1/@product_context/@sub_module.3/@contains.1">
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Storage-month" price="0.001" consumption_metric="STORAGE_CAPACITY" data_type="GIGABYTE"/>
+      <capability xsi:type="softwaresystemarchitecture:Pricing_Function" name="Requests" price="0.05" consumption_metric="REQUEST" request_type="MILLION"/>
+    </contains>
+    <contains name="Voter" contains="//@viewpoint.1/@product_context/@sub_module.6/@contains.0" part_of_vpc="false"/>
+    <contains name="Visitor" contains="//@viewpoint.1/@product_context/@sub_module.5/@contains.0" part_of_vpc="false"/>
+    <contains name="Council" contains="//@viewpoint.1/@product_context/@sub_module.4/@contains.0" part_of_vpc="false"/>
+  </viewpoint>
+  <viewpoint xsi:type="softwaresystemarchitecture:Functional_Architecture_Model">
+    <product_context xsi:type="softwaresystemarchitecture:Composite_Module" name="E-Voter">
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Processing Votes">
+        <contains name="Notify Voter">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.6/@contains.0" name="notify voter"/>
+        </contains>
+        <contains name="End Election">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.0/@contains.2" name="request results"/>
+        </contains>
+        <contains name="Process Results" feature_type="PROCESS" servicerate="1.0">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.1/@contains.2" name="request votes data"/>
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.4/@contains.0" name="send results"/>
+        </contains>
+        <contains name="Authenticate Vote" feature_type="PROCESS" servicerate="8.0">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.0/@contains.4" name="authenticated vote"/>
+        </contains>
+        <contains name="Process Vote" feature_type="PROCESS" servicerate="5.0">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.0/@contains.0" name="notify"/>
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.1/@contains.0" name="store vote"/>
+        </contains>
+      </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Votes Persistent Storage">
+        <contains name="Write Storage">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.1/@contains.1" name="write vote"/>
+        </contains>
+        <contains name="Votes" feature_type="STORAGE">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.1/@contains.2" name="read votes"/>
+        </contains>
+        <contains name="Read Storage">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.0/@contains.2" name="send votes data"/>
+        </contains>
+      </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Utilities">
+        <contains name="Route Traffic">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.3/@contains.0" name="route website"/>
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.0/@contains.3" name="route vote"/>
+        </contains>
+        <contains name="Convert URL">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.5/@contains.0" name="send IP address"/>
+        </contains>
+      </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Serve Website">
+        <contains name="Monitor User" feature_type="PROCESS" servicerate="10.0">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.3/@contains.2" name="render"/>
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.3/@contains.1" name="store website metrics"/>
+        </contains>
+        <contains name="Website Metrics" feature_type="STORAGE"/>
+        <contains name="Render Website" feature_type="PROCESS" servicerate="10.0">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.5/@contains.0" name="send website"/>
+        </contains>
+      </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Council">
+        <contains name="Council">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.0/@contains.1" name="finish election"/>
+        </contains>
+      </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Visitor">
+        <contains name="Visitor">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.2/@contains.0" name="request website"/>
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.2/@contains.1" name="request IP address"/>
+        </contains>
+      </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Voter">
+        <contains name="Voter">
+          <flow receiver="//@viewpoint.1/@product_context/@sub_module.2/@contains.0" name="request vote"/>
+        </contains>
+      </sub_module>
+    </product_context>
+    <scenario_overlay name="DNS" arrivalrate="50">
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.5/@contains.0/@flow.1" data="15"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.2/@contains.1/@flow.0" data="10"/>
+    </scenario_overlay>
+    <scenario_overlay name="Vote" arrivalrate="10" colour="BLUE">
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.6/@contains.0/@flow.0" data="50"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.2/@contains.0/@flow.1" data="50"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.3/@flow.0" data="25"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.4/@flow.1" data="200"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.1/@contains.0/@flow.0" data="200"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.4/@flow.0" data="100"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.0/@flow.0" data="500"/>
+    </scenario_overlay>
+    <scenario_overlay name="Request Website" arrivalrate="50" colour="YELLOW">
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.5/@contains.0/@flow.0" data="50"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.2/@contains.0/@flow.0" data="50"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.3/@contains.0/@flow.0" data="50"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.3/@contains.2/@flow.0" data="500"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.3/@contains.0/@flow.1" data="100"/>
+    </scenario_overlay>
+    <scenario_overlay name="Process Results" arrivalrate="1" colour="PURPLE">
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.4/@contains.0/@flow.0" data="50"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.1/@flow.0" data="5"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.2/@flow.0" data="100"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.1/@contains.1/@flow.0" data="2500"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.1/@contains.2/@flow.0" data="2500" force_receiver_as_connector="true"/>
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.2/@flow.1" data="2500"/>
+    </scenario_overlay>
+  </viewpoint>
+</softwaresystemarchitecture:Software_System>

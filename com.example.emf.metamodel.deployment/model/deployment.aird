@@ -3674,9 +3674,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_FDItYGGtEempWbyzdXSCFA" name="Other" tooltipText="">
-        <target xmi:type="ecore:EEnumLiteral" href="deployment.ecore#//ServiceLevel/Other"/>
-        <semanticElements xmi:type="ecore:EEnumLiteral" href="deployment.ecore#//ServiceLevel/Other"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_FDItYGGtEempWbyzdXSCFA" name="OTHER" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="deployment.ecore#//ServiceLevel/OTHER"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="deployment.ecore#//ServiceLevel/OTHER"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_FDItYWGtEempWbyzdXSCFA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
