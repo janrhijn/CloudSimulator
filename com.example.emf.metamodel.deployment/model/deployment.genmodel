@@ -16,7 +16,7 @@
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/PAAS"/>
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/SAAS"/>
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/FAAS"/>
-      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/Other"/>
+      <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ServiceLevel/OTHER"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="deployment.ecore#//ConsumptionMetric">
       <genEnumLiterals ecoreEnumLiteral="deployment.ecore#//ConsumptionMetric/serverDuration"/>

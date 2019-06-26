@@ -52,13 +52,12 @@ public class Main {
 		trans.transformForceFeatureAsConnector.Transformate();
 		trans.transformToHorizontalBehavior.Transformate();
 
-
 		// Print new model in console
 		output.PrintDeploymentModel(deploymentModel);
 		output.PrintFAM(fam);
 
 		// Simulation of deployment
-		sim.Simulate(60*60*24); // Simulate with simduration
+		sim.Simulate(60*60*24*7); // Simulate with simduration
 //		output.PrintComponentMetrics(deploymentModel);
 		
 		// Cost estimation of deployment

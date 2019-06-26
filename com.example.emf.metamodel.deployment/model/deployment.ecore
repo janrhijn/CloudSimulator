@@ -84,7 +84,7 @@
     <eLiterals name="PAAS" value="1"/>
     <eLiterals name="SAAS" value="2"/>
     <eLiterals name="FAAS" value="3"/>
-    <eLiterals name="Other" value="4"/>
+    <eLiterals name="OTHER" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConsumptionMetric">
     <eLiterals name="serverDuration"/>

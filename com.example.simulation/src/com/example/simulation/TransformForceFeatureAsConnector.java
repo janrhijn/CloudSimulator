@@ -23,13 +23,13 @@ public class TransformForceFeatureAsConnector {
 			Scenario scenario = scenarioIterator.next();
 			
 			// Iterate through all informationflows within a scenario
-			for(Iterator<InformationFlow> informationflowIterator = scenario.getInformationflow().iterator(); informationflowIterator.hasNext();) {
-				InformationFlow informationflow = informationflowIterator.next();
+			for(Iterator<Interaction> informationflowIterator = scenario.getInteraction().iterator(); informationflowIterator.hasNext();) {
+				Interaction informationflow = informationflowIterator.next();
 				
 				// Check if informationflow has property isForce_receiver_as_connector
 				if(informationflow.isForce_receiver_as_connector()) {
 					// Init receiver feature from informationflow
-					Feature oldReceiverFeature = informationflow.getFlow().getReceiver();
+					Feature oldReceiverFeature = informationflow.getInformationflow().getReceiver();
 					
 					// Only duplicate if feature has PROCESS as feature type
 					if(oldReceiverFeature.getFeature_type().equals(Feature_Type.PROCESS)) {
@@ -39,7 +39,7 @@ public class TransformForceFeatureAsConnector {
 						newReceiverFeature.setFeature_type(Feature_Type.CONNECTOR);
 						
 						// Set new duplicated feature to flow 
-						informationflow.getFlow().setReceiver(newReceiverFeature);
+						informationflow.getInformationflow().setReceiver(newReceiverFeature);
 						
 						//TODO als ik tijd over heb: de informationflow waarbij de feature een sender is wordt niet aangepast, hierdoor blijven beide features bestaan in de data (performance wise niet handig)
 						

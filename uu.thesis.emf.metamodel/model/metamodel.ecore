@@ -31,25 +31,26 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="flow" upperBound="-1" eType="#//Flow"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="flow" upperBound="-1" eType="#//Informationflow"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="feature_type" eType="#//Feature_Type"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="servicerate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Flow">
+  <eClassifiers xsi:type="ecore:EClass" name="Informationflow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="receiver" lowerBound="1"
         eType="#//Feature"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="informationflow" upperBound="-1"
-        eType="#//InformationFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" upperBound="-1"
+        eType="#//Interaction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrivalrate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="colour" eType="#//Colour"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InformationFlow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="flow" lowerBound="1" eType="#//Flow"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Interaction">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="informationflow" lowerBound="1"
+        eType="#//Informationflow"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="force_receiver_as_connector"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
@@ -63,8 +64,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" upperBound="-1"
         eType="#//Feature"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pricing_scheme" upperBound="-1"
-        eType="#//Pricing_Function" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="part_of_vpc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="server_duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -77,9 +76,11 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_waiting_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="100"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data_processed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capability" upperBound="-1"
+        eType="#//Capability" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pricing_Function">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Pricing_Function" eSuperTypes="#//Capability">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="consumption_metric" eType="#//Consumption_Metric"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration_type" eType="#//Duration_Type"/>
@@ -128,5 +129,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="Billing_Type">
     <eLiterals name="SECOND"/>
     <eLiterals name="HOUR" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

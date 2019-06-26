@@ -31,66 +31,74 @@ public class Estimation {
 	}
 	
 	public void Estimate() {
+		System.out.println("\nCost analysis");
 		// Loop through all Components of the model
 		for(Iterator<Component> componentIterator = this.deploymentModel.getContains().iterator(); componentIterator.hasNext();) {
 			Component component = componentIterator.next();
-			System.out.println(component.getName());
 			
-			// Loop thorugh all PricingFunctions of the Component
-			for(Iterator<Pricing_Function> pricingfunctionIterator = component.getPricing_scheme().iterator(); pricingfunctionIterator.hasNext();) {
-				Pricing_Function pricingfunction = pricingfunctionIterator.next();
+			// Only output estimation if capability is defined
+			if (component.getCapability().size() >= 1) {
+				System.out.println(" " + component.getName());
 				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_DURATION)) {
-					double serverDurationCost = serverDurationCost(component, pricingfunction);
+				// Loop thorugh all PricingFunctions of the Component
+				for(Iterator<Capability> pricingfunctionIterator = component.getCapability().iterator(); pricingfunctionIterator.hasNext();) {
+					Capability capability = pricingfunctionIterator.next();
 					
-					componentTotalCost(component, serverDurationCost);
-					System.out.println(" Price Server Duration capability: $" + f.format(serverDurationCost) + " Server duration: " + component.getServer_duration() + " sec");
-				}
-				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_UNIT)) {
-					double serverUnitTimeCost = serverUnitTimeCost(component, pricingfunction);
-
-					componentTotalCost(component, serverUnitTimeCost);
-					System.out.println(" Price Server Units capability: $" + f.format(serverUnitTimeCost)  + " Server units: " + component.getServer_unit());
-				}
-				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_IN)) {
-					double dataInCost = dataInCost(component, pricingfunction);
-
-					componentTotalCost(component, dataInCost);
-					System.out.println(" Price Data In capability: $" + f.format(dataInCost)  + " Data in: " + component.getData_in() + "KB");
-				}
-				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_OUT)) {
-					double dataOutCost = dataOutCost(component, pricingfunction);
+					// TODO check if capability is pricingfunction
+					Pricing_Function pricingfunction = (Pricing_Function) capability;
 					
-					componentTotalCost(component, dataOutCost);
-					System.out.println(" Price Data Out capability: $" + f.format(dataOutCost) + " Data out: " + component.getData_out() + "KB");
-				}
-				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.STORAGE_CAPACITY)) {
-					double storageCapacityCost = storageCapacityCost(component, pricingfunction);
-
-					componentTotalCost(component, storageCapacityCost);
-					System.out.println(" Price Storage Capacity capability: $" + f.format(storageCapacityCost) + " Storage capacity: " + component.getStorage_capacity()  + "KB");
-				}
-				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.REQUEST)) {
-					double requestCost = requestCost(component, pricingfunction);
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_DURATION)) {
+						double serverDurationCost = serverDurationCost(component, pricingfunction);
+						
+						componentTotalCost(component, serverDurationCost);
+						System.out.println("  Cost Server Duration capability: $" + f.format(serverDurationCost) + " Server duration: " + component.getServer_duration() + " sec");
+					}
 					
-					componentTotalCost(component, requestCost);
-					System.out.println(" Price Request capability: $" + f.format(requestCost) + " Requests: " + component.getRequest());
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_UNIT)) {
+						double serverUnitTimeCost = serverUnitTimeCost(component, pricingfunction);
+	
+						componentTotalCost(component, serverUnitTimeCost);
+						System.out.println("  Cost Server Units capability: $" + f.format(serverUnitTimeCost)  + " Server units: " + component.getServer_unit());
+					}
+					
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_IN)) {
+						double dataInCost = dataInCost(component, pricingfunction);
+	
+						componentTotalCost(component, dataInCost);
+						System.out.println("  Cost Data In capability: $" + f.format(dataInCost)  + " Data in: " + component.getData_in() + "KB");
+					}
+					
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_OUT)) {
+						double dataOutCost = dataOutCost(component, pricingfunction);
+						
+						componentTotalCost(component, dataOutCost);
+						System.out.println("  Cost Data Out capability: $" + f.format(dataOutCost) + " Data out: " + component.getData_out() + "KB");
+					}
+					
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.STORAGE_CAPACITY)) {
+						double storageCapacityCost = storageCapacityCost(component, pricingfunction);
+	
+						componentTotalCost(component, storageCapacityCost);
+						System.out.println("  Cost Storage Capacity capability: $" + f.format(storageCapacityCost) + " Storage capacity: " + component.getStorage_capacity()  + "KB");
+					}
+					
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.REQUEST)) {
+						double requestCost = requestCost(component, pricingfunction);
+						
+						componentTotalCost(component, requestCost);
+						System.out.println("  Cost Request capability: $" + f.format(requestCost) + " Requests: " + component.getRequest());
+					}
+					
+					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_PROCESSED)) {
+						double dataProcessedCost = dataProcessedCost(component, pricingfunction);
+						
+						componentTotalCost(component, dataProcessedCost);
+						System.out.println("  Cost Data Processed capability: $" + f.format(dataProcessedCost) + " Data processed: " + (component.getData_in() + component.getData_in()) + "KB");
+					}
 				}
 				
-				if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_PROCESSED)) {
-					double dataProcessedCost = dataProcessedCost(component, pricingfunction);
-					
-					componentTotalCost(component, dataProcessedCost);
-					System.out.println(" Price Data Processed capability: $" + f.format(dataProcessedCost) + " Data processed: " + (component.getData_in() + component.getData_in()) + "KB");
-				}
+				System.out.println(" Total component cost: $" + f.format(component.getOperational_component_cost()) + "\n");
 			}
-			
-			System.out.println("Total component cost: $" + f.format(component.getOperational_component_cost()) + "\n");
 		}
 		
 		deploymentTotalCost();
@@ -107,7 +115,7 @@ public class Estimation {
 			deploymentTotalCost += component.getOperational_component_cost();
 		}
 //		deployment.setOperationalCost(deploymentTotalCost);
-		System.out.println("Total deployment cost: $" + f.format(deploymentTotalCost));
+		System.out.println(" Total deployment cost: $" + f.format(deploymentTotalCost));
 //		return deploymentTotalCost;
 	}
 	

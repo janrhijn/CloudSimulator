@@ -24,7 +24,7 @@ public class TransformToHorizontalBehavior {
 			Scenario scenario = scenarioIterator.next();
 		
 			// Find a set of (two) features suitable for merging
-			InformationFlow mergeableFeaturesSet = searchMergeableFeatures(scenario);
+			Interaction mergeableFeaturesSet = searchMergeableFeatures(scenario);
 					
 			// Find next mergeable feature set till no horizontal behavior left
 			while(mergeableFeaturesSet != null) {
@@ -41,15 +41,15 @@ public class TransformToHorizontalBehavior {
 	}
 	
 	
-	private InformationFlow searchMergeableFeatures(Scenario scenario) {
+	private Interaction searchMergeableFeatures(Scenario scenario) {
 		// Iterate over InformationFlows of scenario
-		for(Iterator<InformationFlow> dataflowIterator = scenario.getInformationflow().iterator(); dataflowIterator.hasNext();) {
-			InformationFlow informationflow = dataflowIterator.next();
+		for(Iterator<Interaction> dataflowIterator = scenario.getInteraction().iterator(); dataflowIterator.hasNext();) {
+			Interaction interaction = dataflowIterator.next();
 //			System.out.println(informationflow.getSender() + " and " + informationflow.getReceiver());
 			
 			// Init sender and receiver Feature from the InformationFlow
-			Feature senderFeature = (Feature) informationflow.getFlow().eContainer();
-			Feature receiverFeature = (Feature) informationflow.getFlow().getReceiver();
+			Feature senderFeature = (Feature) interaction.getInformationflow().eContainer();
+			Feature receiverFeature = (Feature) interaction.getInformationflow().getReceiver();
 			
 			// Filter on Compute feature only for both sender and receiver
 			if(senderFeature.getFeature_type().equals(Feature_Type.PROCESS) && receiverFeature.getFeature_type().equals(Feature_Type.PROCESS)) {
@@ -58,7 +58,7 @@ public class TransformToHorizontalBehavior {
 //					System.out.println("Mergeable Features " + senderFeature.getName() + " " + receiverFeature.getName());
 					
 					// Return InformationFlow if both Features are from Compute class and in the same Component
-					return informationflow;
+					return interaction;
 				}
 			}
 		}
@@ -67,13 +67,13 @@ public class TransformToHorizontalBehavior {
 		return null;
 	}
 	
-	private void mergeMergeableFeatures(Scenario scenario, InformationFlow informationFlow) {
+	private void mergeMergeableFeatures(Scenario scenario, Interaction interaction) {
 		// Init Factory in order to create new Feature
 		SoftwareSystemArchitectureFactory factory = SoftwareSystemArchitectureFactory.eINSTANCE;
 
 		// Init sender and receiver Feature from the InformationFlow
-		Feature senderFeatureA = (Feature) informationFlow.getFlow().eContainer();
-		Feature receiverFeatureB = (Feature) informationFlow.getFlow().getReceiver();
+		Feature senderFeatureA = (Feature) interaction.getInformationflow().eContainer();
+		Feature receiverFeatureB = (Feature) interaction.getInformationflow().getReceiver();
 
 		// Merge both Features and create a new merged Feature
 		Feature mergedFeature = factory.createFeature();
@@ -88,29 +88,29 @@ public class TransformToHorizontalBehavior {
 		utulities.determineComponentFromFeature(deploymentModel, senderFeatureA).getContains().add(mergedFeature);
 
 		// Delete current InformationFlow, because it is not needed anymore
-		scenario.getInformationflow().remove(informationFlow);
+		scenario.getInteraction().remove(interaction);
 		
-		// Set mergedfeature as new receiver in Informationflows
-		for(InformationFlow informationflow:scenario.getInformationflow()) {
+		// Set mergedfeature as new receiver in Interaction
+		for(Interaction informationflow:scenario.getInteraction()) {
 			// Senderfeature is the incoming feature of the merged feature (see details in paper)
-			if(senderFeatureA.equals(informationflow.getFlow().getReceiver())) {
+			if(senderFeatureA.equals(informationflow.getInformationflow().getReceiver())) {
 				// set mergedFeature as new receiver in informationflow
-				informationflow.getFlow().setReceiver(mergedFeature);
+				informationflow.getInformationflow().setReceiver(mergedFeature);
 			}
 		}
 		
-		// Set mergedfeature as new sender in InformationFlows
+		// Set mergedfeature as new sender in Interaction
 		// Iterate through all informationflows in scenario, because a feature can have multiple outflows (see details in paper)
-		for(InformationFlow informationflow:scenario.getInformationflow()) {
+		for(Interaction informationflow:scenario.getInteraction()) {
 			// Init sender and receiver of associated informationflow
-			Feature sender = (Feature) informationflow.getFlow().eContainer();
-			Feature receiver = informationflow.getFlow().getReceiver();
+			Feature sender = (Feature) informationflow.getInformationflow().eContainer();
+			Feature receiver = informationflow.getInformationflow().getReceiver();
 			
-			List<Flow> addFlowToMergeableFeature = new ArrayList<Flow>();
+			List<Informationflow> addFlowToMergeableFeature = new ArrayList<Informationflow>();
 			// Check if both features are a sender in an informationflow
 			if(sender.equals(senderFeatureA) || sender.equals(receiverFeatureB)) {
 				// Iterate through all flows of sender, because sender can have multiple flows (see details in paper)
-				for(Flow flow:sender.getFlow()) {
+				for(Informationflow flow:sender.getFlow()) {
 					// If receiver in flow is the same as the receiver in the flow add flow to addFlowToMergeableFeature list
 					if(flow.getReceiver().equals(receiver)) {
 						addFlowToMergeableFeature.add(flow);
@@ -118,7 +118,7 @@ public class TransformToHorizontalBehavior {
 				}
 			}
 			
-			for(Flow flow:addFlowToMergeableFeature) {
+			for(Informationflow flow:addFlowToMergeableFeature) {
 				mergedFeature.getFlow().add(flow);
 			}
 		}
@@ -142,12 +142,12 @@ public class TransformToHorizontalBehavior {
 					Scenario scenario = scenarioIterator.next();
 						
 					// Iterate over Informationflows in Scenario
-					for(Iterator<InformationFlow> informationflowIterator = scenario.getInformationflow().iterator(); informationflowIterator.hasNext();) {
-						InformationFlow informationflow = informationflowIterator.next();
+					for(Iterator<Interaction> informationflowIterator = scenario.getInteraction().iterator(); informationflowIterator.hasNext();) {
+						Interaction informationflow = informationflowIterator.next();
 						
 						// Init sender and receiver from informationflow
-						Feature sender = (Feature) informationflow.getFlow().eContainer();
-						Feature receiver = informationflow.getFlow().getReceiver();
+						Feature sender = (Feature) informationflow.getInformationflow().eContainer();
+						Feature receiver = informationflow.getInformationflow().getReceiver();
 						
 						// Check if Feature is present in an Informationflow
 						if(receiver.equals(feature) || sender.equals(feature)) {

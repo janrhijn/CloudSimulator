@@ -25,12 +25,13 @@ public class Simulation {
 	}
 	
 	public void Simulate(int simduration) {
-		System.out.println("Simulation time: " + simduration + " sec");
+		System.out.println("\nSimulation");
+		System.out.println(" Simulation duration: " + simduration + " sec");
 		
 		Instant start = Instant.now(); // Start time of simulation
-		System.out.println("Simulation started at " + start);
+		System.out.println(" Simulation started at " + start);
 		
-		// Simulate
+		// Simulation
 		for(int i = 1; i<=simduration; i++) {
 			clock.timeTick(); // Increment clock with 1 second
 			
@@ -53,16 +54,16 @@ public class Simulation {
 //						System.out.println("Scenario: " + scenario.getName() + " Arrival Rate: " +scenario.getArrivalrate());
 						
 						// Iterate over InformationFlow in order to determine data in/out transfers
-						for(Iterator<InformationFlow> informationflowIterator = scenario.getInformationflow().iterator(); informationflowIterator.hasNext();) {
-							InformationFlow informationflow = informationflowIterator.next();
+						for(Iterator<Interaction> informationflowIterator = scenario.getInteraction().iterator(); informationflowIterator.hasNext();) {
+							Interaction informationflow = informationflowIterator.next();
 							
 //							int arrivalRatePerInformationFlow = (int) Math.round(scenario.getArrivalrate() * informationflow.getProbability());
 							int arrivalRatePerInformationFlow = scenario.getArrivalrate();
 //							System.out.println(arrivalRatePerInformationFlow);
 							
 							// Set sender and receiver feature based on informationflow
-							Feature senderFeature = (Feature) informationflow.getFlow().eContainer();
-							Feature receiverFeature = (Feature) informationflow.getFlow().getReceiver();
+							Feature senderFeature = (Feature) informationflow.getInformationflow().eContainer();
+							Feature receiverFeature = (Feature) informationflow.getInformationflow().getReceiver();
 							
 							// Determine the receiver features of the component
 							if(receiverFeature.equals(feature)) {
@@ -71,6 +72,8 @@ public class Simulation {
 								//TODO Specify data proccessed
 								// Only set DataIn and Request if feature is the first incoming Feature, otherwise these metrics are summed up multiple times.
 								if(!component.getContains().contains(senderFeature)) {
+									// Set Request capabilty
+									component.setRequest(component.getRequest() + arrivalRatePerInformationFlow);
 									Component senderComponent = utulities.determineComponentFromFeature(deploymentModel, senderFeature);
 //									System.out.println(component.getName() + " Data In " + senderFeature.getName() + " -> " + receiverFeature.getName() + " Scenario: " + scenario.getName());
 
@@ -120,7 +123,7 @@ public class Simulation {
 		}
 		
 		Instant end = Instant.now(); // End time of simulation
-		System.out.println("Simulation end at: " + end);
-		System.out.println("Time to simulate: " + Duration.between(start, end).toString() + "\n" );
+		System.out.println(" Simulation end at: " + end);
+		System.out.println(" Time to simulate: " + Duration.between(start, end).toString());
 	}
 }

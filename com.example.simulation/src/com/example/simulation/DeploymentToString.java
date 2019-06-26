@@ -58,12 +58,12 @@ public class DeploymentToString {
 			System.out.println("Scenario: " + scenario.getName() + " arrivalrate: " + scenario.getArrivalrate());
 				
 			// Iterate over dataflow in order to determine data transfers
-			for(Iterator<InformationFlow> informationflowIterator = scenario.getInformationflow().iterator(); informationflowIterator.hasNext();) {
-				InformationFlow informationflow = informationflowIterator.next();
+			for(Iterator<Interaction> informationflowIterator = scenario.getInteraction().iterator(); informationflowIterator.hasNext();) {
+				Interaction informationflow = informationflowIterator.next();
 				
 				// Cast eContainer to feature (which is the sender)
-				Feature sender = (Feature) informationflow.getFlow().eContainer();
-				System.out.println(" Informationflow sender: " + sender.getName() + " -> receiver: " + informationflow.getFlow().getReceiver().getName());
+				Feature sender = (Feature) informationflow.getInformationflow().eContainer();
+				System.out.println(" Informationflow sender: " + sender.getName() + " -> receiver: " + informationflow.getInformationflow().getReceiver().getName());
 			}
 		}
 	}
