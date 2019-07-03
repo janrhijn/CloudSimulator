@@ -36,7 +36,7 @@ public class TransformToHorizontalBehavior {
 		}
 		
 		// Remove not-used Features from model
-		// Neccessary, because the algorithm produce many not-used Features in order to work (for optimizing performance of the simulation)
+		// Necessary, because the algorithm produce many not-used Features in order to work (this optimize the performance of the simulation)
 		CleanUp();
 	}
 	
@@ -87,27 +87,27 @@ public class TransformToHorizontalBehavior {
 		// Add merged Feature to Component
 		utulities.determineComponentFromFeature(deploymentModel, senderFeatureA).getContains().add(mergedFeature);
 
-		// Delete current InformationFlow, because it is not needed anymore
+		// Delete current Interaction, because it is not needed anymore
 		scenario.getInteraction().remove(interaction);
 		
 		// Set mergedfeature as new receiver in Interaction
 		for(Interaction informationflow:scenario.getInteraction()) {
 			// Senderfeature is the incoming feature of the merged feature (see details in paper)
 			if(senderFeatureA.equals(informationflow.getInformationflow().getReceiver())) {
-				// set mergedFeature as new receiver in informationflow
+				// set mergedFeature as new receiver in Interaction
 				informationflow.getInformationflow().setReceiver(mergedFeature);
 			}
 		}
 		
 		// Set mergedfeature as new sender in Interaction
-		// Iterate through all informationflows in scenario, because a feature can have multiple outflows (see details in paper)
+		// Iterate over all Interactions in Scenario, because a Feature can have multiple outgoing Informationflows (see details in paper)
 		for(Interaction informationflow:scenario.getInteraction()) {
-			// Init sender and receiver of associated informationflow
+			// Init sender and receiver of associated Interaction
 			Feature sender = (Feature) informationflow.getInformationflow().eContainer();
 			Feature receiver = informationflow.getInformationflow().getReceiver();
 			
 			List<Informationflow> addFlowToMergeableFeature = new ArrayList<Informationflow>();
-			// Check if both features are a sender in an informationflow
+			// Check if both features are a sender in an Interaction
 			if(sender.equals(senderFeatureA) || sender.equals(receiverFeatureB)) {
 				// Iterate through all flows of sender, because sender can have multiple flows (see details in paper)
 				for(Informationflow flow:sender.getFlow()) {
@@ -141,22 +141,22 @@ public class TransformToHorizontalBehavior {
 				for(Iterator<Scenario> scenarioIterator = this.fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 					Scenario scenario = scenarioIterator.next();
 						
-					// Iterate over Informationflows in Scenario
-					for(Iterator<Interaction> informationflowIterator = scenario.getInteraction().iterator(); informationflowIterator.hasNext();) {
-						Interaction informationflow = informationflowIterator.next();
+					// Iterate over all Interactions in Scenario
+					for(Iterator<Interaction> interactionIterator = scenario.getInteraction().iterator(); interactionIterator.hasNext();) {
+						Interaction interaction = interactionIterator.next();
 						
-						// Init sender and receiver from informationflow
-						Feature sender = (Feature) informationflow.getInformationflow().eContainer();
-						Feature receiver = informationflow.getInformationflow().getReceiver();
+						// Init sender and receiver from Interaction
+						Feature sender = (Feature) interaction.getInformationflow().eContainer();
+						Feature receiver = interaction.getInformationflow().getReceiver();
 						
-						// Check if Feature is present in an Informationflow
+						// Check if Feature is present in an Interaction
 						if(receiver.equals(feature) || sender.equals(feature)) {
 							inModel = true;
 						}	
 					}
 				}
 				
-				// If Feature is not present in any Informationflow, it can be removed
+				// If Feature is not present in any Interaction, it can be removed
 				if(!inModel) {
 					System.out.println(component.getName() + " " + feature.getName());
 					featureRemovalList.add(feature);

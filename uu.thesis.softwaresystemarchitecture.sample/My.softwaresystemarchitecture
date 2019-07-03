@@ -98,6 +98,15 @@
           <flow receiver="//@viewpoint.1/@product_context/@sub_module.2/@contains.0" name="request vote"/>
         </contains>
       </sub_module>
+      <sub_module xsi:type="softwaresystemarchitecture:Composite_Module">
+        <sub_module xsi:type="softwaresystemarchitecture:Atomic_Module" name="Test">
+          <contains name="Test Feature 1">
+            <flow receiver="//@viewpoint.1/@product_context/@sub_module.7/@sub_module.0/@contains.1" name="Test"/>
+          </contains>
+          <contains name="Test Feature 2"/>
+          <contains name="Test Feature 3"/>
+        </sub_module>
+      </sub_module>
     </product_context>
     <scenario_overlay name="DNS" arrivalrate="50">
       <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.5/@contains.0/@flow.1" data="15"/>
@@ -126,6 +135,9 @@
       <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.1/@contains.1/@flow.0" data="2500"/>
       <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.1/@contains.2/@flow.0" data="2500" force_receiver_as_connector="true"/>
       <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.0/@contains.2/@flow.1" data="2500"/>
+    </scenario_overlay>
+    <scenario_overlay name="Test" colour="GREEN">
+      <interaction informationflow="//@viewpoint.1/@product_context/@sub_module.7/@sub_module.0/@contains.0/@flow.0"/>
     </scenario_overlay>
   </viewpoint>
 </softwaresystemarchitecture:Software_System>

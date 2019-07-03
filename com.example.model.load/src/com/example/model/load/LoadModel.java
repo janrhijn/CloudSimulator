@@ -24,12 +24,8 @@ public class LoadModel {
 		 m.put("softwaresystemarchitecture", new XMIResourceFactoryImpl());
 		 
 		 ResourceSet resSet = new ResourceSetImpl();
-		 // Resource from runtime Eclipse Application
-//		 Resource res = resSet.getResource(URI.createURI("file:/C:\\Users\\jrhijn004\\runtime-EclipseApplication\\uu.thesis.softwaresystemarchitecture\\sample.softwaresystemarchitecture"), true);
 		 
-		 // Resource from workspace (uu.thesis.sample)
 		 // Windows
-//		 Resource res = resSet.getResource(URI.createURI("file:/C:\\Users\\jrhijn004\\eclipse-workspace\\uu.thesis.sample\\My.softwaresystemarchitecture"), true);
 //		 Resource res = resSet.getResource(URI.createURI("file:/C:\\Users\\jrhijn004\\git\\CloudSimulator\\uu.thesis.softwaresystemarchitecture.sample\\My.softwaresystemarchitecture"), true);
 
 		 // Mac
@@ -37,7 +33,7 @@ public class LoadModel {
 
 		 Software_System model = (Software_System) res.getContents().get(0);
 		 
-		 System.out.println("Model: " + model.getName() + " is loaded");
+		 System.out.println("Model: " + model.getName() + " is loaded\n");
 		 
 		 return model;
 	 }	 

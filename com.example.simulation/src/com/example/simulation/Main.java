@@ -2,33 +2,26 @@ package com.example.simulation;
 
 import java.util.Iterator;
 
-//import org.eclipse.sirius.deployment.Deployment;
-//import org.eclipse.sirius.deployment.DeploymentPackage;
-
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.*;
 
 import com.example.model.load.LoadModel;
 
-//import java.util.logging.Logger;
 
 public class Main {
-//	private static Logger LOGGER = Logger.getLogger("InfoLogging");
 
-	public static void main(String[] args) {
-//		LOGGER.info("Logging an INFO-level message");
-		Deployment_Model deploymentModel = null;
-		Functional_Architecture_Model fam = null;
-		
+	public static void main(String[] args) {		
 		// Register EMF meta-model
-//		DeploymentPackage.eINSTANCE.eClass();
 		SoftwareSystemArchitecturePackage.eINSTANCE.eClass();
 
-		// Init LoadModel plugin
+		// Initialize LoadModel plugin
 		LoadModel lm = new LoadModel();
 				
-		// Invoke Load and init deployment with loaded model				
-//		Deployment deployment = lm.Load();
+		// Invoke Load and Initialize deployment with loaded model				
 		Software_System softwareSystem = lm.Load();
+		
+		// Initialize viewpoints
+		Deployment_Model deploymentModel = null;
+		Functional_Architecture_Model fam = null;
 		
 		// Set viewpoint to associated class
 		for(Iterator<Viewpoint> viewpointIterator = softwareSystem.getViewpoint().iterator(); viewpointIterator.hasNext();) {
@@ -40,24 +33,24 @@ public class Main {
 			}
 		}
 		
+		// Initialize required classes
 		Transformation trans = new Transformation(fam, deploymentModel);
 		Simulation sim = new Simulation(fam, deploymentModel);
 		Estimation estimate = new Estimation(deploymentModel);
 		DeploymentToString output = new DeploymentToString();
 		
 		// Transform deployment for simulation
-//		trans.TransformateAll();
-//		trans.splitBidirectionalInformationFlow.Split();
+		trans.TransformateAll();
 //		trans.transformPropabilityInformationFlow.Transformate();
-		trans.transformForceFeatureAsConnector.Transformate();
-		trans.transformToHorizontalBehavior.Transformate();
+//		trans.transformForceFeatureAsConnector.Transformate();
+//		trans.transformToHorizontalBehavior.Transformate();
 
-		// Print new model in console
+		// Print transformated model in console
 		output.PrintDeploymentModel(deploymentModel);
 		output.PrintFAM(fam);
 
-		// Simulation of deployment
-		sim.Simulate(60*60*24*7); // Simulate with simduration
+		// Simulate deployment
+		sim.Simulate(60*60*24*1); // Simulate with simulation duration
 //		output.PrintComponentMetrics(deploymentModel);
 		
 		// Cost estimation of deployment
