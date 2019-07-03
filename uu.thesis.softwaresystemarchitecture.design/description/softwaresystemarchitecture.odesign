@@ -4,7 +4,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="SoftwareSystem" domainClass="SoftwareSystemArchitecture::Software_System" enablePopupBars="true">
       <metamodel href="http://www.example.org/metamodel/softwaresystemarchitecture#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Feature">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Product%20Context']/@subContainerMappings[name='Composite%20Module']/@subContainerMappings[name='Atomic%20Module']/@subNodeMappings[name='Feature']"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Product%20Context']/@subContainerMappings[name='Composite%20Module']/@subContainerMappings[name='Atomic%20Module']/@subNodeMappings[name='Feature'] //@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@subNodeMappings[name='Feature']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide InformationFlow">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Informationflow']"/>
@@ -24,6 +24,46 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowRed(self)">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowBlue(self)">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowGreen(self)">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowPurple(self)">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowYellow(self)">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="Interaction" sourceMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Scenario']" targetMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Informationflow']" targetFinderExpression="aql:self.informationflow" sourceFinderExpression="aql:self.eContainer()" domainClass="SoftwareSystemArchitecture::Interaction" useDomainElement="true">
           <style lineStyle="dot" sizeComputationExpression="2">
@@ -84,6 +124,46 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('RED')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('BLUE')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('YELLOW')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('PURPLE')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('GREEN')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Functional Architecture Model">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -410,6 +490,13 @@
           </style>
         </edgeMappings>
         <containerMappings name="Deployment Model" semanticCandidatesExpression="feature:viewpoint" domainClass="SoftwareSystemArchitecture::Deployment_Model">
+          <subNodeMappings name="Not Referenced Features" semanticCandidatesExpression="aql:self.eContainer().eAllContents(SoftwareSystemArchitecture::Informationflow).receiver -> asOrderedSet() + self.eContainer().eAllContents(SoftwareSystemArchitecture::Informationflow).eContainer() -> asOrderedSet() - self.eAllContents(SoftwareSystemArchitecture::Component).contains" domainClass="SoftwareSystemArchitecture::Feature">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </style>
+          </subNodeMappings>
           <subContainerMappings name="Component" semanticCandidatesExpression="feature:contains" doubleClickDescription="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Double%20Click%20Component']" domainClass="SoftwareSystemArchitecture::Component">
             <borderedNodeMappings name="Pricing Function" semanticCandidatesExpression="feature:capability" doubleClickDescription="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Double%20Click%20Pricing%20Function']" domainClass="SoftwareSystemArchitecture::Pricing_Function">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'pf ' + self.eContainer().capability-> indexOf(self)" tooltipExpression="aql:self.name + ' $ ' + self.price + ' for ' + self.consumption_metric" labelPosition="node" resizeKind="NSEW" width="4" height="2">
