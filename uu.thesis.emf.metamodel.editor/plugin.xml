@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated metamodel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.presentation.SoftwareSystemArchitectureModelWizardID"
+            name="%_UI_SoftwareSystemArchitectureModelWizard_label"
+            class="uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.presentation.SoftwareSystemArchitectureModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/SoftwareSystemArchitectureModelFile.gif">
+         <description>%_UI_SoftwareSystemArchitectureModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated metamodel -->
+      <editor
+            id="uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.presentation.SoftwareSystemArchitectureEditorID"
+            name="%_UI_SoftwareSystemArchitectureEditor_label"
+            icon="icons/full/obj16/SoftwareSystemArchitectureModelFile.gif"
+            extensions="softwaresystemarchitecture"
+            class="uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.presentation.SoftwareSystemArchitectureEditor"
+            contributorClass="uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.presentation.SoftwareSystemArchitectureActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
