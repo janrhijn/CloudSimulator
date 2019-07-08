@@ -15,8 +15,50 @@
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Traceability">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@edgeMappings[name='Traceability']"/>
       </filters>
-      <defaultLayer name="Default"/>
-      <additionalLayers name="FAM">
+      <defaultLayer name="Default">
+        <toolSections name="Viewpoint">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add FAM" containerMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Functional_Architecture_Model" referenceName="viewpoint">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Composite_Module" referenceName="product_context">
+                      <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add FAM">
+                        <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                          <initialOperation/>
+                        </buttons>
+                        <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                          <initialOperation/>
+                        </buttons>
+                        <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@defaultLayer/@toolSections.0/@ownedTools[name='Add%20FAM']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                        <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Composite_Module" semanticCandidateExpression="var:self">
+                          <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Composite_Module name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+                            <initialOperation>
+                              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+                            </initialOperation>
+                          </controls>
+                        </groups>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add Deployment Model" containerMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Deployment_Model" referenceName="viewpoint"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="FAM" activeByDefault="true">
         <edgeMappings name="Informationflow" labelDirectEdit="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@toolSections.1/@ownedTools[name='Edit%20Informationflow%20Name']" sourceMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Product%20Context']/@subContainerMappings[name='Composite%20Module']/@subContainerMappings[name='Atomic%20Module']/@subNodeMappings[name='Feature']" targetMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Product%20Context']/@subContainerMappings[name='Composite%20Module']/@subContainerMappings[name='Atomic%20Module']/@subNodeMappings[name='Feature']" targetFinderExpression="aql:self.receiver" sourceFinderExpression="aql:self.eContainer()" domainClass="SoftwareSystemArchitecture::Informationflow" useDomainElement="true" reconnections="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@toolSections.1/@ownedTools[name='Reconnect%20Informationlow%20Target'] //@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@toolSections.1/@ownedTools[name='Reconnect%20Informationflow%20Source']">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -435,7 +477,7 @@
           </ownedTools>
         </toolSections>
       </additionalLayers>
-      <additionalLayers name="Deployment Model">
+      <additionalLayers name="Deployment Model" activeByDefault="true">
         <edgeMappings name="Interaction" doubleClickDescription="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.1/@ownedTools[name='Double%20Click%20InformationFlow']" sourceMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@subNodeMappings[name='Feature']" targetMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@subNodeMappings[name='Feature']" targetFinderExpression="aql:self.informationflow.receiver" sourceFinderExpression="aql:self.informationflow.eContainer()" domainClass="SoftwareSystemArchitecture::Interaction" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -491,7 +533,7 @@
         </edgeMappings>
         <containerMappings name="Deployment Model" semanticCandidatesExpression="feature:viewpoint" domainClass="SoftwareSystemArchitecture::Deployment_Model">
           <subNodeMappings name="Not Referenced Features" semanticCandidatesExpression="aql:self.eContainer().eAllContents(SoftwareSystemArchitecture::Informationflow).receiver -> asOrderedSet() + self.eContainer().eAllContents(SoftwareSystemArchitecture::Informationflow).eContainer() -> asOrderedSet() - self.eAllContents(SoftwareSystemArchitecture::Component).contains" domainClass="SoftwareSystemArchitecture::Feature">
-            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelPosition="node" resizeKind="NSEW" width="10" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
