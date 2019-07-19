@@ -17,7 +17,10 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Composite_Module;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Consumption_Metric;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Type;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Deployment_Model;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Duration_Type;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature;
@@ -26,11 +29,16 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Informationflow;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Interaction;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request_Type;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitectureFactory;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Software_System;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity;
 
 /**
  * <!-- begin-user-doc -->
@@ -98,6 +106,22 @@ public class SoftwareSystemArchitectureFactoryImpl extends EFactoryImpl implemen
 			return createComponent();
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION:
 			return createPricing_Function();
+		case SoftwareSystemArchitecturePackage.SERVER_UNIT:
+			return createServer_Unit();
+		case SoftwareSystemArchitecturePackage.DATA_IN:
+			return createData_in();
+		case SoftwareSystemArchitecturePackage.DATA_OUT:
+			return createData_Out();
+		case SoftwareSystemArchitecturePackage.REQUEST:
+			return createRequest();
+		case SoftwareSystemArchitecturePackage.STORAGE_CAPACITY:
+			return createStorage_Capacity();
+		case SoftwareSystemArchitecturePackage.DATA_PROCESSED:
+			return createData_Processed();
+		case SoftwareSystemArchitecturePackage.SERVER_DURATION:
+			return createServer_Duration();
+		case SoftwareSystemArchitecturePackage.SCENARIO_MODEL:
+			return createScenario_Model();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -276,6 +300,94 @@ public class SoftwareSystemArchitectureFactoryImpl extends EFactoryImpl implemen
 	public Pricing_Function createPricing_Function() {
 		Pricing_FunctionImpl pricing_Function = new Pricing_FunctionImpl();
 		return pricing_Function;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Server_Unit createServer_Unit() {
+		Server_UnitImpl server_Unit = new Server_UnitImpl();
+		return server_Unit;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Data_in createData_in() {
+		Data_inImpl data_in = new Data_inImpl();
+		return data_in;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Data_Out createData_Out() {
+		Data_OutImpl data_Out = new Data_OutImpl();
+		return data_Out;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Request createRequest() {
+		RequestImpl request = new RequestImpl();
+		return request;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Storage_Capacity createStorage_Capacity() {
+		Storage_CapacityImpl storage_Capacity = new Storage_CapacityImpl();
+		return storage_Capacity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Data_Processed createData_Processed() {
+		Data_ProcessedImpl data_Processed = new Data_ProcessedImpl();
+		return data_Processed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Server_Duration createServer_Duration() {
+		Server_DurationImpl server_Duration = new Server_DurationImpl();
+		return server_Duration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Scenario_Model createScenario_Model() {
+		Scenario_ModelImpl scenario_Model = new Scenario_ModelImpl();
+		return scenario_Model;
 	}
 
 	/**

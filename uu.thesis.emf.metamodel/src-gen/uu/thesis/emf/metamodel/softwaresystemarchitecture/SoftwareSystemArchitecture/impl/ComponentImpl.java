@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Capability;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage;
 
 /**
@@ -45,6 +46,7 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.ComponentImpl#getMax_waiting_time <em>Max waiting time</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.ComponentImpl#getData_processed <em>Data processed</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.ComponentImpl#getCapability <em>Capability</em>}</li>
+ *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.ComponentImpl#getPricing_scheme <em>Pricing scheme</em>}</li>
  * </ul>
  *
  * @generated
@@ -289,6 +291,16 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 	 * @ordered
 	 */
 	protected EList<Capability> capability;
+
+	/**
+	 * The cached value of the '{@link #getPricing_scheme() <em>Pricing scheme</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPricing_scheme()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Pricing_Function> pricing_scheme;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -610,10 +622,26 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 	 * @generated
 	 */
 	@Override
+	public EList<Pricing_Function> getPricing_scheme() {
+		if (pricing_scheme == null) {
+			pricing_scheme = new EObjectContainmentEList<Pricing_Function>(Pricing_Function.class, this,
+					SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME);
+		}
+		return pricing_scheme;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case SoftwareSystemArchitecturePackage.COMPONENT__CAPABILITY:
 			return ((InternalEList<?>) getCapability()).basicRemove(otherEnd, msgs);
+		case SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME:
+			return ((InternalEList<?>) getPricing_scheme()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -652,6 +680,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 			return getData_processed();
 		case SoftwareSystemArchitecturePackage.COMPONENT__CAPABILITY:
 			return getCapability();
+		case SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME:
+			return getPricing_scheme();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -706,6 +736,10 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 			getCapability().clear();
 			getCapability().addAll((Collection<? extends Capability>) newValue);
 			return;
+		case SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME:
+			getPricing_scheme().clear();
+			getPricing_scheme().addAll((Collection<? extends Pricing_Function>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -757,6 +791,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 		case SoftwareSystemArchitecturePackage.COMPONENT__CAPABILITY:
 			getCapability().clear();
 			return;
+		case SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME:
+			getPricing_scheme().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -795,6 +832,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
 			return data_processed != DATA_PROCESSED_EDEFAULT;
 		case SoftwareSystemArchitecturePackage.COMPONENT__CAPABILITY:
 			return capability != null && !capability.isEmpty();
+		case SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME:
+			return pricing_scheme != null && !pricing_scheme.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

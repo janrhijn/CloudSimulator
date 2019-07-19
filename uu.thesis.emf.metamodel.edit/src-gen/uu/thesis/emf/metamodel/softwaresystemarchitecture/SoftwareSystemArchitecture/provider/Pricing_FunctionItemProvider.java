@@ -8,9 +8,17 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function;
@@ -22,7 +30,8 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
  * <!-- end-user-doc -->
  * @generated
  */
-public class Pricing_FunctionItemProvider extends CapabilityItemProvider {
+public class Pricing_FunctionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -50,6 +59,7 @@ public class Pricing_FunctionItemProvider extends CapabilityItemProvider {
 			addData_typePropertyDescriptor(object);
 			addRequest_typePropertyDescriptor(object);
 			addBilling_typePropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -151,6 +161,22 @@ public class Pricing_FunctionItemProvider extends CapabilityItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_Pricing_Function_name_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Pricing_Function_name_feature",
+						"_UI_Pricing_Function_type"),
+				SoftwareSystemArchitecturePackage.Literals.PRICING_FUNCTION__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This returns Pricing_Function.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -202,6 +228,7 @@ public class Pricing_FunctionItemProvider extends CapabilityItemProvider {
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__DATA_TYPE:
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__REQUEST_TYPE:
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__BILLING_TYPE:
+		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
@@ -218,6 +245,17 @@ public class Pricing_FunctionItemProvider extends CapabilityItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return MetamodelEditPlugin.INSTANCE;
 	}
 
 }

@@ -152,22 +152,13 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	int FUNCTIONAL_ARCHITECTURE_MODEL__PRODUCT_CONTEXT = VIEWPOINT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Scenario overlay</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_ARCHITECTURE_MODEL__SCENARIO_OVERLAY = VIEWPOINT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Functional Architecture Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FUNCTIONAL_ARCHITECTURE_MODEL_FEATURE_COUNT = VIEWPOINT_FEATURE_COUNT + 2;
+	int FUNCTIONAL_ARCHITECTURE_MODEL_FEATURE_COUNT = VIEWPOINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Functional Architecture Model</em>' class.
@@ -701,13 +692,22 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	int COMPONENT__CAPABILITY = 12;
 
 	/**
+	 * The feature id for the '<em><b>Pricing scheme</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT__PRICING_SCHEME = 13;
+
+	/**
 	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = 13;
+	int COMPONENT_FEATURE_COUNT = 14;
 
 	/**
 	 * The number of operations of the '<em>Component</em>' class.
@@ -717,6 +717,97 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl <em>Pricing Function</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getPricing_Function()
+	 * @generated
+	 */
+	int PRICING_FUNCTION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Price</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__PRICE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Consumption metric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__CONSUMPTION_METRIC = 1;
+
+	/**
+	 * The feature id for the '<em><b>Duration type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__DURATION_TYPE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Data type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__DATA_TYPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Request type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__REQUEST_TYPE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Billing type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__BILLING_TYPE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION__NAME = 6;
+
+	/**
+	 * The number of structural features of the '<em>Pricing Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION_FEATURE_COUNT = 7;
+
+	/**
+	 * The number of operations of the '<em>Pricing Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRICING_FUNCTION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -765,14 +856,14 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl <em>Pricing Function</em>}' class.
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_UnitImpl <em>Server Unit</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl
-	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getPricing_Function()
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_UnitImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getServer_Unit()
 	 * @generated
 	 */
-	int PRICING_FUNCTION = 12;
+	int SERVER_UNIT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -781,7 +872,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__NAME = CAPABILITY__NAME;
+	int SERVER_UNIT__NAME = CAPABILITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -790,79 +881,401 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__DESCRIPTION = CAPABILITY__DESCRIPTION;
+	int SERVER_UNIT__DESCRIPTION = CAPABILITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Price</b></em>' attribute.
+	 * The feature id for the '<em><b>Units</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__PRICE = CAPABILITY_FEATURE_COUNT + 0;
+	int SERVER_UNIT__UNITS = CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Consumption metric</b></em>' attribute.
+	 * The number of structural features of the '<em>Server Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__CONSUMPTION_METRIC = CAPABILITY_FEATURE_COUNT + 1;
+	int SERVER_UNIT_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Duration type</b></em>' attribute.
+	 * The number of operations of the '<em>Server Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__DURATION_TYPE = CAPABILITY_FEATURE_COUNT + 2;
+	int SERVER_UNIT_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Data type</b></em>' attribute.
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_inImpl <em>Data in</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_inImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_in()
+	 * @generated
+	 */
+	int DATA_IN = 15;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__DATA_TYPE = CAPABILITY_FEATURE_COUNT + 3;
+	int DATA_IN__NAME = CAPABILITY__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Request type</b></em>' attribute.
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__REQUEST_TYPE = CAPABILITY_FEATURE_COUNT + 4;
+	int DATA_IN__DESCRIPTION = CAPABILITY__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Billing type</b></em>' attribute.
+	 * The feature id for the '<em><b>Data</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION__BILLING_TYPE = CAPABILITY_FEATURE_COUNT + 5;
+	int DATA_IN__DATA = CAPABILITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Pricing Function</em>' class.
+	 * The number of structural features of the '<em>Data in</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 6;
+	int DATA_IN_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Pricing Function</em>' class.
+	 * The number of operations of the '<em>Data in</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRICING_FUNCTION_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+	int DATA_IN_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_OutImpl <em>Data Out</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_OutImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_Out()
+	 * @generated
+	 */
+	int DATA_OUT = 16;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_OUT__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_OUT__DESCRIPTION = CAPABILITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_OUT__DATA = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Data Out</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_OUT_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Data Out</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_OUT_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.RequestImpl <em>Request</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.RequestImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getRequest()
+	 * @generated
+	 */
+	int REQUEST = 17;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST__DESCRIPTION = CAPABILITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Request</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST__REQUEST = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Request</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Storage_CapacityImpl <em>Storage Capacity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Storage_CapacityImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getStorage_Capacity()
+	 * @generated
+	 */
+	int STORAGE_CAPACITY = 18;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_CAPACITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_CAPACITY__DESCRIPTION = CAPABILITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Capacity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_CAPACITY__CAPACITY = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Storage Capacity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_CAPACITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Storage Capacity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORAGE_CAPACITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_ProcessedImpl <em>Data Processed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_ProcessedImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_Processed()
+	 * @generated
+	 */
+	int DATA_PROCESSED = 19;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROCESSED__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROCESSED__DESCRIPTION = CAPABILITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Data</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROCESSED__DATA = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Data Processed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROCESSED_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Data Processed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_PROCESSED_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_DurationImpl <em>Server Duration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_DurationImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getServer_Duration()
+	 * @generated
+	 */
+	int SERVER_DURATION = 20;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_DURATION__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_DURATION__DESCRIPTION = CAPABILITY__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_DURATION__DURATION = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Server Duration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_DURATION_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Server Duration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_DURATION_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Scenario_ModelImpl <em>Scenario Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Scenario_ModelImpl
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getScenario_Model()
+	 * @generated
+	 */
+	int SCENARIO_MODEL = 21;
+
+	/**
+	 * The feature id for the '<em><b>Scenario overlay</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_MODEL__SCENARIO_OVERLAY = VIEWPOINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Scenario Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_MODEL_FEATURE_COUNT = VIEWPOINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Scenario Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_MODEL_OPERATION_COUNT = VIEWPOINT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature_Type <em>Feature Type</em>}' enum.
@@ -872,7 +1285,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getFeature_Type()
 	 * @generated
 	 */
-	int FEATURE_TYPE = 14;
+	int FEATURE_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Colour <em>Colour</em>}' enum.
@@ -882,7 +1295,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getColour()
 	 * @generated
 	 */
-	int COLOUR = 15;
+	int COLOUR = 23;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Duration_Type <em>Duration Type</em>}' enum.
@@ -892,7 +1305,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getDuration_Type()
 	 * @generated
 	 */
-	int DURATION_TYPE = 16;
+	int DURATION_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Type <em>Data Type</em>}' enum.
@@ -902,7 +1315,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_Type()
 	 * @generated
 	 */
-	int DATA_TYPE = 17;
+	int DATA_TYPE = 25;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request_Type <em>Request Type</em>}' enum.
@@ -912,7 +1325,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getRequest_Type()
 	 * @generated
 	 */
-	int REQUEST_TYPE = 18;
+	int REQUEST_TYPE = 26;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Consumption_Metric <em>Consumption Metric</em>}' enum.
@@ -922,7 +1335,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getConsumption_Metric()
 	 * @generated
 	 */
-	int CONSUMPTION_METRIC = 19;
+	int CONSUMPTION_METRIC = 27;
 
 	/**
 	 * The meta object id for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Billing_Type <em>Billing Type</em>}' enum.
@@ -932,7 +1345,7 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getBilling_Type()
 	 * @generated
 	 */
-	int BILLING_TYPE = 20;
+	int BILLING_TYPE = 28;
 
 	/**
 	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Software_System <em>Software System</em>}'.
@@ -986,17 +1399,6 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getFunctional_Architecture_Model_Product_context();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Functional_Architecture_Model#getScenario_overlay <em>Scenario overlay</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scenario overlay</em>'.
-	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Functional_Architecture_Model#getScenario_overlay()
-	 * @see #getFunctional_Architecture_Model()
-	 * @generated
-	 */
-	EReference getFunctional_Architecture_Model_Scenario_overlay();
 
 	/**
 	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Deployment_Model <em>Deployment Model</em>}'.
@@ -1429,6 +1831,17 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	EReference getComponent_Capability();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component#getPricing_scheme <em>Pricing scheme</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Pricing scheme</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component#getPricing_scheme()
+	 * @see #getComponent()
+	 * @generated
+	 */
+	EReference getComponent_Pricing_scheme();
+
+	/**
 	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function <em>Pricing Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1505,6 +1918,17 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	EAttribute getPricing_Function_Billing_type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getName()
+	 * @see #getPricing_Function()
+	 * @generated
+	 */
+	EAttribute getPricing_Function_Name();
+
+	/**
 	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Capability <em>Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1535,6 +1959,174 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCapability_Description();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit <em>Server Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Server Unit</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit
+	 * @generated
+	 */
+	EClass getServer_Unit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit#getUnits <em>Units</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Units</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit#getUnits()
+	 * @see #getServer_Unit()
+	 * @generated
+	 */
+	EAttribute getServer_Unit_Units();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in <em>Data in</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data in</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in
+	 * @generated
+	 */
+	EClass getData_in();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in#getData <em>Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in#getData()
+	 * @see #getData_in()
+	 * @generated
+	 */
+	EAttribute getData_in_Data();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out <em>Data Out</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Out</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out
+	 * @generated
+	 */
+	EClass getData_Out();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out#getData <em>Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out#getData()
+	 * @see #getData_Out()
+	 * @generated
+	 */
+	EAttribute getData_Out_Data();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request <em>Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Request</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request
+	 * @generated
+	 */
+	EClass getRequest();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request#getRequest <em>Request</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Request</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request#getRequest()
+	 * @see #getRequest()
+	 * @generated
+	 */
+	EAttribute getRequest_Request();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity <em>Storage Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Storage Capacity</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity
+	 * @generated
+	 */
+	EClass getStorage_Capacity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity#getCapacity <em>Capacity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Capacity</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity#getCapacity()
+	 * @see #getStorage_Capacity()
+	 * @generated
+	 */
+	EAttribute getStorage_Capacity_Capacity();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed <em>Data Processed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Processed</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed
+	 * @generated
+	 */
+	EClass getData_Processed();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed#getData <em>Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Data</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed#getData()
+	 * @see #getData_Processed()
+	 * @generated
+	 */
+	EAttribute getData_Processed_Data();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration <em>Server Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Server Duration</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration
+	 * @generated
+	 */
+	EClass getServer_Duration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration#getDuration <em>Duration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Duration</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration#getDuration()
+	 * @see #getServer_Duration()
+	 * @generated
+	 */
+	EAttribute getServer_Duration_Duration();
+
+	/**
+	 * Returns the meta object for class '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model <em>Scenario Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scenario Model</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model
+	 * @generated
+	 */
+	EClass getScenario_Model();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model#getScenario_overlay <em>Scenario overlay</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenario overlay</em>'.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model#getScenario_overlay()
+	 * @see #getScenario_Model()
+	 * @generated
+	 */
+	EReference getScenario_Model_Scenario_overlay();
 
 	/**
 	 * Returns the meta object for enum '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature_Type <em>Feature Type</em>}'.
@@ -1673,15 +2265,6 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 		 */
 		EReference FUNCTIONAL_ARCHITECTURE_MODEL__PRODUCT_CONTEXT = eINSTANCE
 				.getFunctional_Architecture_Model_Product_context();
-
-		/**
-		 * The meta object literal for the '<em><b>Scenario overlay</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference FUNCTIONAL_ARCHITECTURE_MODEL__SCENARIO_OVERLAY = eINSTANCE
-				.getFunctional_Architecture_Model_Scenario_overlay();
 
 		/**
 		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Deployment_ModelImpl <em>Deployment Model</em>}' class.
@@ -2024,6 +2607,14 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 		EReference COMPONENT__CAPABILITY = eINSTANCE.getComponent_Capability();
 
 		/**
+		 * The meta object literal for the '<em><b>Pricing scheme</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT__PRICING_SCHEME = eINSTANCE.getComponent_Pricing_scheme();
+
+		/**
 		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl <em>Pricing Function</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2082,6 +2673,14 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 		EAttribute PRICING_FUNCTION__BILLING_TYPE = eINSTANCE.getPricing_Function_Billing_type();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PRICING_FUNCTION__NAME = eINSTANCE.getPricing_Function_Name();
+
+		/**
 		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.CapabilityImpl <em>Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2106,6 +2705,150 @@ public interface SoftwareSystemArchitecturePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CAPABILITY__DESCRIPTION = eINSTANCE.getCapability_Description();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_UnitImpl <em>Server Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_UnitImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getServer_Unit()
+		 * @generated
+		 */
+		EClass SERVER_UNIT = eINSTANCE.getServer_Unit();
+
+		/**
+		 * The meta object literal for the '<em><b>Units</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVER_UNIT__UNITS = eINSTANCE.getServer_Unit_Units();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_inImpl <em>Data in</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_inImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_in()
+		 * @generated
+		 */
+		EClass DATA_IN = eINSTANCE.getData_in();
+
+		/**
+		 * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_IN__DATA = eINSTANCE.getData_in_Data();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_OutImpl <em>Data Out</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_OutImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_Out()
+		 * @generated
+		 */
+		EClass DATA_OUT = eINSTANCE.getData_Out();
+
+		/**
+		 * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_OUT__DATA = eINSTANCE.getData_Out_Data();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.RequestImpl <em>Request</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.RequestImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getRequest()
+		 * @generated
+		 */
+		EClass REQUEST = eINSTANCE.getRequest();
+
+		/**
+		 * The meta object literal for the '<em><b>Request</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REQUEST__REQUEST = eINSTANCE.getRequest_Request();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Storage_CapacityImpl <em>Storage Capacity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Storage_CapacityImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getStorage_Capacity()
+		 * @generated
+		 */
+		EClass STORAGE_CAPACITY = eINSTANCE.getStorage_Capacity();
+
+		/**
+		 * The meta object literal for the '<em><b>Capacity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STORAGE_CAPACITY__CAPACITY = eINSTANCE.getStorage_Capacity_Capacity();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_ProcessedImpl <em>Data Processed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Data_ProcessedImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getData_Processed()
+		 * @generated
+		 */
+		EClass DATA_PROCESSED = eINSTANCE.getData_Processed();
+
+		/**
+		 * The meta object literal for the '<em><b>Data</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_PROCESSED__DATA = eINSTANCE.getData_Processed_Data();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_DurationImpl <em>Server Duration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Server_DurationImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getServer_Duration()
+		 * @generated
+		 */
+		EClass SERVER_DURATION = eINSTANCE.getServer_Duration();
+
+		/**
+		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SERVER_DURATION__DURATION = eINSTANCE.getServer_Duration_Duration();
+
+		/**
+		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Scenario_ModelImpl <em>Scenario Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Scenario_ModelImpl
+		 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.SoftwareSystemArchitecturePackageImpl#getScenario_Model()
+		 * @generated
+		 */
+		EClass SCENARIO_MODEL = eINSTANCE.getScenario_Model();
+
+		/**
+		 * The meta object literal for the '<em><b>Scenario overlay</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENARIO_MODEL__SCENARIO_OVERLAY = eINSTANCE.getScenario_Model_Scenario_overlay();
 
 		/**
 		 * The meta object literal for the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature_Type <em>Feature Type</em>}' enum.

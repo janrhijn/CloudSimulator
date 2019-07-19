@@ -11,15 +11,23 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Capability;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Composite_Module;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Deployment_Model;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Functional_Architecture_Model;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Informationflow;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Interaction;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Software_System;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Viewpoint;
 
 /**
@@ -175,14 +183,84 @@ public class SoftwareSystemArchitectureSwitch<T> extends Switch<T> {
 			Pricing_Function pricing_Function = (Pricing_Function) theEObject;
 			T result = casePricing_Function(pricing_Function);
 			if (result == null)
-				result = caseCapability(pricing_Function);
-			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
 		case SoftwareSystemArchitecturePackage.CAPABILITY: {
 			Capability capability = (Capability) theEObject;
 			T result = caseCapability(capability);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.SERVER_UNIT: {
+			Server_Unit server_Unit = (Server_Unit) theEObject;
+			T result = caseServer_Unit(server_Unit);
+			if (result == null)
+				result = caseCapability(server_Unit);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.DATA_IN: {
+			Data_in data_in = (Data_in) theEObject;
+			T result = caseData_in(data_in);
+			if (result == null)
+				result = caseCapability(data_in);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.DATA_OUT: {
+			Data_Out data_Out = (Data_Out) theEObject;
+			T result = caseData_Out(data_Out);
+			if (result == null)
+				result = caseCapability(data_Out);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.REQUEST: {
+			Request request = (Request) theEObject;
+			T result = caseRequest(request);
+			if (result == null)
+				result = caseCapability(request);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.STORAGE_CAPACITY: {
+			Storage_Capacity storage_Capacity = (Storage_Capacity) theEObject;
+			T result = caseStorage_Capacity(storage_Capacity);
+			if (result == null)
+				result = caseCapability(storage_Capacity);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.DATA_PROCESSED: {
+			Data_Processed data_Processed = (Data_Processed) theEObject;
+			T result = caseData_Processed(data_Processed);
+			if (result == null)
+				result = caseCapability(data_Processed);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.SERVER_DURATION: {
+			Server_Duration server_Duration = (Server_Duration) theEObject;
+			T result = caseServer_Duration(server_Duration);
+			if (result == null)
+				result = caseCapability(server_Duration);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case SoftwareSystemArchitecturePackage.SCENARIO_MODEL: {
+			Scenario_Model scenario_Model = (Scenario_Model) theEObject;
+			T result = caseScenario_Model(scenario_Model);
+			if (result == null)
+				result = caseViewpoint(scenario_Model);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -399,6 +477,126 @@ public class SoftwareSystemArchitectureSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapability(Capability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Server Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Server Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServer_Unit(Server_Unit object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data in</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data in</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseData_in(Data_in object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Out</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Out</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseData_Out(Data_Out object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Request</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRequest(Request object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Storage Capacity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Storage Capacity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStorage_Capacity(Storage_Capacity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Processed</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Processed</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseData_Processed(Data_Processed object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Server Duration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Server Duration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseServer_Duration(Server_Duration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Scenario Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Scenario Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScenario_Model(Scenario_Model object) {
 		return null;
 	}
 

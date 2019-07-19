@@ -14,14 +14,16 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 public class Simulation {
 	Functional_Architecture_Model fam;
 	Deployment_Model deploymentModel;
+	Scenario_Model scenarioModel;
 	
 	Clock clock = new Clock();
 	QueueingNode qn = new QueueingNode();
 	Utulities utulities = new Utulities();
 	
-	public Simulation(Functional_Architecture_Model fam, Deployment_Model deploymentModel) {
+	public Simulation(Functional_Architecture_Model fam, Deployment_Model deploymentModel, Scenario_Model scenarioModel) {
 		this.fam = fam;
 		this.deploymentModel = deploymentModel;
+		this.scenarioModel = scenarioModel;
 	}
 	
 	public void Simulate(int simduration) {
@@ -51,7 +53,7 @@ public class Simulation {
 					Feature feature = featureIterator.next();
 					
 					// Iterate over all Scenarios in FAM
-					for(Iterator<Scenario> scenarioIterator = this.fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
+					for(Iterator<Scenario> scenarioIterator = this.scenarioModel.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 					Scenario scenario = scenarioIterator.next();
 						
 						// Iterate over Interaction in order to determine data in/out transfers for each component

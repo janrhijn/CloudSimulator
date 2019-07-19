@@ -326,6 +326,190 @@ public class SoftwareSystemArchitectureItemProviderAdapterFactory extends Softwa
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Server_UnitItemProvider server_UnitItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServer_UnitAdapter() {
+		if (server_UnitItemProvider == null) {
+			server_UnitItemProvider = new Server_UnitItemProvider(this);
+		}
+
+		return server_UnitItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Data_inItemProvider data_inItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createData_inAdapter() {
+		if (data_inItemProvider == null) {
+			data_inItemProvider = new Data_inItemProvider(this);
+		}
+
+		return data_inItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Data_OutItemProvider data_OutItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createData_OutAdapter() {
+		if (data_OutItemProvider == null) {
+			data_OutItemProvider = new Data_OutItemProvider(this);
+		}
+
+		return data_OutItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RequestItemProvider requestItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRequestAdapter() {
+		if (requestItemProvider == null) {
+			requestItemProvider = new RequestItemProvider(this);
+		}
+
+		return requestItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Storage_CapacityItemProvider storage_CapacityItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStorage_CapacityAdapter() {
+		if (storage_CapacityItemProvider == null) {
+			storage_CapacityItemProvider = new Storage_CapacityItemProvider(this);
+		}
+
+		return storage_CapacityItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Data_ProcessedItemProvider data_ProcessedItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createData_ProcessedAdapter() {
+		if (data_ProcessedItemProvider == null) {
+			data_ProcessedItemProvider = new Data_ProcessedItemProvider(this);
+		}
+
+		return data_ProcessedItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Server_DurationItemProvider server_DurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createServer_DurationAdapter() {
+		if (server_DurationItemProvider == null) {
+			server_DurationItemProvider = new Server_DurationItemProvider(this);
+		}
+
+		return server_DurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Scenario_ModelItemProvider scenario_ModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScenario_ModelAdapter() {
+		if (scenario_ModelItemProvider == null) {
+			scenario_ModelItemProvider = new Scenario_ModelItemProvider(this);
+		}
+
+		return scenario_ModelItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -452,6 +636,22 @@ public class SoftwareSystemArchitectureItemProviderAdapterFactory extends Softwa
 			componentItemProvider.dispose();
 		if (pricing_FunctionItemProvider != null)
 			pricing_FunctionItemProvider.dispose();
+		if (server_UnitItemProvider != null)
+			server_UnitItemProvider.dispose();
+		if (data_inItemProvider != null)
+			data_inItemProvider.dispose();
+		if (data_OutItemProvider != null)
+			data_OutItemProvider.dispose();
+		if (requestItemProvider != null)
+			requestItemProvider.dispose();
+		if (storage_CapacityItemProvider != null)
+			storage_CapacityItemProvider.dispose();
+		if (data_ProcessedItemProvider != null)
+			data_ProcessedItemProvider.dispose();
+		if (server_DurationItemProvider != null)
+			server_DurationItemProvider.dispose();
+		if (scenario_ModelItemProvider != null)
+			scenario_ModelItemProvider.dispose();
 	}
 
 }

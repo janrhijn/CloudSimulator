@@ -2,8 +2,6 @@
  */
 package uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture;
 
-import org.eclipse.emf.common.util.EList;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Functional Architecture Model</b></em>'.
@@ -14,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Functional_Architecture_Model#getProduct_context <em>Product context</em>}</li>
- *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Functional_Architecture_Model#getScenario_overlay <em>Scenario overlay</em>}</li>
  * </ul>
  *
  * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getFunctional_Architecture_Model()
@@ -43,17 +40,5 @@ public interface Functional_Architecture_Model extends Viewpoint {
 	 * @generated
 	 */
 	void setProduct_context(uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Module value);
-
-	/**
-	 * Returns the value of the '<em><b>Scenario overlay</b></em>' containment reference list.
-	 * The list contents are of type {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scenario overlay</em>' containment reference list.
-	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getFunctional_Architecture_Model_Scenario_overlay()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Scenario> getScenario_overlay();
 
 } // Functional_Architecture_Model

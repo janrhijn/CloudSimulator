@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component#getMax_waiting_time <em>Max waiting time</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component#getData_processed <em>Data processed</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component#getCapability <em>Capability</em>}</li>
+ *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component#getPricing_scheme <em>Pricing scheme</em>}</li>
  * </ul>
  *
  * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getComponent()
@@ -302,5 +303,17 @@ public interface Component extends EObject {
 	 * @generated
 	 */
 	EList<Capability> getCapability();
+
+	/**
+	 * Returns the value of the '<em><b>Pricing scheme</b></em>' containment reference list.
+	 * The list contents are of type {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Pricing scheme</em>' containment reference list.
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getComponent_Pricing_scheme()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Pricing_Function> getPricing_scheme();
 
 } // Component

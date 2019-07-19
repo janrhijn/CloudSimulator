@@ -10,17 +10,19 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 public class TransformToHorizontalBehavior {
 	Functional_Architecture_Model fam;
 	Deployment_Model deploymentModel;
+	Scenario_Model scenarioModel;
 	
 	Utulities utulities = new Utulities();
 
-	public TransformToHorizontalBehavior(Functional_Architecture_Model fam, Deployment_Model deploymentModel) {
+	public TransformToHorizontalBehavior(Functional_Architecture_Model fam, Deployment_Model deploymentModel,  Scenario_Model scenarioModel) {
 		this.fam = fam;
 		this.deploymentModel = deploymentModel;
+		this.scenarioModel = scenarioModel;
 	}
 	
 	public void Transformate() {
 		// Iterate over Scenarios
-		for(Iterator<Scenario> scenarioIterator = fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
+		for(Iterator<Scenario> scenarioIterator = scenarioModel.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 			Scenario scenario = scenarioIterator.next();
 		
 			// Find a set of (two) features suitable for merging
@@ -138,7 +140,7 @@ public class TransformToHorizontalBehavior {
 				boolean inModel = false;
 				
 				// Iterate over Scenarios
-				for(Iterator<Scenario> scenarioIterator = this.fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
+				for(Iterator<Scenario> scenarioIterator = this.scenarioModel.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 					Scenario scenario = scenarioIterator.next();
 						
 					// Iterate over all Interactions in Scenario

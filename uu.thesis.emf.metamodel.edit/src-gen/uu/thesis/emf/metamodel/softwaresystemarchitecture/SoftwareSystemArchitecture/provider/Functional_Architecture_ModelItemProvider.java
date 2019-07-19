@@ -63,8 +63,6 @@ public class Functional_Architecture_ModelItemProvider extends ViewpointItemProv
 			super.getChildrenFeatures(object);
 			childrenFeatures
 					.add(SoftwareSystemArchitecturePackage.Literals.FUNCTIONAL_ARCHITECTURE_MODEL__PRODUCT_CONTEXT);
-			childrenFeatures
-					.add(SoftwareSystemArchitecturePackage.Literals.FUNCTIONAL_ARCHITECTURE_MODEL__SCENARIO_OVERLAY);
 		}
 		return childrenFeatures;
 	}
@@ -127,7 +125,6 @@ public class Functional_Architecture_ModelItemProvider extends ViewpointItemProv
 
 		switch (notification.getFeatureID(Functional_Architecture_Model.class)) {
 		case SoftwareSystemArchitecturePackage.FUNCTIONAL_ARCHITECTURE_MODEL__PRODUCT_CONTEXT:
-		case SoftwareSystemArchitecturePackage.FUNCTIONAL_ARCHITECTURE_MODEL__SCENARIO_OVERLAY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -152,10 +149,6 @@ public class Functional_Architecture_ModelItemProvider extends ViewpointItemProv
 		newChildDescriptors.add(createChildParameter(
 				SoftwareSystemArchitecturePackage.Literals.FUNCTIONAL_ARCHITECTURE_MODEL__PRODUCT_CONTEXT,
 				SoftwareSystemArchitectureFactory.eINSTANCE.createAtomic_Module()));
-
-		newChildDescriptors.add(createChildParameter(
-				SoftwareSystemArchitecturePackage.Literals.FUNCTIONAL_ARCHITECTURE_MODEL__SCENARIO_OVERLAY,
-				SoftwareSystemArchitectureFactory.eINSTANCE.createScenario()));
 	}
 
 }

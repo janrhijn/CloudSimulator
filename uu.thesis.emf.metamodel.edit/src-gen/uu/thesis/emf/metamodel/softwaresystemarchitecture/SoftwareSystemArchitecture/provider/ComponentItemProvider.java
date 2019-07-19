@@ -277,6 +277,7 @@ public class ComponentItemProvider extends ItemProviderAdapter implements IEditi
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY);
+			childrenFeatures.add(SoftwareSystemArchitecturePackage.Literals.COMPONENT__PRICING_SCHEME);
 		}
 		return childrenFeatures;
 	}
@@ -354,6 +355,7 @@ public class ComponentItemProvider extends ItemProviderAdapter implements IEditi
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case SoftwareSystemArchitecturePackage.COMPONENT__CAPABILITY:
+		case SoftwareSystemArchitecturePackage.COMPONENT__PRICING_SCHEME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -372,7 +374,29 @@ public class ComponentItemProvider extends ItemProviderAdapter implements IEditi
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
-				SoftwareSystemArchitectureFactory.eINSTANCE.createPricing_Function()));
+				SoftwareSystemArchitectureFactory.eINSTANCE.createServer_Unit()));
+
+		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
+				SoftwareSystemArchitectureFactory.eINSTANCE.createData_in()));
+
+		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
+				SoftwareSystemArchitectureFactory.eINSTANCE.createData_Out()));
+
+		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
+				SoftwareSystemArchitectureFactory.eINSTANCE.createRequest()));
+
+		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
+				SoftwareSystemArchitectureFactory.eINSTANCE.createStorage_Capacity()));
+
+		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
+				SoftwareSystemArchitectureFactory.eINSTANCE.createData_Processed()));
+
+		newChildDescriptors.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__CAPABILITY,
+				SoftwareSystemArchitectureFactory.eINSTANCE.createServer_Duration()));
+
+		newChildDescriptors
+				.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.COMPONENT__PRICING_SCHEME,
+						SoftwareSystemArchitectureFactory.eINSTANCE.createPricing_Function()));
 	}
 
 	/**

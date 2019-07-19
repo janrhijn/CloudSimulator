@@ -7,19 +7,21 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 public class TransformForceFeatureAsConnector {
 	Functional_Architecture_Model fam;
 	Deployment_Model deploymentModel;
+	Scenario_Model scenarioModel;
 	
 	Utulities utulities = new Utulities();
 	
-	public TransformForceFeatureAsConnector(Functional_Architecture_Model fam, Deployment_Model deploymentModel) {
+	public TransformForceFeatureAsConnector(Functional_Architecture_Model fam, Deployment_Model deploymentModel, Scenario_Model scenarioModel) {
 		this.fam = fam;
 		this.deploymentModel = deploymentModel;
+		this.scenarioModel = scenarioModel;
 	}
 	
 	public void Transformate() {
 		SoftwareSystemArchitectureFactory factory = SoftwareSystemArchitectureFactory.eINSTANCE;
 		
 		// Iterate through all scenarios
-		for(Iterator<Scenario> scenarioIterator = this.fam.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
+		for(Iterator<Scenario> scenarioIterator = this.scenarioModel.getScenario_overlay().iterator(); scenarioIterator.hasNext();) {
 			Scenario scenario = scenarioIterator.next();
 			
 			// Iterate through all informationflows within a scenario

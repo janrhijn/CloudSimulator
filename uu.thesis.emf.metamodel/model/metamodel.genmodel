@@ -58,7 +58,6 @@
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Functional_Architecture_Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Functional_Architecture_Model/product_context"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Functional_Architecture_Model/scenario_overlay"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Deployment_Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Deployment_Model/contains"/>
@@ -108,6 +107,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/max_waiting_time"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Component/data_processed"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Component/capability"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Component/pricing_scheme"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Pricing_Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/price"/>
@@ -116,10 +116,35 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/data_type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/request_type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/billing_type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Pricing_Function/name"/>
     </genClasses>
     <genClasses ecoreClass="metamodel.ecore#//Capability">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Capability/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Capability/description"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Server_Unit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Server_Unit/units"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Data_in">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Data_in/data"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Data_Out">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Data_Out/data"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Request">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Request/request"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Storage_Capacity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Storage_Capacity/capacity"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Data_Processed">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Data_Processed/data"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Server_Duration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel.ecore#//Server_Duration/duration"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel.ecore#//Scenario_Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel.ecore#//Scenario_Model/scenario_overlay"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

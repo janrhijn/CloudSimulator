@@ -122,6 +122,78 @@ public interface SoftwareSystemArchitectureFactory extends EFactory {
 	Pricing_Function createPricing_Function();
 
 	/**
+	 * Returns a new object of class '<em>Server Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Server Unit</em>'.
+	 * @generated
+	 */
+	Server_Unit createServer_Unit();
+
+	/**
+	 * Returns a new object of class '<em>Data in</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data in</em>'.
+	 * @generated
+	 */
+	Data_in createData_in();
+
+	/**
+	 * Returns a new object of class '<em>Data Out</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Out</em>'.
+	 * @generated
+	 */
+	Data_Out createData_Out();
+
+	/**
+	 * Returns a new object of class '<em>Request</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Request</em>'.
+	 * @generated
+	 */
+	Request createRequest();
+
+	/**
+	 * Returns a new object of class '<em>Storage Capacity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Storage Capacity</em>'.
+	 * @generated
+	 */
+	Storage_Capacity createStorage_Capacity();
+
+	/**
+	 * Returns a new object of class '<em>Data Processed</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Processed</em>'.
+	 * @generated
+	 */
+	Data_Processed createData_Processed();
+
+	/**
+	 * Returns a new object of class '<em>Server Duration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Server Duration</em>'.
+	 * @generated
+	 */
+	Server_Duration createServer_Duration();
+
+	/**
+	 * Returns a new object of class '<em>Scenario Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scenario Model</em>'.
+	 * @generated
+	 */
+	Scenario_Model createScenario_Model();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

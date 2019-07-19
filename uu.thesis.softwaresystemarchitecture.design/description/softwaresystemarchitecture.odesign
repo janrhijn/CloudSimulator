@@ -10,7 +10,7 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Informationflow']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Interaction">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Interaction']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@edgeMappings[name='Interaction']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Traceability">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@edgeMappings[name='Traceability']"/>
@@ -56,6 +56,15 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add Scenario Model" containerMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@containerMappings[name='Scenario%20Model']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Scenario_Model" referenceName="viewpoint"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="FAM" activeByDefault="true">
@@ -66,7 +75,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowRed(self)">
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Software_System) -> first().InformationflowRed(self)">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -74,7 +83,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowBlue(self)">
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Software_System) -> first().InformationflowBlue(self)">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -82,7 +91,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowGreen(self)">
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Software_System) -> first().InformationflowGreen(self)">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -90,7 +99,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowPurple(self)">
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Software_System) -> first().InformationflowPurple(self)">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -98,7 +107,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Functional_Architecture_Model) -> first().InformationflowYellow(self)">
+          <conditionnalStyles predicateExpression="aql:self.ancestors(SoftwareSystemArchitecture::Software_System) -> first().InformationflowYellow(self)">
             <style sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
@@ -106,11 +115,6 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-        </edgeMappings>
-        <edgeMappings name="Interaction" sourceMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Scenario']" targetMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Informationflow']" targetFinderExpression="aql:self.informationflow" sourceFinderExpression="aql:self.eContainer()" domainClass="SoftwareSystemArchitecture::Interaction" useDomainElement="true">
-          <style lineStyle="dot" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-          </style>
         </edgeMappings>
         <containerMappings name="Functional Architecture Diagram" semanticCandidatesExpression="feature:viewpoint" domainClass="SoftwareSystemArchitecture::Functional_Architecture_Model">
           <subContainerMappings name="Product Context" semanticCandidatesExpression="feature:product_context" domainClass="SoftwareSystemArchitecture::Composite_Module">
@@ -151,61 +155,6 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
-          </subContainerMappings>
-          <subContainerMappings name="Scenario" semanticCandidatesExpression="feature:scenario_overlay" domainClass="SoftwareSystemArchitecture::Scenario" childrenPresentation="List">
-            <subNodeMappings name="Interaction" semanticCandidatesExpression="feature:interaction" domainClass="SoftwareSystemArchitecture::Interaction">
-              <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelExpression="aql:self.informationflow.name" labelPosition="node" resizeKind="NSEW">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-            </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('RED')">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('BLUE')">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('YELLOW')">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('PURPLE')">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('GREEN')">
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              </style>
-            </conditionnalStyles>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="Functional Architecture Model">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -414,68 +363,6 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Scenario">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add Scenario" containerMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@containerMappings[name='Functional%20Architecture%20Diagram']/@subContainerMappings[name='Scenario']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Scenario" referenceName="scenario_overlay">
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Scenario">
-                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
-                    </buttons>
-                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
-                      <initialOperation/>
-                    </buttons>
-                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@toolSections.2/@ownedTools[name='Add%20Scenario']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
-                    <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Scenario" semanticCandidateExpression="var:self">
-                      <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Scenario name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
-                        <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
-                        </initialOperation>
-                      </controls>
-                    </groups>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Add Interaction to Scenario" edgeMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Interaction']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Interaction" referenceName="interaction" variableName="">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="informationflow" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Interaction">
-                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
-                      <initialOperation/>
-                    </buttons>
-                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
-                      <initialOperation/>
-                    </buttons>
-                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@toolSections.2/@ownedTools[name='Add%20Interaction%20to%20Scenario']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
-                    <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Interaction" semanticCandidateExpression="var:self">
-                      <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Interaction data" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('data')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('data'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('data').changeable" valueExpression="aql:self.data">
-                        <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="var:newValue"/>
-                        </initialOperation>
-                      </controls>
-                      <controls xsi:type="properties:CheckboxDescription" name="SoftwareSystemArchitecture::Interaction force_receiver_as_connector" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('force_receiver_as_connector'))" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('force_receiver_as_connector'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('force_receiver_as_connector').changeable" valueExpression="aql:self.force_receiver_as_connector">
-                        <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="force_receiver_as_connector" valueExpression="var:newValue"/>
-                        </initialOperation>
-                      </controls>
-                    </groups>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-        </toolSections>
       </additionalLayers>
       <additionalLayers name="Deployment Model" activeByDefault="true">
         <edgeMappings name="Interaction" doubleClickDescription="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.1/@ownedTools[name='Double%20Click%20InformationFlow']" sourceMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@subNodeMappings[name='Feature']" targetMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@subNodeMappings[name='Feature']" targetFinderExpression="aql:self.informationflow.receiver" sourceFinderExpression="aql:self.informationflow.eContainer()" domainClass="SoftwareSystemArchitecture::Interaction" useDomainElement="true">
@@ -630,6 +517,15 @@
                       </controls>
                     </groups>
                   </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Server_Duration" referenceName="capability"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Server_Unit" referenceName="capability"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Data_in" referenceName="capability"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Data_Out" referenceName="capability"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Data_Processed" referenceName="capability"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Request" referenceName="capability"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Storage_Capacity" referenceName="capability"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -654,12 +550,12 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add PricingFunction" nodeMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@borderedNodeMappings[name='Pricing%20Function']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add Pricing Function" nodeMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@containerMappings[name='Deployment%20Model']/@subContainerMappings[name='Component']/@borderedNodeMappings[name='Pricing%20Function']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Pricing_Function" referenceName="capability" variableName="">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Pricing_Function" referenceName="pricing_scheme" variableName="">
                   <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Pricing Function">
                     <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
                       <initialOperation/>
@@ -667,11 +563,11 @@
                     <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
                       <initialOperation/>
                     </buttons>
-                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Add%20PricingFunction']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Add%20Pricing%20Function']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
                     <groups name="Default Group Pricing Function" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Pricing_Function" semanticCandidateExpression="var:self">
-                      <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Pricing_Function name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function consumption_metric" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('consumption_metric')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('consumption_metric'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('consumption_metric').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('consumption_metric').eType.getEEnumLiteralByLiteral(self.consumption_metric.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('consumption_metric').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
                         <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="consumption_metric" valueExpression="aql:newValue.instance"/>
                         </initialOperation>
                       </controls>
                       <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Pricing_Function price" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('price')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('price'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('price').changeable" valueExpression="aql:self.price">
@@ -679,45 +575,25 @@
                           <firstModelOperations xsi:type="tool_1:SetValue" featureName="price" valueExpression="var:newValue"/>
                         </initialOperation>
                       </controls>
-                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function billing_type" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('billing_type')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('billing_type'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('billing_type').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('billing_type').eType.getEEnumLiteralByLiteral(self.billing_type.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('billing_type').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function duration_type" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('duration_type')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('duration_type'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('duration_type').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('duration_type').eType.getEEnumLiteralByLiteral(self.duration_type.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('duration_type').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
                         <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="billing_type" valueExpression="aql:newValue.instance"/>
-                        </initialOperation>
-                      </controls>
-                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function consumption_metric" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('consumption_metric')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('consumption_metric'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('consumption_metric').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('consumption_metric').eType.getEEnumLiteralByLiteral(self.consumption_metric.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('consumption_metric').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
-                        <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="consumption_metric" valueExpression="aql:newValue.instance"/>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration_type" valueExpression="aql:newValue.instance"/>
                         </initialOperation>
                       </controls>
                       <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function data_type" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('data_type')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('data_type'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('data_type').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('data_type').eType.getEEnumLiteralByLiteral(self.data_type.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('data_type').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool_1:SetValue" featureName="data_type" valueExpression="aql:newValue.instance"/>
                         </initialOperation>
-                        <conditionalStyles preconditionExpression="aql:self.consumption_metric.toString().matches('DATA_IN')&#xD;or self.consumption_metric.toString().matches('DATA_OUT')&#xD;or self.consumption_metric.toString().matches('DATA_PROCESSED')&#xD;or self.consumption_metric.toString().matches('STORAGE_CAPACITY')">
-                          <style>
-                            <labelFontFormat>bold</labelFontFormat>
-                          </style>
-                        </conditionalStyles>
                       </controls>
                       <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function request_type" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('request_type')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('request_type'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('request_type').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('request_type').eType.getEEnumLiteralByLiteral(self.request_type.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('request_type').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
                         <initialOperation>
                           <firstModelOperations xsi:type="tool_1:SetValue" featureName="request_type" valueExpression="aql:newValue.instance"/>
                         </initialOperation>
-                        <conditionalStyles preconditionExpression="aql:self.consumption_metric.toString().matches('REQUEST')">
-                          <style>
-                            <labelFontFormat>bold</labelFontFormat>
-                          </style>
-                        </conditionalStyles>
                       </controls>
-                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function duration_type" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('duration_type')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('duration_type'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('duration_type').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('duration_type').eType.getEEnumLiteralByLiteral(self.duration_type.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('duration_type').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Pricing_Function billing_type" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('billing_type')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('billing_type'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('billing_type').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('billing_type').eType.getEEnumLiteralByLiteral(self.billing_type.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('billing_type').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
                         <initialOperation>
-                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="duration_type" valueExpression="aql:newValue.instance"/>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="billing_type" valueExpression="aql:newValue.instance"/>
                         </initialOperation>
-                        <conditionalStyles preconditionExpression="aql:self.consumption_metric.toString().matches('SERVER_DURATION') or self.consumption_metric.toString().matches('SERVER_UNIT')">
-                          <style>
-                            <labelFontFormat>bold</labelFontFormat>
-                          </style>
-                        </conditionalStyles>
                       </controls>
                     </groups>
                   </subModelOperations>
@@ -798,7 +674,7 @@
                   <initialOperation/>
                 </buttons>
                 <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Double%20Click%20Pricing%20Function']/@initialOperation/@firstModelOperations/@groups.0"/>
-                <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Pricing_Function" semanticCandidateExpression="var:self" extends="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Add%20PricingFunction']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Pricing_Function" semanticCandidateExpression="var:self" extends="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Deployment%20Model']/@toolSections.0/@ownedTools[name='Add%20Pricing%20Function']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -828,6 +704,149 @@
                     </initialOperation>
                   </controls>
                 </groups>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Scenario Model" activeByDefault="true">
+        <edgeMappings name="Interaction" sourceMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@containerMappings[name='Scenario%20Model']/@subContainerMappings[name='Scenario']" targetMapping="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='FAM']/@edgeMappings[name='Informationflow']" targetFinderExpression="aql:self.informationflow" sourceFinderExpression="aql:self.eContainer()" domainClass="SoftwareSystemArchitecture::Interaction" useDomainElement="true">
+          <style lineStyle="dot" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Scenario Model" semanticCandidatesExpression="feature:viewpoint" domainClass="SoftwareSystemArchitecture::Scenario_Model">
+          <subContainerMappings name="Scenario" semanticCandidatesExpression="feature:scenario_overlay" domainClass="SoftwareSystemArchitecture::Scenario" childrenPresentation="List">
+            <subNodeMappings name="Interaction" semanticCandidatesExpression="feature:interaction" domainClass="SoftwareSystemArchitecture::Interaction">
+              <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.informationflow.name" labelAlignment="LEFT" labelPosition="node" width="1" height="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('RED')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('BLUE')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('YELLOW')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('PURPLE')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.colour.toString().matches('GREEN')">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="aql:'Scenario Model'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Scenario">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add Scenario" containerMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@containerMappings[name='Scenario%20Model']/@subContainerMappings[name='Scenario']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Scenario" referenceName="scenario_overlay">
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Scenario">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation/>
+                    </buttons>
+                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@toolSections.0/@ownedTools[name='Add%20Scenario']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Scenario" semanticCandidateExpression="var:self" preconditionExpression="Default Group">
+                      <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Scenario name" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('name')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('name'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('name').changeable" valueExpression="aql:self.name">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:newValue"/>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Scenario arrivalrate" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('arrivalrate')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('arrivalrate'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('arrivalrate').changeable" valueExpression="aql:self.arrivalrate">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="arrivalrate" valueExpression="var:newValue"/>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:RadioDescription" name="SoftwareSystemArchitecture::Scenario colour" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('colour')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('colour'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('colour').changeable" valueExpression="aql:self.eClass().getEStructuralFeature('colour').eType.getEEnumLiteralByLiteral(self.colour.toString())" candidatesExpression="aql:self.eClass().getEStructuralFeature('colour').eType.eLiterals" candidateDisplayExpression="aql:candidate.name" numberOfColumns="5">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="colour" valueExpression="aql:newValue.instance"/>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Add Interaction" edgeMappings="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@edgeMappings[name='Interaction']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SoftwareSystemArchitecture::Interaction" referenceName="interaction">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="informationflow" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Add Interaction">
+                    <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                      <initialOperation/>
+                    </buttons>
+                    <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                      <initialOperation/>
+                    </buttons>
+                    <page name="Default Page" labelExpression="Page" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='Software_Architecture_Description']/@ownedRepresentations[name='SoftwareSystem']/@additionalLayers[name='Scenario%20Model']/@toolSections.0/@ownedTools[name='Add%20Interaction']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.1/@groups.0"/>
+                    <groups name="Default Group" labelExpression="Group" domainClass="SoftwareSystemArchitecture::Interaction" semanticCandidateExpression="var:self">
+                      <controls xsi:type="properties:TextDescription" name="SoftwareSystemArchitecture::Interaction data" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('data')) + ':'" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('data'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('data').changeable" valueExpression="aql:self.data">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="var:newValue"/>
+                        </initialOperation>
+                      </controls>
+                      <controls xsi:type="properties:CheckboxDescription" name="SoftwareSystemArchitecture::Interaction force_receiver_as_connector" labelExpression="aql:input.emfEditServices(self).getText(self.eClass().getEStructuralFeature('force_receiver_as_connector'))" helpExpression="aql:input.emfEditServices(self).getDescription(self.eClass().getEStructuralFeature('force_receiver_as_connector'))" isEnabledExpression="aql:self.eClass().getEStructuralFeature('force_receiver_as_connector').changeable" valueExpression="aql:self.force_receiver_as_connector">
+                        <initialOperation>
+                          <firstModelOperations xsi:type="tool_1:SetValue" featureName="force_receiver_as_connector" valueExpression="var:newValue"/>
+                        </initialOperation>
+                      </controls>
+                    </groups>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

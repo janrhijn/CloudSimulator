@@ -10,8 +10,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Functional_Architecture_Model" eSuperTypes="#//Viewpoint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="product_context" lowerBound="1"
         eType="#//Module" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenario_overlay" upperBound="-1"
-        eType="#//Scenario" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deployment_Model" eSuperTypes="#//Viewpoint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" lowerBound="1"
@@ -79,10 +77,13 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="data_processed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="capability" upperBound="-1"
         eType="#//Capability" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pricing_scheme" upperBound="-1"
+        eType="#//Pricing_Function" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pricing_Function" eSuperTypes="#//Capability">
+  <eClassifiers xsi:type="ecore:EClass" name="Pricing_Function">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consumption_metric" eType="#//Consumption_Metric"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="consumption_metric" eType="#//Consumption_Metric"
+        defaultValueLiteral="SERVER_DURATION"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration_type" eType="#//Duration_Type"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="data_type" eType="#//Data_Type"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="request_type" eType="#//Request_Type"/>
@@ -92,6 +93,7 @@
         <details key="documentation" value="Specifies if price is rounded of to seconds or per hour"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Colour">
     <eLiterals name="RED"/>
@@ -133,5 +135,30 @@
   <eClassifiers xsi:type="ecore:EClass" name="Capability" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Server_Unit" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="units" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data_in" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data_Out" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Request" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="request" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Storage_Capacity" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data_Processed" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="data" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Server_Duration" eSuperTypes="#//Capability">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scenario_Model" eSuperTypes="#//Viewpoint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scenario_overlay" upperBound="-1"
+        eType="#//Scenario" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -181,6 +181,10 @@ public class Software_SystemItemProvider extends ItemProviderAdapter implements 
 		newChildDescriptors
 				.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.SOFTWARE_SYSTEM__VIEWPOINT,
 						SoftwareSystemArchitectureFactory.eINSTANCE.createDeployment_Model()));
+
+		newChildDescriptors
+				.add(createChildParameter(SoftwareSystemArchitecturePackage.Literals.SOFTWARE_SYSTEM__VIEWPOINT,
+						SoftwareSystemArchitectureFactory.eINSTANCE.createScenario_Model()));
 	}
 
 	/**

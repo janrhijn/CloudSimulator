@@ -22,6 +22,7 @@ public class Main {
 		// Initialize viewpoints
 		Deployment_Model deploymentModel = null;
 		Functional_Architecture_Model fam = null;
+		Scenario_Model scenarioModel = null;
 		
 		// Set viewpoint to associated class
 		for(Iterator<Viewpoint> viewpointIterator = softwareSystem.getViewpoint().iterator(); viewpointIterator.hasNext();) {
@@ -30,12 +31,14 @@ public class Main {
 				deploymentModel = (Deployment_Model) viewPoint;
 			} else if (viewPoint.eClass().getName() == "Functional_Architecture_Model") {
 				fam = (Functional_Architecture_Model) viewPoint;
+			} else if (viewPoint.eClass().getName() == "Scenario_Model") {
+				scenarioModel = (Scenario_Model) viewPoint;
 			}
 		}
 		
 		// Initialize required classes
-		Transformation trans = new Transformation(fam, deploymentModel);
-		Simulation sim = new Simulation(fam, deploymentModel);
+		Transformation trans = new Transformation(fam, deploymentModel, scenarioModel);
+		Simulation sim = new Simulation(fam, deploymentModel, scenarioModel);
 		Estimation estimate = new Estimation(deploymentModel);
 		DeploymentToString output = new DeploymentToString();
 		
@@ -47,7 +50,7 @@ public class Main {
 
 		// Print transformated model in console
 		output.PrintDeploymentModel(deploymentModel);
-		output.PrintFAM(fam);
+		output.PrintScenarioModel(scenarioModel);
 
 		// Simulate deployment
 		sim.Simulate(60*60*24*1); // Simulate with simulation duration

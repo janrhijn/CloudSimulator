@@ -37,60 +37,60 @@ public class Estimation {
 			Component component = componentIterator.next();
 			
 			// Only output estimation if capability is defined
-			if (component.getCapability().size() >= 1) {
+			if (component.getPricing_scheme().size() >= 1) {
 				System.out.println(" " + component.getName());
 				
-				// Loop thorugh all PricingFunctions of the Component
-				for(Iterator<Capability> pricingfunctionIterator = component.getCapability().iterator(); pricingfunctionIterator.hasNext();) {
-					Capability capability = pricingfunctionIterator.next();
+				// Loop through all PricingFunctions of the Component
+				for(Iterator<Pricing_Function> pricingFunctionIterator = component.getPricing_scheme().iterator(); pricingFunctionIterator.hasNext();) {
+					Pricing_Function pricingFunction = pricingFunctionIterator.next();
 					
-					// TODO check if capability is pricingfunction
-					Pricing_Function pricingfunction = (Pricing_Function) capability;
+//					// TODO check if capability is pricingfunction
+//					Pricing_Function pricingfunction = (Pricing_Function) capability;
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_DURATION)) {
-						double serverDurationCost = serverDurationCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.SERVER_DURATION)) {
+						double serverDurationCost = serverDurationCost(component, pricingFunction);
 						
 						componentTotalCost(component, serverDurationCost);
 						System.out.println("  Cost Server Duration capability: $" + f.format(serverDurationCost) + " Server duration: " + component.getServer_duration() + " sec");
 					}
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.SERVER_UNIT)) {
-						double serverUnitTimeCost = serverUnitTimeCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.SERVER_UNIT)) {
+						double serverUnitTimeCost = serverUnitTimeCost(component, pricingFunction);
 	
 						componentTotalCost(component, serverUnitTimeCost);
 						System.out.println("  Cost Server Units capability: $" + f.format(serverUnitTimeCost)  + " Server units: " + component.getServer_unit());
 					}
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_IN)) {
-						double dataInCost = dataInCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.DATA_IN)) {
+						double dataInCost = dataInCost(component, pricingFunction);
 	
 						componentTotalCost(component, dataInCost);
 						System.out.println("  Cost Data In capability: $" + f.format(dataInCost)  + " Data in: " + component.getData_in() + "KB");
 					}
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_OUT)) {
-						double dataOutCost = dataOutCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.DATA_OUT)) {
+						double dataOutCost = dataOutCost(component, pricingFunction);
 						
 						componentTotalCost(component, dataOutCost);
 						System.out.println("  Cost Data Out capability: $" + f.format(dataOutCost) + " Data out: " + component.getData_out() + "KB");
 					}
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.STORAGE_CAPACITY)) {
-						double storageCapacityCost = storageCapacityCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.STORAGE_CAPACITY)) {
+						double storageCapacityCost = storageCapacityCost(component, pricingFunction);
 	
 						componentTotalCost(component, storageCapacityCost);
 						System.out.println("  Cost Storage Capacity capability: $" + f.format(storageCapacityCost) + " Storage capacity: " + component.getStorage_capacity()  + "KB");
 					}
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.REQUEST)) {
-						double requestCost = requestCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.REQUEST)) {
+						double requestCost = requestCost(component, pricingFunction);
 						
 						componentTotalCost(component, requestCost);
 						System.out.println("  Cost Request capability: $" + f.format(requestCost) + " Requests: " + component.getRequest());
 					}
 					
-					if(pricingfunction.getConsumption_metric().equals(Consumption_Metric.DATA_PROCESSED)) {
-						double dataProcessedCost = dataProcessedCost(component, pricingfunction);
+					if(pricingFunction.getConsumption_metric().equals(Consumption_Metric.DATA_PROCESSED)) {
+						double dataProcessedCost = dataProcessedCost(component, pricingFunction);
 						
 						componentTotalCost(component, dataProcessedCost);
 						System.out.println("  Cost Data Processed capability: $" + f.format(dataProcessedCost) + " Data processed: " + (component.getData_in() + component.getData_in()) + "KB");

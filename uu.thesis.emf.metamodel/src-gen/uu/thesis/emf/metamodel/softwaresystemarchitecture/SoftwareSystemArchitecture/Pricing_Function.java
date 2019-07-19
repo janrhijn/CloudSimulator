@@ -2,6 +2,8 @@
  */
 package uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Pricing Function</b></em>'.
@@ -17,13 +19,14 @@ package uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchite
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getData_type <em>Data type</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getRequest_type <em>Request type</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getBilling_type <em>Billing type</em>}</li>
+ *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getPricing_Function()
  * @model
  * @generated
  */
-public interface Pricing_Function extends Capability {
+public interface Pricing_Function extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Price</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -48,6 +51,7 @@ public interface Pricing_Function extends Capability {
 
 	/**
 	 * Returns the value of the '<em><b>Consumption metric</b></em>' attribute.
+	 * The default value is <code>"SERVER_DURATION"</code>.
 	 * The literals are from the enumeration {@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Consumption_Metric}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55,7 +59,7 @@ public interface Pricing_Function extends Capability {
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Consumption_Metric
 	 * @see #setConsumption_metric(Consumption_Metric)
 	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getPricing_Function_Consumption_metric()
-	 * @model
+	 * @model default="SERVER_DURATION"
 	 * @generated
 	 */
 	Consumption_Metric getConsumption_metric();
@@ -174,5 +178,27 @@ public interface Pricing_Function extends Capability {
 	 * @generated
 	 */
 	void setBilling_type(Billing_Type value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage#getPricing_Function_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // Pricing_Function

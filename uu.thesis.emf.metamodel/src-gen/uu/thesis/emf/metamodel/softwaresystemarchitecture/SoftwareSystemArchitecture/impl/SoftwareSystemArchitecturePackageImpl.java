@@ -19,7 +19,10 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Component;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Composite_Module;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Consumption_Metric;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Out;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Processed;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_Type;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Data_in;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Deployment_Model;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Duration_Type;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Feature;
@@ -28,11 +31,16 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Informationflow;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Interaction;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Pricing_Function;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Request_Type;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Scenario_Model;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Duration;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Server_Unit;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitectureFactory;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.SoftwareSystemArchitecturePackage;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Software_System;
+import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Storage_Capacity;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Viewpoint;
 
 /**
@@ -139,6 +147,62 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass server_UnitEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass data_inEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass data_OutEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass requestEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass storage_CapacityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass data_ProcessedEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass server_DurationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scenario_ModelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -305,16 +369,6 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 	@Override
 	public EReference getFunctional_Architecture_Model_Product_context() {
 		return (EReference) functional_Architecture_ModelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getFunctional_Architecture_Model_Scenario_overlay() {
-		return (EReference) functional_Architecture_ModelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -723,6 +777,16 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
+	public EReference getComponent_Pricing_scheme() {
+		return (EReference) componentEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPricing_Function() {
 		return pricing_FunctionEClass;
 	}
@@ -793,6 +857,16 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 	 * @generated
 	 */
 	@Override
+	public EAttribute getPricing_Function_Name() {
+		return (EAttribute) pricing_FunctionEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -815,6 +889,166 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 	@Override
 	public EAttribute getCapability_Description() {
 		return (EAttribute) capabilityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getServer_Unit() {
+		return server_UnitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getServer_Unit_Units() {
+		return (EAttribute) server_UnitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getData_in() {
+		return data_inEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getData_in_Data() {
+		return (EAttribute) data_inEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getData_Out() {
+		return data_OutEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getData_Out_Data() {
+		return (EAttribute) data_OutEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getRequest() {
+		return requestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getRequest_Request() {
+		return (EAttribute) requestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStorage_Capacity() {
+		return storage_CapacityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStorage_Capacity_Capacity() {
+		return (EAttribute) storage_CapacityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getData_Processed() {
+		return data_ProcessedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getData_Processed_Data() {
+		return (EAttribute) data_ProcessedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getServer_Duration() {
+		return server_DurationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getServer_Duration_Duration() {
+		return (EAttribute) server_DurationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScenario_Model() {
+		return scenario_ModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScenario_Model_Scenario_overlay() {
+		return (EReference) scenario_ModelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -923,7 +1157,6 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 
 		functional_Architecture_ModelEClass = createEClass(FUNCTIONAL_ARCHITECTURE_MODEL);
 		createEReference(functional_Architecture_ModelEClass, FUNCTIONAL_ARCHITECTURE_MODEL__PRODUCT_CONTEXT);
-		createEReference(functional_Architecture_ModelEClass, FUNCTIONAL_ARCHITECTURE_MODEL__SCENARIO_OVERLAY);
 
 		deployment_ModelEClass = createEClass(DEPLOYMENT_MODEL);
 		createEReference(deployment_ModelEClass, DEPLOYMENT_MODEL__CONTAINS);
@@ -974,6 +1207,7 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		createEAttribute(componentEClass, COMPONENT__MAX_WAITING_TIME);
 		createEAttribute(componentEClass, COMPONENT__DATA_PROCESSED);
 		createEReference(componentEClass, COMPONENT__CAPABILITY);
+		createEReference(componentEClass, COMPONENT__PRICING_SCHEME);
 
 		pricing_FunctionEClass = createEClass(PRICING_FUNCTION);
 		createEAttribute(pricing_FunctionEClass, PRICING_FUNCTION__PRICE);
@@ -982,10 +1216,35 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		createEAttribute(pricing_FunctionEClass, PRICING_FUNCTION__DATA_TYPE);
 		createEAttribute(pricing_FunctionEClass, PRICING_FUNCTION__REQUEST_TYPE);
 		createEAttribute(pricing_FunctionEClass, PRICING_FUNCTION__BILLING_TYPE);
+		createEAttribute(pricing_FunctionEClass, PRICING_FUNCTION__NAME);
 
 		capabilityEClass = createEClass(CAPABILITY);
 		createEAttribute(capabilityEClass, CAPABILITY__NAME);
 		createEAttribute(capabilityEClass, CAPABILITY__DESCRIPTION);
+
+		server_UnitEClass = createEClass(SERVER_UNIT);
+		createEAttribute(server_UnitEClass, SERVER_UNIT__UNITS);
+
+		data_inEClass = createEClass(DATA_IN);
+		createEAttribute(data_inEClass, DATA_IN__DATA);
+
+		data_OutEClass = createEClass(DATA_OUT);
+		createEAttribute(data_OutEClass, DATA_OUT__DATA);
+
+		requestEClass = createEClass(REQUEST);
+		createEAttribute(requestEClass, REQUEST__REQUEST);
+
+		storage_CapacityEClass = createEClass(STORAGE_CAPACITY);
+		createEAttribute(storage_CapacityEClass, STORAGE_CAPACITY__CAPACITY);
+
+		data_ProcessedEClass = createEClass(DATA_PROCESSED);
+		createEAttribute(data_ProcessedEClass, DATA_PROCESSED__DATA);
+
+		server_DurationEClass = createEClass(SERVER_DURATION);
+		createEAttribute(server_DurationEClass, SERVER_DURATION__DURATION);
+
+		scenario_ModelEClass = createEClass(SCENARIO_MODEL);
+		createEReference(scenario_ModelEClass, SCENARIO_MODEL__SCENARIO_OVERLAY);
 
 		// Create enums
 		feature_TypeEEnum = createEEnum(FEATURE_TYPE);
@@ -1034,7 +1293,14 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		deployment_ModelEClass.getESuperTypes().add(this.getViewpoint());
 		composite_ModuleEClass.getESuperTypes().add(this.getModule());
 		atomic_ModuleEClass.getESuperTypes().add(this.getModule());
-		pricing_FunctionEClass.getESuperTypes().add(this.getCapability());
+		server_UnitEClass.getESuperTypes().add(this.getCapability());
+		data_inEClass.getESuperTypes().add(this.getCapability());
+		data_OutEClass.getESuperTypes().add(this.getCapability());
+		requestEClass.getESuperTypes().add(this.getCapability());
+		storage_CapacityEClass.getESuperTypes().add(this.getCapability());
+		data_ProcessedEClass.getESuperTypes().add(this.getCapability());
+		server_DurationEClass.getESuperTypes().add(this.getCapability());
+		scenario_ModelEClass.getESuperTypes().add(this.getViewpoint());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(software_SystemEClass, Software_System.class, "Software_System", !IS_ABSTRACT, !IS_INTERFACE,
@@ -1050,9 +1316,6 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		initEReference(getFunctional_Architecture_Model_Product_context(), this.getModule(), null, "product_context",
 				null, 1, 1, Functional_Architecture_Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFunctional_Architecture_Model_Scenario_overlay(), this.getScenario(), null,
-				"scenario_overlay", null, 0, -1, Functional_Architecture_Model.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(deployment_ModelEClass, Deployment_Model.class, "Deployment_Model", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1160,6 +1423,9 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		initEReference(getComponent_Capability(), this.getCapability(), null, "capability", null, 0, -1,
 				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponent_Pricing_scheme(), this.getPricing_Function(), null, "pricing_scheme", null, 0, -1,
+				Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pricing_FunctionEClass, Pricing_Function.class, "Pricing_Function", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1167,8 +1433,8 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 				Pricing_Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPricing_Function_Consumption_metric(), this.getConsumption_Metric(), "consumption_metric",
-				null, 0, 1, Pricing_Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+				"SERVER_DURATION", 0, 1, Pricing_Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPricing_Function_Duration_type(), this.getDuration_Type(), "duration_type", null, 0, 1,
 				Pricing_Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
@@ -1181,6 +1447,9 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		initEAttribute(getPricing_Function_Billing_type(), this.getBilling_Type(), "billing_type", "SECOND", 0, 1,
 				Pricing_Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPricing_Function_Name(), ecorePackage.getEString(), "name", null, 0, 1,
+				Pricing_Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1189,6 +1458,47 @@ public class SoftwareSystemArchitecturePackageImpl extends EPackageImpl implemen
 		initEAttribute(getCapability_Description(), ecorePackage.getEString(), "description", null, 0, 1,
 				Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(server_UnitEClass, Server_Unit.class, "Server_Unit", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServer_Unit_Units(), ecorePackage.getEInt(), "units", null, 0, 1, Server_Unit.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(data_inEClass, Data_in.class, "Data_in", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getData_in_Data(), ecorePackage.getELong(), "data", null, 0, 1, Data_in.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(data_OutEClass, Data_Out.class, "Data_Out", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getData_Out_Data(), ecorePackage.getELong(), "data", null, 0, 1, Data_Out.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(requestEClass, Request.class, "Request", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRequest_Request(), ecorePackage.getELong(), "request", null, 0, 1, Request.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(storage_CapacityEClass, Storage_Capacity.class, "Storage_Capacity", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStorage_Capacity_Capacity(), ecorePackage.getELong(), "capacity", null, 0, 1,
+				Storage_Capacity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(data_ProcessedEClass, Data_Processed.class, "Data_Processed", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getData_Processed_Data(), ecorePackage.getELong(), "data", null, 0, 1, Data_Processed.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(server_DurationEClass, Server_Duration.class, "Server_Duration", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getServer_Duration_Duration(), ecorePackage.getEInt(), "duration", null, 0, 1,
+				Server_Duration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+
+		initEClass(scenario_ModelEClass, Scenario_Model.class, "Scenario_Model", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScenario_Model_Scenario_overlay(), this.getScenario(), null, "scenario_overlay", null, 0, -1,
+				Scenario_Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(feature_TypeEEnum, Feature_Type.class, "Feature_Type");

@@ -7,6 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Billing_Type;
 import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.Consumption_Metric;
@@ -30,11 +31,12 @@ import uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitec
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl#getData_type <em>Data type</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl#getRequest_type <em>Request type</em>}</li>
  *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl#getBilling_type <em>Billing type</em>}</li>
+ *   <li>{@link uu.thesis.emf.metamodel.softwaresystemarchitecture.SoftwareSystemArchitecture.impl.Pricing_FunctionImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Function {
+public class Pricing_FunctionImpl extends MinimalEObjectImpl.Container implements Pricing_Function {
 	/**
 	 * The default value of the '{@link #getPrice() <em>Price</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -154,6 +156,26 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 	 * @ordered
 	 */
 	protected Billing_Type billing_type = BILLING_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -326,6 +348,30 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 	 * @generated
 	 */
 	@Override
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					SoftwareSystemArchitecturePackage.PRICING_FUNCTION__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__PRICE:
@@ -340,6 +386,8 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 			return getRequest_type();
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__BILLING_TYPE:
 			return getBilling_type();
+		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -369,6 +417,9 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 			return;
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__BILLING_TYPE:
 			setBilling_type((Billing_Type) newValue);
+			return;
+		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__NAME:
+			setName((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -400,6 +451,9 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__BILLING_TYPE:
 			setBilling_type(BILLING_TYPE_EDEFAULT);
 			return;
+		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -424,6 +478,8 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 			return request_type != REQUEST_TYPE_EDEFAULT;
 		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__BILLING_TYPE:
 			return billing_type != BILLING_TYPE_EDEFAULT;
+		case SoftwareSystemArchitecturePackage.PRICING_FUNCTION__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -451,6 +507,8 @@ public class Pricing_FunctionImpl extends CapabilityImpl implements Pricing_Func
 		result.append(request_type);
 		result.append(", billing_type: ");
 		result.append(billing_type);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
